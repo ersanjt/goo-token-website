@@ -42,6 +42,17 @@
   box-shadow: var(--header-shadow);
 }
 
+/* Add padding to body to account for fixed header */
+body {
+  padding-top: var(--header-height);
+}
+
+/* Ensure main content starts below header */
+main, .hero, .buy-hero, .price-hero, .whitepaper-hero, .marketing-hero, .about-hero, .contact-hero {
+  margin-top: 0;
+  padding-top: 2rem;
+}
+
 .header.scrolled {
   background: var(--header-bg-scrolled);
   box-shadow: var(--header-shadow-scrolled);
