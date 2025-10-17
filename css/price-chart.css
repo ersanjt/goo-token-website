@@ -1,9 +1,10 @@
 /* Professional Price Chart Page */
 .price-hero {
-  padding: 8rem 0 4rem;
+  padding: 4rem 0 4rem; /* Reduced top padding since margin-top handles header spacing */
   background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
   position: relative;
   overflow: hidden;
+  margin-top: var(--header-height) !important; /* Ensure it starts below header */
 }
 
 .price-hero::before {

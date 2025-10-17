@@ -49,8 +49,13 @@ body {
 
 /* Ensure main content starts below header */
 main, .hero, .buy-hero, .price-hero, .whitepaper-hero, .marketing-hero, .about-hero, .contact-hero {
-  margin-top: var(--header-height); /* Add margin-top to push content below header */
+  margin-top: var(--header-height) !important; /* Force margin-top to push content below header */
   padding-top: 2rem;
+}
+
+/* Additional specificity for hero sections */
+section.hero, section.buy-hero, section.price-hero, section.whitepaper-hero, section.marketing-hero, section.about-hero, section.contact-hero {
+  margin-top: var(--header-height) !important;
 }
 
 .header.scrolled {

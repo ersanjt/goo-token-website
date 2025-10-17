@@ -100,7 +100,7 @@ body {
   color: var(--text-primary);
   line-height: 1.6;
   overflow-x: hidden;
-  padding-top: var(--header-height);
+  padding-top: 0; /* Remove body padding - handled by section margins */
 }
 
 .container {
@@ -335,7 +335,8 @@ body {
   min-height: 100vh;
   display: flex;
   align-items: center;
-  padding: 120px 0 var(--spacing-3xl);
+  padding: 2rem 0 var(--spacing-3xl); /* Reduced top padding since margin-top handles header spacing */
+  margin-top: var(--header-height) !important; /* Ensure it starts below header */
   overflow: hidden;
 }
 
