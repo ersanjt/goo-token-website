@@ -215,6 +215,42 @@ body {
   white-space: nowrap;
 }
 
+/* Enhanced Icon Styling */
+.nav-link i {
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+  opacity: 0.8;
+}
+
+.nav-link:hover i {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+.nav-link.active i {
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+/* Specific icon enhancements */
+.nav-link[href="marketing.html"] i {
+  color: #f59e0b; /* Gold for marketing */
+}
+
+.nav-link[href="about.html"] i {
+  color: #10b981; /* Green for about */
+}
+
+.nav-link[href="contact.html"] i {
+  color: #3b82f6; /* Blue for contact */
+}
+
+.nav-link[href="marketing.html"]:hover i,
+.nav-link[href="about.html"]:hover i,
+.nav-link[href="contact.html"]:hover i {
+  color: var(--text-primary);
+}
+
 .nav-link::before {
   content: '';
   position: absolute;
@@ -276,14 +312,15 @@ body {
   flex-direction: column;
   align-items: flex-end;
   padding: 0.75rem 1.25rem;
-  background: rgba(255, 255, 255, 0.05);
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(59, 130, 246, 0.1) 100%);
   backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.2);
   border-radius: 16px;
   min-width: 140px;
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
+  box-shadow: 0 4px 16px rgba(16, 185, 129, 0.1);
 }
 
 .price-display::before {
@@ -304,8 +341,9 @@ body {
 
 .price-display:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(79, 172, 254, 0.2);
-  border-color: rgba(79, 172, 254, 0.3);
+  box-shadow: 0 8px 24px rgba(16, 185, 129, 0.3);
+  border-color: rgba(16, 185, 129, 0.4);
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.15) 0%, rgba(59, 130, 246, 0.15) 100%);
 }
 
 .price-label {
@@ -365,9 +403,10 @@ body {
 }
 
 .price-change.positive {
-  color: #00ff88;
-  background: rgba(0, 255, 136, 0.1);
-  border: 1px solid rgba(0, 255, 136, 0.2);
+  color: #10b981;
+  background: rgba(16, 185, 129, 0.15);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  box-shadow: 0 2px 8px rgba(16, 185, 129, 0.2);
 }
 
 .price-change.negative {
@@ -625,6 +664,15 @@ body {
     font-size: 0.625rem;
   }
   
+  /* Enhanced mobile icon styling */
+  .nav-link i {
+    font-size: 1rem;
+  }
+  
+  .nav-link:hover i {
+    transform: scale(1.05);
+  }
+
   .floating-theme-toggle {
     bottom: 0.5rem;
     left: 0.5rem;
