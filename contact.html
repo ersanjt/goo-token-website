@@ -1,0 +1,478 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Goo Token - Get in Touch</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    
+    <!-- PWA Meta Tags -->
+    <link rel="manifest" href="manifest.json" />
+    <meta name="theme-color" content="#00d4aa" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Goo Token" />
+    <link rel="apple-touch-icon" href="/icons/icon-192x192.png" />
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Contact Goo Token team for support, partnerships, or general inquiries. We're here to help!" />
+    <meta name="keywords" content="contact Goo Token, support, help, partnerships, inquiries" />
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Contact Goo Token - Get in Touch" />
+    <meta property="og:description" content="Contact Goo Token team for support, partnerships, or general inquiries. We're here to help!" />
+    <meta property="og:image" content="/images/contact-og.jpg" />
+    <meta property="og:url" content="https://goo-token.com/contact" />
+    <meta property="og:type" content="website" />
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="header">
+      <div class="container">
+        <div class="logo">
+          <div class="logo-icon">
+            <span>G</span>
+          </div>
+          <span class="logo-text">Goo Token</span>
+        </div>
+
+        <nav class="nav">
+          <a href="index.html" class="nav-link">
+            <i class="fas fa-home"></i>
+            <span>Home</span>
+          </a>
+          <a href="price.html" class="nav-link">
+            <i class="fas fa-chart-line"></i>
+            <span>Price</span>
+          </a>
+          <a href="buy.html" class="nav-link">
+            <i class="fas fa-shopping-cart"></i>
+            <span>Buy GOO</span>
+          </a>
+          <a href="whitepaper.html" class="nav-link">
+            <i class="fas fa-file-alt"></i>
+            <span>Whitepaper</span>
+          </a>
+          <a href="marketing.html" class="nav-link">
+            <i class="fas fa-bullhorn"></i>
+            <span>Marketing</span>
+          </a>
+          <a href="about.html" class="nav-link">
+            <i class="fas fa-users"></i>
+            <span>About</span>
+          </a>
+          <a href="contact.html" class="nav-link active">
+            <i class="fas fa-envelope"></i>
+            <span>Contact</span>
+          </a>
+        </nav>
+
+        <div class="header-actions">
+          <div class="price-display">
+            <div class="price-label">
+              <span class="live-dot"></span>
+              GOO PRICE
+            </div>
+            <div class="price-value">$1.00</div>
+            <div class="price-change positive">+15.2%</div>
+          </div>
+          
+          <!-- Language Switcher -->
+          <div class="language-switcher">
+            <select id="language-select" class="language-select">
+              <option value="en">🇺🇸 EN</option>
+              <option value="fa">🇮🇷 FA</option>
+              <option value="ar">🇸🇦 AR</option>
+            </select>
+          </div>
+          
+          <!-- Theme Toggle -->
+          <button id="theme-toggle" class="theme-toggle" title="Toggle Dark/Light Mode">
+            <i class="fas fa-moon"></i>
+          </button>
+          
+          <button class="buy-btn">
+            <i class="fas fa-coins"></i>
+            <span>Buy Now</span>
+            <small>GOO Token</small>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+      <div class="container">
+        <div class="contact-header">
+          <h1 class="contact-title">Contact Us</h1>
+          <p class="contact-subtitle">Get in touch with our team for support, partnerships, or general inquiries</p>
+        </div>
+
+        <div class="contact-content">
+          <!-- Contact Form -->
+          <div class="contact-form-container">
+            <div class="contact-form">
+              <h3>Send us a Message</h3>
+              <form id="contact-form" class="form">
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="firstName">First Name</label>
+                    <input type="text" id="firstName" name="firstName" required />
+                  </div>
+                  <div class="form-group">
+                    <label for="lastName">Last Name</label>
+                    <input type="text" id="lastName" name="lastName" required />
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="email">Email Address</label>
+                  <input type="email" id="email" name="email" required />
+                </div>
+
+                <div class="form-group">
+                  <label for="phone">Phone Number</label>
+                  <input type="tel" id="phone" name="phone" />
+                </div>
+
+                <div class="form-group">
+                  <label for="subject">Subject</label>
+                  <select id="subject" name="subject" required>
+                    <option value="">Select a subject</option>
+                    <option value="general">General Inquiry</option>
+                    <option value="support">Technical Support</option>
+                    <option value="partnership">Partnership</option>
+                    <option value="media">Media Inquiry</option>
+                    <option value="career">Career Opportunity</option>
+                    <option value="other">Other</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label for="message">Message</label>
+                  <textarea id="message" name="message" rows="5" placeholder="Tell us how we can help you..." required></textarea>
+                </div>
+
+                <div class="form-group">
+                  <label class="checkbox-label">
+                    <input type="checkbox" name="newsletter" />
+                    Subscribe to our newsletter for updates
+                  </label>
+                </div>
+
+                <button type="submit" class="submit-btn">
+                  <i class="fas fa-paper-plane"></i>
+                  Send Message
+                </button>
+              </form>
+            </div>
+          </div>
+
+          <!-- Contact Information -->
+          <div class="contact-info">
+            <h3>Get in Touch</h3>
+            <div class="contact-methods">
+              <div class="contact-method">
+                <div class="method-icon">
+                  <i class="fas fa-envelope"></i>
+                </div>
+                <div class="method-content">
+                  <h4>Email</h4>
+                  <p>info@gootoken.com</p>
+                  <p>support@gootoken.com</p>
+                </div>
+              </div>
+
+              <div class="contact-method">
+                <div class="method-icon">
+                  <i class="fas fa-phone"></i>
+                </div>
+                <div class="method-content">
+                  <h4>Phone</h4>
+                  <p>+1 (555) 123-4567</p>
+                  <p>Mon-Fri 9AM-6PM EST</p>
+                </div>
+              </div>
+
+              <div class="contact-method">
+                <div class="method-icon">
+                  <i class="fas fa-map-marker-alt"></i>
+                </div>
+                <div class="method-content">
+                  <h4>Address</h4>
+                  <p>123 Blockchain Street</p>
+                  <p>San Francisco, CA 94105</p>
+                </div>
+              </div>
+
+              <div class="contact-method">
+                <div class="method-icon">
+                  <i class="fas fa-clock"></i>
+                </div>
+                <div class="method-content">
+                  <h4>Business Hours</h4>
+                  <p>Monday - Friday: 9AM - 6PM</p>
+                  <p>Saturday: 10AM - 4PM</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Social Media -->
+            <div class="social-section">
+              <h4>Follow Us</h4>
+              <div class="social-links">
+                <a href="#" class="social-link">
+                  <i class="fab fa-twitter"></i>
+                  <span>Twitter</span>
+                </a>
+                <a href="#" class="social-link">
+                  <i class="fab fa-telegram"></i>
+                  <span>Telegram</span>
+                </a>
+                <a href="#" class="social-link">
+                  <i class="fab fa-discord"></i>
+                  <span>Discord</span>
+                </a>
+                <a href="#" class="social-link">
+                  <i class="fab fa-github"></i>
+                  <span>GitHub</span>
+                </a>
+                <a href="#" class="social-link">
+                  <i class="fab fa-linkedin"></i>
+                  <span>LinkedIn</span>
+                </a>
+                <a href="#" class="social-link">
+                  <i class="fab fa-reddit"></i>
+                  <span>Reddit</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- FAQ Section -->
+        <div class="faq-section">
+          <h2 class="section-title">Frequently Asked Questions</h2>
+          <div class="faq-grid">
+            <div class="faq-item">
+              <div class="faq-question">
+                <h4>How do I buy Goo Token?</h4>
+                <i class="fas fa-chevron-down"></i>
+              </div>
+              <div class="faq-answer">
+                <p>You can buy Goo Token through our official website using credit card, bank transfer, or cryptocurrency. Visit our Buy page for detailed instructions.</p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <div class="faq-question">
+                <h4>Is Goo Token secure?</h4>
+                <i class="fas fa-chevron-down"></i>
+              </div>
+              <div class="faq-answer">
+                <p>Yes, Goo Token is built with the highest security standards. Our smart contracts are audited by leading security firms, and we use advanced encryption to protect user funds.</p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <div class="faq-question">
+                <h4>What is the minimum purchase amount?</h4>
+                <i class="fas fa-chevron-down"></i>
+              </div>
+              <div class="faq-answer">
+                <p>The minimum purchase amount is $10. There are no maximum limits, but larger purchases may require additional verification.</p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <div class="faq-question">
+                <h4>How long do transactions take?</h4>
+                <i class="fas fa-chevron-down"></i>
+              </div>
+              <div class="faq-answer">
+                <p>Most transactions are processed within 2-5 minutes. Network congestion may cause delays during peak times.</p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <div class="faq-question">
+                <h4>Can I stake Goo Token?</h4>
+                <i class="fas fa-chevron-down"></i>
+              </div>
+              <div class="faq-answer">
+                <p>Yes, you can stake Goo Token to earn rewards. Our staking program offers up to 15% APY. Visit our Staking page for more information.</p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <div class="faq-question">
+                <h4>What wallets support Goo Token?</h4>
+                <i class="fas fa-chevron-down"></i>
+              </div>
+              <div class="faq-answer">
+                <p>Goo Token is compatible with all ERC-20 wallets including MetaMask, Trust Wallet, Ledger, and Trezor.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Support Channels -->
+        <div class="support-section">
+          <h2 class="section-title">Support Channels</h2>
+          <div class="support-grid">
+            <div class="support-card">
+              <div class="support-icon">
+                <i class="fas fa-comments"></i>
+              </div>
+              <div class="support-content">
+                <h4>Live Chat</h4>
+                <p>Get instant help from our support team</p>
+                <button class="support-btn">Start Chat</button>
+              </div>
+            </div>
+
+            <div class="support-card">
+              <div class="support-icon">
+                <i class="fas fa-book"></i>
+              </div>
+              <div class="support-content">
+                <h4>Help Center</h4>
+                <p>Browse our comprehensive knowledge base</p>
+                <button class="support-btn">Visit Help Center</button>
+              </div>
+            </div>
+
+            <div class="support-card">
+              <div class="support-icon">
+                <i class="fas fa-ticket-alt"></i>
+              </div>
+              <div class="support-content">
+                <h4>Support Ticket</h4>
+                <p>Submit a detailed support request</p>
+                <button class="support-btn">Create Ticket</button>
+              </div>
+            </div>
+
+            <div class="support-card">
+              <div class="support-icon">
+                <i class="fas fa-video"></i>
+              </div>
+              <div class="support-content">
+                <h4>Video Call</h4>
+                <p>Schedule a one-on-one video consultation</p>
+                <button class="support-btn">Schedule Call</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-section">
+            <div class="footer-logo">
+              <div class="logo-icon">
+                <span>G</span>
+              </div>
+              <span class="logo-text">Goo Token</span>
+            </div>
+            <p class="footer-description">
+              The future of digital currency. Join the Goo Token revolution and be part of the next generation blockchain ecosystem with secure, fast, and decentralized transactions.
+            </p>
+            <div class="social-links">
+              <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+              <a href="#" class="social-link"><i class="fab fa-telegram"></i></a>
+              <a href="#" class="social-link"><i class="fab fa-discord"></i></a>
+              <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+              <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+              <a href="#" class="social-link"><i class="fab fa-reddit"></i></a>
+            </div>
+          </div>
+          
+          <div class="footer-section">
+            <h4 class="footer-title">Quick Links</h4>
+            <ul class="footer-links">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="price.html">Price Chart</a></li>
+              <li><a href="buy.html">Buy GOO</a></li>
+              <li><a href="whitepaper.html">Whitepaper</a></li>
+              <li><a href="marketing.html">Marketing</a></li>
+              <li><a href="about.html">About Us</a></li>
+              <li><a href="contact.html">Contact</a></li>
+            </ul>
+          </div>
+          
+          <div class="footer-section">
+            <h4 class="footer-title">Token Info</h4>
+            <ul class="footer-links">
+              <li><a href="#tokenomics">Tokenomics</a></li>
+              <li><a href="#roadmap">Roadmap</a></li>
+              <li><a href="#contract">Smart Contract</a></li>
+              <li><a href="#community">Community</a></li>
+              <li><a href="#support">Support</a></li>
+              <li><a href="#partnerships">Partnerships</a></li>
+              <li><a href="#audit">Audit Report</a></li>
+              <li><a href="#docs">Technical Docs</a></li>
+            </ul>
+          </div>
+          
+          <div class="footer-section">
+            <h4 class="footer-title">Stay Updated</h4>
+            <p class="footer-description">
+              Get the latest Goo Token news, updates, and exclusive offers delivered to your inbox.
+            </p>
+            <div class="newsletter-form">
+              <input type="email" placeholder="Enter your email" class="newsletter-input" />
+              <button class="newsletter-btn">
+                <i class="fas fa-paper-plane"></i>
+                Subscribe
+              </button>
+            </div>
+            
+            <div class="footer-stats">
+              <div class="footer-stat">
+                <div class="stat-label">PRICE</div>
+                <div class="stat-value">$1.00</div>
+              </div>
+              <div class="footer-stat">
+                <div class="stat-label">MARKET CAP</div>
+                <div class="stat-value">$1M</div>
+              </div>
+              <div class="footer-stat">
+                <div class="stat-label">HOLDERS</div>
+                <div class="stat-value">10K+</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="footer-bottom">
+          <div class="footer-copyright">
+            © 2025 Goo Token. All rights reserved.
+          </div>
+          <div class="footer-legal">
+            <a href="#privacy">Privacy Policy</a>
+            <a href="#terms">Terms of Service</a>
+            <a href="#cookies">Cookie Policy</a>
+            <a href="#disclaimer">Disclaimer</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="js/translations.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="js/performance.js"></script>
+    <script src="analytics-config.js"></script>
+    <script src="script.js"></script>
+    <script src="analytics.js"></script>
+    <script src="js/contact.js"></script>
+  </body>
+</html>
