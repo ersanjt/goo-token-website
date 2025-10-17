@@ -38,7 +38,6 @@ class WebsiteAuditor {
       'js/marketing.js',
       'js/about.js',
       'js/contact.js',
-      'js/translations.js',
       'js/animations.js',
       'js/performance.js',
       'js/cache-manager.js',
