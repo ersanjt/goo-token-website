@@ -1,0 +1,567 @@
+/* Professional Theme - Trust, Digital, Value Colors */
+:root {
+  /* Professional Color Palette */
+  --trust-green: #10b981;      /* سبز اعتماد */
+  --trust-green-light: #34d399;
+  --trust-green-dark: #059669;
+  --trust-green-glow: rgba(16, 185, 129, 0.3);
+  
+  --digital-blue: #3b82f6;    /* آبی دیجیتال */
+  --digital-blue-light: #60a5fa;
+  --digital-blue-dark: #2563eb;
+  --digital-blue-glow: rgba(59, 130, 246, 0.3);
+  
+  --value-gold: #f59e0b;       /* طلایی ارزشمند */
+  --value-gold-light: #fbbf24;
+  --value-gold-dark: #d97706;
+  --value-gold-glow: rgba(245, 158, 11, 0.3);
+  
+  /* Professional Gradients */
+  --trust-gradient: linear-gradient(135deg, var(--trust-green) 0%, var(--trust-green-light) 100%);
+  --digital-gradient: linear-gradient(135deg, var(--digital-blue) 0%, var(--digital-blue-light) 100%);
+  --value-gradient: linear-gradient(135deg, var(--value-gold) 0%, var(--value-gold-light) 100%);
+  --mixed-gradient: linear-gradient(135deg, var(--trust-green) 0%, var(--digital-blue) 50%, var(--value-gold) 100%);
+  
+  /* Professional Backgrounds */
+  --bg-primary: #0f172a;
+  --bg-secondary: #1e293b;
+  --bg-tertiary: #334155;
+  --bg-card: rgba(15, 23, 42, 0.8);
+  --bg-glass: rgba(255, 255, 255, 0.05);
+  --bg-glass-hover: rgba(255, 255, 255, 0.1);
+  
+  /* Professional Text Colors */
+  --text-primary: #f8fafc;
+  --text-secondary: #cbd5e1;
+  --text-muted: #94a3b8;
+  --text-accent: var(--trust-green-light);
+  
+  /* Professional Borders */
+  --border-primary: rgba(255, 255, 255, 0.1);
+  --border-secondary: rgba(255, 255, 255, 0.05);
+  --border-accent: var(--trust-green);
+  
+  /* Professional Shadows */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+  --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.15);
+  --shadow-glow: 0 0 20px var(--trust-green-glow);
+  --shadow-blue-glow: 0 0 20px var(--digital-blue-glow);
+  --shadow-gold-glow: 0 0 20px var(--value-gold-glow);
+  
+  /* Professional Spacing */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-2xl: 3rem;
+  --space-3xl: 4rem;
+  
+  /* Professional Typography */
+  --font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+  --font-size-2xl: 1.5rem;
+  --font-size-3xl: 1.875rem;
+  --font-size-4xl: 2.25rem;
+  
+  /* Professional Border Radius */
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-2xl: 20px;
+  --radius-full: 50px;
+  
+  /* Professional Transitions */
+  --transition-fast: 0.15s ease;
+  --transition-base: 0.3s ease;
+  --transition-slow: 0.5s ease;
+  --transition-bounce: 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+/* Professional Header Enhancements */
+.header {
+  background: var(--bg-card);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border-primary);
+  box-shadow: var(--shadow-lg);
+}
+
+.header.scrolled {
+  background: rgba(15, 23, 42, 0.95);
+  box-shadow: var(--shadow-xl);
+}
+
+/* Professional Logo with Trust Colors */
+.logo-icon {
+  background: var(--mixed-gradient);
+  box-shadow: var(--shadow-glow);
+}
+
+.logo-main {
+  background: var(--trust-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.logo-sub {
+  color: var(--text-muted);
+}
+
+/* Professional Navigation with Digital Blue */
+.nav-link {
+  color: var(--text-secondary);
+  transition: all var(--transition-base);
+}
+
+.nav-link:hover {
+  color: var(--digital-blue-light);
+  background: var(--bg-glass-hover);
+  transform: translateY(-2px);
+}
+
+.nav-link.active {
+  background: var(--digital-gradient);
+  color: white;
+  box-shadow: var(--shadow-blue-glow);
+}
+
+/* Professional Price Display with Trust Green */
+.price-display {
+  background: var(--bg-glass);
+  border: 1px solid var(--border-primary);
+  box-shadow: var(--shadow-md);
+}
+
+.price-display:hover {
+  border-color: var(--trust-green);
+  box-shadow: var(--shadow-glow);
+}
+
+.price-value {
+  color: var(--trust-green-light);
+  font-weight: 700;
+}
+
+.price-change.positive {
+  color: var(--trust-green);
+  background: var(--trust-green-glow);
+  border: 1px solid var(--trust-green);
+}
+
+.price-change.negative {
+  color: #ef4444;
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid #ef4444;
+}
+
+/* Professional Buy Button with Value Gold */
+.buy-btn {
+  background: var(--value-gradient);
+  box-shadow: var(--shadow-gold-glow);
+  color: white;
+  font-weight: 600;
+}
+
+.buy-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 35px var(--value-gold-glow);
+}
+
+/* Professional Theme Toggle */
+.theme-toggle {
+  background: var(--bg-glass);
+  border: 1px solid var(--border-primary);
+  color: var(--text-primary);
+}
+
+.theme-toggle:hover {
+  background: var(--digital-gradient);
+  color: white;
+  box-shadow: var(--shadow-blue-glow);
+}
+
+/* Professional Language Selector */
+.language-select {
+  background: var(--bg-glass);
+  border: 1px solid var(--border-primary);
+  color: var(--text-primary);
+}
+
+.language-select:hover {
+  border-color: var(--digital-blue);
+  box-shadow: var(--shadow-blue-glow);
+}
+
+.language-select:focus {
+  border-color: var(--digital-blue);
+  box-shadow: 0 0 0 3px var(--digital-blue-glow);
+}
+
+/* Professional Call-to-Action Buttons */
+.btn-primary {
+  background: var(--trust-gradient);
+  color: white;
+  border: none;
+  padding: var(--space-md) var(--space-xl);
+  border-radius: var(--radius-lg);
+  font-weight: 600;
+  transition: all var(--transition-base);
+  box-shadow: var(--shadow-glow);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 15px 35px var(--trust-green-glow);
+}
+
+.btn-secondary {
+  background: var(--bg-glass);
+  border: 1px solid var(--border-primary);
+  color: var(--text-primary);
+  padding: var(--space-md) var(--space-xl);
+  border-radius: var(--radius-lg);
+  font-weight: 600;
+  transition: all var(--transition-base);
+}
+
+.btn-secondary:hover {
+  background: var(--digital-gradient);
+  color: white;
+  border-color: var(--digital-blue);
+  box-shadow: var(--shadow-blue-glow);
+}
+
+.btn-accent {
+  background: var(--value-gradient);
+  color: white;
+  border: none;
+  padding: var(--space-md) var(--space-xl);
+  border-radius: var(--radius-lg);
+  font-weight: 600;
+  transition: all var(--transition-base);
+  box-shadow: var(--shadow-gold-glow);
+}
+
+.btn-accent:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 15px 35px var(--value-gold-glow);
+}
+
+/* Professional Cards */
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-primary);
+  border-radius: var(--radius-xl);
+  padding: var(--space-xl);
+  transition: all var(--transition-base);
+  backdrop-filter: blur(20px);
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-xl);
+  border-color: var(--trust-green);
+}
+
+.card-trust {
+  border-left: 4px solid var(--trust-green);
+}
+
+.card-digital {
+  border-left: 4px solid var(--digital-blue);
+}
+
+.card-value {
+  border-left: 4px solid var(--value-gold);
+}
+
+/* Professional Feature Cards */
+.feature-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-primary);
+  border-radius: var(--radius-xl);
+  padding: var(--space-xl);
+  transition: all var(--transition-base);
+  backdrop-filter: blur(20px);
+  position: relative;
+  overflow: hidden;
+}
+
+.feature-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--mixed-gradient);
+  transform: scaleX(0);
+  transition: transform var(--transition-base);
+}
+
+.feature-card:hover::before {
+  transform: scaleX(1);
+}
+
+.feature-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-glow);
+  border-color: var(--trust-green);
+}
+
+.feature-icon {
+  background: var(--mixed-gradient);
+  color: white;
+  border-radius: var(--radius-full);
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  margin-bottom: var(--space-lg);
+  transition: all var(--transition-base);
+}
+
+.feature-card:hover .feature-icon {
+  transform: scale(1.1) rotate(5deg);
+  box-shadow: var(--shadow-glow);
+}
+
+/* Professional Stats */
+.stat-item {
+  background: var(--bg-glass);
+  border: 1px solid var(--border-primary);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  text-align: center;
+  transition: all var(--transition-base);
+  backdrop-filter: blur(20px);
+}
+
+.stat-item:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-glow);
+  border-color: var(--trust-green);
+}
+
+.stat-value {
+  font-size: var(--font-size-2xl);
+  font-weight: 700;
+  color: var(--trust-green-light);
+  margin-bottom: var(--space-sm);
+}
+
+.stat-value.positive {
+  color: var(--trust-green);
+}
+
+.stat-value.negative {
+  color: #ef4444;
+}
+
+/* Professional Footer */
+.footer {
+  background: var(--bg-primary);
+  border-top: 1px solid var(--border-primary);
+  color: var(--text-secondary);
+}
+
+.footer-section h3 {
+  color: var(--text-primary);
+  margin-bottom: var(--space-lg);
+}
+
+.footer-links a {
+  color: var(--text-muted);
+  transition: color var(--transition-base);
+}
+
+.footer-links a:hover {
+  color: var(--trust-green-light);
+}
+
+/* Professional Social Links */
+.social-links a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: var(--bg-glass);
+  border: 1px solid var(--border-primary);
+  border-radius: var(--radius-full);
+  color: var(--text-muted);
+  transition: all var(--transition-base);
+  margin: 0 var(--space-sm);
+}
+
+.social-links a:hover {
+  background: var(--trust-gradient);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-glow);
+}
+
+/* Professional Form Elements */
+.form-input {
+  background: var(--bg-glass);
+  border: 1px solid var(--border-primary);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  color: var(--text-primary);
+  transition: all var(--transition-base);
+  backdrop-filter: blur(20px);
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: var(--digital-blue);
+  box-shadow: 0 0 0 3px var(--digital-blue-glow);
+}
+
+.form-label {
+  color: var(--text-secondary);
+  font-weight: 500;
+  margin-bottom: var(--space-sm);
+}
+
+/* Professional Alerts */
+.alert-trust {
+  background: var(--trust-green-glow);
+  border: 1px solid var(--trust-green);
+  color: var(--trust-green-light);
+  padding: var(--space-md);
+  border-radius: var(--radius-md);
+  margin: var(--space-md) 0;
+}
+
+.alert-digital {
+  background: var(--digital-blue-glow);
+  border: 1px solid var(--digital-blue);
+  color: var(--digital-blue-light);
+  padding: var(--space-md);
+  border-radius: var(--radius-md);
+  margin: var(--space-md) 0;
+}
+
+.alert-value {
+  background: var(--value-gold-glow);
+  border: 1px solid var(--value-gold);
+  color: var(--value-gold-light);
+  padding: var(--space-md);
+  border-radius: var(--radius-md);
+  margin: var(--space-md) 0;
+}
+
+/* Professional Animations */
+@keyframes trustPulse {
+  0%, 100% { 
+    box-shadow: 0 0 0 0 var(--trust-green-glow);
+  }
+  50% { 
+    box-shadow: 0 0 0 10px transparent;
+  }
+}
+
+@keyframes digitalGlow {
+  0%, 100% { 
+    box-shadow: 0 0 20px var(--digital-blue-glow);
+  }
+  50% { 
+    box-shadow: 0 0 30px var(--digital-blue-glow);
+  }
+}
+
+@keyframes valueShine {
+  0% { 
+    transform: translateX(-100%);
+  }
+  100% { 
+    transform: translateX(100%);
+  }
+}
+
+/* Professional Loading States */
+.loading-trust {
+  animation: trustPulse 2s infinite;
+}
+
+.loading-digital {
+  animation: digitalGlow 2s infinite;
+}
+
+.loading-value::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(245, 158, 11, 0.3), transparent);
+  animation: valueShine 2s infinite;
+}
+
+/* Professional Responsive Design */
+@media (max-width: 768px) {
+  .header .container {
+    padding: var(--space-md);
+  }
+  
+  .nav {
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+  
+  .nav-link {
+    padding: var(--space-md);
+    width: 100%;
+    text-align: center;
+  }
+  
+  .header-actions {
+    flex-direction: column;
+    gap: var(--space-md);
+    width: 100%;
+  }
+  
+  .price-display {
+    width: 100%;
+    text-align: center;
+  }
+  
+  .buy-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* Professional Dark Mode Enhancements */
+[data-theme="light"] {
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8fafc;
+  --bg-tertiary: #f1f5f9;
+  --bg-card: rgba(255, 255, 255, 0.8);
+  --bg-glass: rgba(0, 0, 0, 0.05);
+  --bg-glass-hover: rgba(0, 0, 0, 0.1);
+  
+  --text-primary: #1e293b;
+  --text-secondary: #475569;
+  --text-muted: #64748b;
+  
+  --border-primary: rgba(0, 0, 0, 0.1);
+  --border-secondary: rgba(0, 0, 0, 0.05);
+  
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.07);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+  --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.1);
+}

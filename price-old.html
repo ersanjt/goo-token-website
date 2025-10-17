@@ -1,0 +1,398 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Goo Token Price Chart - Live Market Data</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="css/header.css" />
+    <link rel="stylesheet" href="css/professional-header.css" />
+    <link rel="stylesheet" href="css/professional-theme.css" />
+    <link rel="stylesheet" href="css/price-chart.css" />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.29.0/feather.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <!-- PWA Meta Tags -->
+    <link rel="manifest" href="manifest.json" />
+    <meta name="theme-color" content="#00d4aa" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Goo Token" />
+    <link rel="apple-touch-icon" href="/icons/icon-192x192.png" />
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Live Goo Token price chart with real-time market data, trading volume, and price history." />
+    <meta name="keywords" content="Goo Token price, cryptocurrency chart, live market data, trading volume" />
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Goo Token Price Chart - Live Market Data" />
+    <meta property="og:description" content="Live Goo Token price chart with real-time market data, trading volume, and price history." />
+    <meta property="og:image" content="/images/price-chart-og.jpg" />
+    <meta property="og:url" content="https://goo-token.com/price" />
+    <meta property="og:type" content="website" />
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="header">
+      <div class="container">
+        <div class="logo">
+          <div class="logo-icon">
+            <span>G</span>
+          </div>
+          <span class="logo-text">Goo Token</span>
+        </div>
+
+        <nav class="nav">
+          <a href="index.html" class="nav-link">
+            <i class="fas fa-house"></i>
+            <span>Home</span>
+          </a>
+          <a href="price.html" class="nav-link active">
+            <i class="fas fa-chart-simple"></i>
+            <span>Price</span>
+          </a>
+          <a href="buy.html" class="nav-link">
+            <i class="fas fa-cart-shopping"></i>
+            <span>Buy GOO</span>
+          </a>
+          <a href="whitepaper.html" class="nav-link">
+            <i class="fas fa-file-lines"></i>
+            <span>Whitepaper</span>
+          </a>
+          <a href="whitepaper-full.html" class="nav-link">
+            <i class="fas fa-book"></i>
+            <span>Full Docs</span>
+          </a>
+          <a href="marketing.html" class="nav-link">
+            <i class="fas fa-megaphone"></i>
+            <span>Marketing</span>
+          </a>
+          <a href="about.html" class="nav-link">
+            <i class="fas fa-people-group"></i>
+            <span>About</span>
+          </a>
+          <a href="contact.html" class="nav-link">
+            <i class="fas fa-envelope-open"></i>
+            <span>Contact</span>
+          </a>
+        </nav>
+
+        <div class="header-actions">
+          <div class="price-display">
+            <div class="price-label">
+              <span class="live-dot"></span>
+              GOO PRICE
+            </div>
+            <div class="price-value">$1.00</div>
+            <div class="price-change positive">+15.2%</div>
+          </div>
+          
+          <!-- Language Switcher -->
+          <div class="language-switcher">
+            <select id="language-select" class="language-select">
+              <option value="en">🇺🇸 EN</option>
+              <option value="fa">🇮🇷 FA</option>
+              <option value="ar">🇸🇦 AR</option>
+            </select>
+          </div>
+          
+          <!-- Theme Toggle -->
+          <button id="theme-toggle" class="theme-toggle" title="Toggle Dark/Light Mode">
+            <i class="fas fa-moon"></i>
+          </button>
+          
+          <button class="buy-btn">
+            <i class="fas fa-coins"></i>
+            <span>Buy Now</span>
+            <small>GOO Token</small>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Price Chart Section -->
+    <section class="price-chart-section">
+      <div class="container">
+        <div class="chart-header">
+          <h1 class="chart-title">Goo Token Price Chart</h1>
+          <p class="chart-subtitle">Real-time market data and price history</p>
+        </div>
+
+        <!-- Price Stats -->
+        <div class="price-stats">
+          <div class="stat-card">
+            <div class="stat-icon">
+              <i class="fas fa-dollar-sign"></i>
+            </div>
+            <div class="stat-content">
+              <div class="stat-value">$1.00</div>
+              <div class="stat-label">Current Price</div>
+              <div class="stat-change positive">+15.2%</div>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon">
+              <i class="fas fa-chart-line"></i>
+            </div>
+            <div class="stat-content">
+              <div class="stat-value">$1.00M</div>
+              <div class="stat-label">Market Cap</div>
+              <div class="stat-change positive">+12.5%</div>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon">
+              <i class="fas fa-exchange-alt"></i>
+            </div>
+            <div class="stat-content">
+              <div class="stat-value">$45.2K</div>
+              <div class="stat-label">24h Volume</div>
+              <div class="stat-change positive">+8.3%</div>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon">
+              <i class="fas fa-users"></i>
+            </div>
+            <div class="stat-content">
+              <div class="stat-value">10,247</div>
+              <div class="stat-label">Holders</div>
+              <div class="stat-change positive">+2.1%</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Chart Controls -->
+        <div class="chart-controls">
+          <div class="timeframe-selector">
+            <button class="timeframe-btn active" data-timeframe="1h">1H</button>
+            <button class="timeframe-btn" data-timeframe="4h">4H</button>
+            <button class="timeframe-btn" data-timeframe="1d">1D</button>
+            <button class="timeframe-btn" data-timeframe="7d">7D</button>
+            <button class="timeframe-btn" data-timeframe="30d">30D</button>
+            <button class="timeframe-btn" data-timeframe="1y">1Y</button>
+          </div>
+          
+          <div class="chart-options">
+            <button class="chart-option-btn" id="candlestick-toggle">
+              <i class="fas fa-chart-bar"></i>
+              Candlestick
+            </button>
+            <button class="chart-option-btn" id="line-toggle">
+              <i class="fas fa-chart-line"></i>
+              Line
+            </button>
+            <button class="chart-option-btn" id="volume-toggle">
+              <i class="fas fa-chart-area"></i>
+              Volume
+            </button>
+          </div>
+        </div>
+
+        <!-- Main Chart -->
+        <div class="chart-container">
+          <canvas id="priceChart"></canvas>
+        </div>
+
+        <!-- Market Depth -->
+        <div class="market-depth">
+          <h3 class="depth-title">Market Depth</h3>
+          <div class="depth-chart">
+            <div class="depth-bids">
+              <h4>Bids</h4>
+              <div class="depth-bar">
+                <div class="depth-fill" style="width: 75%"></div>
+                <span class="depth-price">$0.99</span>
+                <span class="depth-amount">1,250 GOO</span>
+              </div>
+              <div class="depth-bar">
+                <div class="depth-fill" style="width: 60%"></div>
+                <span class="depth-price">$0.98</span>
+                <span class="depth-amount">2,100 GOO</span>
+              </div>
+              <div class="depth-bar">
+                <div class="depth-fill" style="width: 45%"></div>
+                <span class="depth-price">$0.97</span>
+                <span class="depth-amount">3,500 GOO</span>
+              </div>
+            </div>
+            
+            <div class="depth-asks">
+              <h4>Asks</h4>
+              <div class="depth-bar">
+                <div class="depth-fill ask" style="width: 65%"></div>
+                <span class="depth-price">$1.01</span>
+                <span class="depth-amount">1,800 GOO</span>
+              </div>
+              <div class="depth-bar">
+                <div class="depth-fill ask" style="width: 50%"></div>
+                <span class="depth-price">$1.02</span>
+                <span class="depth-amount">2,300 GOO</span>
+              </div>
+              <div class="depth-bar">
+                <div class="depth-fill ask" style="width: 35%"></div>
+                <span class="depth-price">$1.03</span>
+                <span class="depth-amount">4,200 GOO</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Recent Trades -->
+        <div class="recent-trades">
+          <h3 class="trades-title">Recent Trades</h3>
+          <div class="trades-list">
+            <div class="trade-item">
+              <div class="trade-time">14:32:15</div>
+              <div class="trade-price positive">$1.00</div>
+              <div class="trade-amount">1,250 GOO</div>
+              <div class="trade-type">BUY</div>
+            </div>
+            <div class="trade-item">
+              <div class="trade-time">14:31:42</div>
+              <div class="trade-price negative">$0.99</div>
+              <div class="trade-amount">850 GOO</div>
+              <div class="trade-type">SELL</div>
+            </div>
+            <div class="trade-item">
+              <div class="trade-time">14:30:18</div>
+              <div class="trade-price positive">$1.01</div>
+              <div class="trade-amount">2,100 GOO</div>
+              <div class="trade-type">BUY</div>
+            </div>
+            <div class="trade-item">
+              <div class="trade-time">14:29:55</div>
+              <div class="trade-price positive">$1.00</div>
+              <div class="trade-amount">1,500 GOO</div>
+              <div class="trade-type">BUY</div>
+            </div>
+            <div class="trade-item">
+              <div class="trade-time">14:28:33</div>
+              <div class="trade-price negative">$0.98</div>
+              <div class="trade-amount">3,200 GOO</div>
+              <div class="trade-type">SELL</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-section">
+            <div class="footer-logo">
+              <div class="logo-icon">
+                <span>G</span>
+              </div>
+              <span class="logo-text">Goo Token</span>
+            </div>
+            <p class="footer-description">
+              The future of digital currency. Join the Goo Token revolution and be part of the next generation blockchain ecosystem with secure, fast, and decentralized transactions.
+            </p>
+            <div class="social-links">
+              <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+              <a href="#" class="social-link"><i class="fab fa-telegram"></i></a>
+              <a href="#" class="social-link"><i class="fab fa-discord"></i></a>
+              <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+              <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+              <a href="#" class="social-link"><i class="fab fa-reddit"></i></a>
+            </div>
+          </div>
+          
+          <div class="footer-section">
+            <h4 class="footer-title">Quick Links</h4>
+            <ul class="footer-links">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="price.html">Price Chart</a></li>
+              <li><a href="buy.html">Buy GOO</a></li>
+              <li><a href="whitepaper.html">Whitepaper</a></li>
+              <li><a href="marketing.html">Marketing</a></li>
+              <li><a href="about.html">About Us</a></li>
+              <li><a href="contact.html">Contact</a></li>
+            </ul>
+          </div>
+          
+          <div class="footer-section">
+            <h4 class="footer-title">Token Info</h4>
+            <ul class="footer-links">
+              <li><a href="#tokenomics">Tokenomics</a></li>
+              <li><a href="#roadmap">Roadmap</a></li>
+              <li><a href="#contract">Smart Contract</a></li>
+              <li><a href="#community">Community</a></li>
+              <li><a href="#support">Support</a></li>
+              <li><a href="#partnerships">Partnerships</a></li>
+              <li><a href="#audit">Audit Report</a></li>
+              <li><a href="#docs">Technical Docs</a></li>
+            </ul>
+          </div>
+          
+          <div class="footer-section">
+            <h4 class="footer-title">Stay Updated</h4>
+            <p class="footer-description">
+              Get the latest Goo Token news, updates, and exclusive offers delivered to your inbox.
+            </p>
+            <div class="newsletter-form">
+              <input type="email" placeholder="Enter your email" class="newsletter-input" />
+              <button class="newsletter-btn">
+                <i class="fas fa-paper-plane"></i>
+                Subscribe
+              </button>
+            </div>
+            
+            <div class="footer-stats">
+              <div class="footer-stat">
+                <div class="stat-label">PRICE</div>
+                <div class="stat-value">$1.00</div>
+              </div>
+              <div class="footer-stat">
+                <div class="stat-label">MARKET CAP</div>
+                <div class="stat-value">$1M</div>
+              </div>
+              <div class="footer-stat">
+                <div class="stat-label">HOLDERS</div>
+                <div class="stat-value">10K+</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="footer-bottom">
+          <div class="footer-copyright">
+            © 2025 Goo Token. All rights reserved.
+          </div>
+          <div class="footer-legal">
+            <a href="#privacy">Privacy Policy</a>
+            <a href="#terms">Terms of Service</a>
+            <a href="#cookies">Cookie Policy</a>
+            <a href="#disclaimer">Disclaimer</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="js/header.js"></script>
+    <script src="js/translations.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="js/performance.js"></script>
+    <script src="analytics-config.js"></script>
+    <script src="script.js"></script>
+    <script src="analytics.js"></script>
+    <script src="js/price-chart.js"></script>
+  </body>
+</html>

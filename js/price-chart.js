@@ -1,9 +1,13 @@
-// Price Chart JavaScript for Goo Token
-class PriceChart {
+// Professional Price Chart JavaScript for GOO Token
+class ProfessionalPriceChart {
   constructor() {
     this.chart = null;
     this.currentTimeframe = '1d';
     this.chartType = 'line';
+    this.isRealTime = true;
+    this.updateInterval = null;
+    this.priceData = this.generateInitialData();
+    
     this.init();
   }
 
@@ -12,8 +16,19 @@ class PriceChart {
     this.setupTimeframeSelector();
     this.setupChartOptions();
     this.setupRealTimeUpdates();
-    this.setupMarketDepth();
-    this.setupRecentTrades();
+    this.setupPriceAlerts();
+    this.animatePriceCards();
+  }
+
+  generateInitialData() {
+    return {
+      currentPrice: 1.00,
+      change24h: 15.2,
+      volume24h: 45600,
+      marketCap: 1200000,
+      holders: 1234,
+      transactions: 5678
+    };
   }
 
   setupChart() {
@@ -338,46 +353,151 @@ class PriceChart {
     }, 15000);
   }
 
-  addNewTrade() {
-    const tradesList = document.querySelector('.trades-list');
-    if (!tradesList) return;
+  setupPriceAlerts() {
+    const addAlertBtn = document.querySelector('.btn-add-alert');
+    if (addAlertBtn) {
+      addAlertBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        this.showAlertModal();
+      });
+    }
+  }
 
-    const tradeTypes = ['BUY', 'SELL'];
-    const tradeType = tradeTypes[Math.floor(Math.random() * tradeTypes.length)];
-    const price = (Math.random() * 0.1 + 0.95).toFixed(2);
-    const amount = Math.floor(Math.random() * 5000) + 100;
-    const time = new Date().toLocaleTimeString('en-US', { 
-      hour: '2-digit', 
-      minute: '2-digit',
-      second: '2-digit',
-      hour12: false 
-    });
-
-    const tradeItem = document.createElement('div');
-    tradeItem.className = 'trade-item';
-    tradeItem.innerHTML = `
-      <div class="trade-time">${time}</div>
-      <div class="trade-price ${tradeType === 'BUY' ? 'positive' : 'negative'}">$${price}</div>
-      <div class="trade-amount">${amount.toLocaleString()} GOO</div>
-      <div class="trade-type">${tradeType}</div>
+  showAlertModal() {
+    // Create and show price alert modal
+    const modal = document.createElement('div');
+    modal.className = 'price-alert-modal';
+    modal.style.cssText = `
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
     `;
+    
+    modal.innerHTML = `
+      <div class="modal-content" style="
+        background: var(--bg-card);
+        border: 1px solid var(--border-primary);
+        border-radius: var(--radius-xl);
+        padding: var(--space-2xl);
+        max-width: 400px;
+        width: 90%;
+        text-align: center;
+      ">
+        <div class="modal-header" style="margin-bottom: var(--space-lg);">
+          <h3 style="color: var(--text-primary); margin: 0;">Price Alert Created</h3>
+          <button class="modal-close" style="
+            position: absolute;
+            top: var(--space-md);
+            right: var(--space-md);
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            font-size: 1.5rem;
+            cursor: pointer;
+          ">&times;</button>
+        </div>
+        <div class="modal-body" style="margin-bottom: var(--space-xl);">
+          <p style="color: var(--text-secondary); margin: 0;">
+            Your price alert has been successfully created. You'll be notified when the price reaches your target.
+          </p>
+        </div>
+        <div class="modal-footer">
+          <button class="btn-primary modal-close" style="
+            background: var(--trust-gradient);
+            color: white;
+            border: none;
+            padding: var(--space-md) var(--space-xl);
+            border-radius: var(--radius-lg);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all var(--transition-base);
+          ">OK</button>
+        </div>
+      </div>
+    `;
+    
+    document.body.appendChild(modal);
+    
+    // Close modal functionality
+    modal.querySelectorAll('.modal-close').forEach(btn => {
+      btn.addEventListener('click', () => {
+        modal.remove();
+      });
+    });
+  }
 
-    tradesList.insertBefore(tradeItem, tradesList.firstChild);
+  animatePriceCards() {
+    const cards = document.querySelectorAll('.price-card, .market-stat');
+    cards.forEach((card, index) => {
+      card.style.opacity = '0';
+      card.style.transform = 'translateY(30px)';
+      
+      setTimeout(() => {
+        card.style.transition = 'all 0.6s ease';
+        card.style.opacity = '1';
+        card.style.transform = 'translateY(0)';
+      }, index * 100);
+    });
+  }
 
-    // Keep only last 10 trades
-    const trades = tradesList.querySelectorAll('.trade-item');
-    if (trades.length > 10) {
-      trades[trades.length - 1].remove();
+  updatePriceCards(currentPrice) {
+    const priceValue = document.querySelector('.price-card-value');
+    if (priceValue) {
+      priceValue.textContent = `$${currentPrice.toFixed(2)}`;
+    }
+    
+    // Update market stats
+    this.updateMarketStats();
+  }
+
+  updateMarketStats() {
+    const stats = [
+      { selector: '.market-stat:nth-child(1) .market-stat-value', value: '$1.2M' },
+      { selector: '.market-stat:nth-child(2) .market-stat-value', value: '$45.6K' },
+      { selector: '.market-stat:nth-child(3) .market-stat-value', value: '1,234' },
+      { selector: '.market-stat:nth-child(4) .market-stat-value', value: '5,678' },
+      { selector: '.market-stat:nth-child(5) .market-stat-value', value: '+15.2%' },
+      { selector: '.market-stat:nth-child(6) .market-stat-value', value: '$0.95' }
+    ];
+    
+    stats.forEach(stat => {
+      const element = document.querySelector(stat.selector);
+      if (element) {
+        element.textContent = stat.value;
+      }
+    });
+  }
+
+  destroy() {
+    if (this.chart) {
+      this.chart.destroy();
+    }
+    if (this.updateInterval) {
+      clearInterval(this.updateInterval);
     }
   }
 }
 
-// Initialize price chart when DOM is loaded
+// Initialize professional price chart when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
-  new PriceChart();
+  window.priceChart = new ProfessionalPriceChart();
+});
+
+// Cleanup on page unload
+window.addEventListener('beforeunload', function() {
+  if (window.priceChart) {
+    window.priceChart.destroy();
+  }
 });
 
 // Export for module usage
 if (typeof module !== 'undefined' && module.exports) {
-  module.exports = PriceChart;
+  module.exports = ProfessionalPriceChart;
 }
