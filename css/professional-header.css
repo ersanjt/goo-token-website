@@ -44,12 +44,12 @@
 
 /* Add padding to body to account for fixed header */
 body {
-  padding-top: var(--header-height);
+  padding-top: 0; /* Remove body padding */
 }
 
 /* Ensure main content starts below header */
 main, .hero, .buy-hero, .price-hero, .whitepaper-hero, .marketing-hero, .about-hero, .contact-hero {
-  margin-top: 0;
+  margin-top: var(--header-height); /* Add margin-top to push content below header */
   padding-top: 2rem;
 }
 
