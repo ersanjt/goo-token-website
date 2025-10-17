@@ -1,88 +1,253 @@
-// Service Worker for Goo Token Website
-const CACHE_NAME = 'goo-token-v1.0.0';
-const urlsToCache = [
+// Professional Service Worker for GOO Token Website
+const CACHE_VERSION = '2.0.0';
+const CACHE_NAME = `goo-token-cache-v${CACHE_VERSION}`;
+const STATIC_CACHE = 'goo-token-static-v1';
+const DYNAMIC_CACHE = 'goo-token-dynamic-v1';
+
+// Critical resources to cache immediately
+const CRITICAL_RESOURCES = [
   '/',
   '/index.html',
   '/styles.css',
-  '/script.js',
-  '/analytics.js',
-  '/analytics-config.js',
-  'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css'
+  '/css/professional-theme.css',
+  '/css/professional-header.css',
+  '/js/header.js',
+  '/js/modern-token.js',
+  '/js/cache-manager.js',
+  '/manifest.json'
 ];
 
-// Install event
-self.addEventListener('install', (event) => {
+// Resources to cache on demand
+const CACHE_STRATEGIES = {
+  // Static assets - cache first
+  static: [
+    '/css/',
+    '/js/',
+    '/images/',
+    '/icons/',
+    '.css',
+    '.js',
+    '.png',
+    '.jpg',
+    '.jpeg',
+    '.gif',
+    '.svg',
+    '.woff',
+    '.woff2'
+  ],
+  // API calls - network first
+  api: [
+    '/api/',
+    'price',
+    'market',
+    'chart'
+  ],
+  // HTML pages - cache first with network fallback
+  pages: [
+    '.html'
+  ]
+};
+
+// Install event - cache critical resources
+self.addEventListener('install', event => {
+  console.log('Service Worker installing...');
   event.waitUntil(
-    caches.open(CACHE_NAME)
-      .then((cache) => {
-        console.log('Opened cache');
-        return cache.addAll(urlsToCache);
+    caches.open(STATIC_CACHE)
+      .then(cache => {
+        console.log('Caching critical resources');
+        return cache.addAll(CRITICAL_RESOURCES);
+      })
+      .then(() => {
+        console.log('Service Worker installed');
+        return self.skipWaiting();
       })
   );
 });
 
-// Fetch event
-self.addEventListener('fetch', (event) => {
-  event.respondWith(
-    caches.match(event.request)
-      .then((response) => {
-        // Return cached version or fetch from network
-        return response || fetch(event.request);
-      })
-  );
-});
-
-// Activate event
-self.addEventListener('activate', (event) => {
+// Activate event - clean up old caches
+self.addEventListener('activate', event => {
+  console.log('Service Worker activating...');
   event.waitUntil(
-    caches.keys().then((cacheNames) => {
+    caches.keys().then(cacheNames => {
       return Promise.all(
-        cacheNames.map((cacheName) => {
-          if (cacheName !== CACHE_NAME) {
+        cacheNames.map(cacheName => {
+          if (cacheName !== STATIC_CACHE && cacheName !== DYNAMIC_CACHE) {
+            console.log('Deleting old cache:', cacheName);
             return caches.delete(cacheName);
           }
         })
       );
+    }).then(() => {
+      console.log('Service Worker activated');
+      return self.clients.claim();
     })
   );
 });
 
-// Background sync for analytics
-self.addEventListener('sync', (event) => {
-  if (event.tag === 'analytics-sync') {
-    event.waitUntil(syncAnalytics());
+// Fetch event - implement caching strategies
+self.addEventListener('fetch', event => {
+  const { request } = event;
+  const url = new URL(request.url);
+
+  // Skip non-GET requests
+  if (request.method !== 'GET') {
+    return;
+  }
+
+  // Skip external requests
+  if (url.origin !== location.origin) {
+    return;
+  }
+
+  event.respondWith(handleRequest(request));
+});
+
+// Handle different types of requests
+async function handleRequest(request) {
+  const url = new URL(request.url);
+  const pathname = url.pathname;
+
+  // Determine caching strategy
+  if (isStaticAsset(pathname)) {
+    return cacheFirst(request, STATIC_CACHE);
+  } else if (isApiCall(pathname)) {
+    return networkFirst(request, DYNAMIC_CACHE);
+  } else if (isPage(pathname)) {
+    return cacheFirstWithNetworkFallback(request, DYNAMIC_CACHE);
+  } else {
+    return networkFirst(request, DYNAMIC_CACHE);
+  }
+}
+
+// Cache first strategy
+async function cacheFirst(request, cacheName) {
+  try {
+    const cache = await caches.open(cacheName);
+    const cachedResponse = await cache.match(request);
+    
+    if (cachedResponse) {
+      console.log('Serving from cache:', request.url);
+      return cachedResponse;
+    }
+
+    const networkResponse = await fetch(request);
+    if (networkResponse.ok) {
+      cache.put(request, networkResponse.clone());
+    }
+    return networkResponse;
+  } catch (error) {
+    console.error('Cache first strategy failed:', error);
+    return new Response('Offline', { status: 503 });
+  }
+}
+
+// Network first strategy
+async function networkFirst(request, cacheName) {
+  try {
+    const networkResponse = await fetch(request);
+    if (networkResponse.ok) {
+      const cache = await caches.open(cacheName);
+      cache.put(request, networkResponse.clone());
+    }
+    return networkResponse;
+  } catch (error) {
+    console.log('Network failed, trying cache:', request.url);
+    const cache = await caches.open(cacheName);
+    const cachedResponse = await cache.match(request);
+    return cachedResponse || new Response('Offline', { status: 503 });
+  }
+}
+
+// Cache first with network fallback
+async function cacheFirstWithNetworkFallback(request, cacheName) {
+  try {
+    const cache = await caches.open(cacheName);
+    const cachedResponse = await cache.match(request);
+    
+    if (cachedResponse) {
+      // Update cache in background
+      fetch(request).then(networkResponse => {
+        if (networkResponse.ok) {
+          cache.put(request, networkResponse);
+        }
+      });
+      return cachedResponse;
+    }
+
+    const networkResponse = await fetch(request);
+    if (networkResponse.ok) {
+      cache.put(request, networkResponse.clone());
+    }
+    return networkResponse;
+  } catch (error) {
+    console.error('Cache first with network fallback failed:', error);
+    return new Response('Offline', { status: 503 });
+  }
+}
+
+// Helper functions
+function isStaticAsset(pathname) {
+  return CACHE_STRATEGIES.static.some(pattern => 
+    pathname.includes(pattern) || pathname.endsWith(pattern)
+  );
+}
+
+function isApiCall(pathname) {
+  return CACHE_STRATEGIES.api.some(pattern => 
+    pathname.includes(pattern)
+  );
+}
+
+function isPage(pathname) {
+  return CACHE_STRATEGIES.pages.some(pattern => 
+    pathname.endsWith(pattern)
+  );
+}
+
+// Handle messages from main thread
+self.addEventListener('message', event => {
+  if (event.data && event.data.action === 'skipWaiting') {
+    self.skipWaiting();
   }
 });
 
-async function syncAnalytics() {
-  // Sync offline analytics data
-  const offlineData = await getOfflineAnalytics();
-  if (offlineData.length > 0) {
-    await sendAnalyticsData(offlineData);
-    await clearOfflineAnalytics();
+// Background sync for offline actions
+self.addEventListener('sync', event => {
+  if (event.tag === 'background-sync') {
+    event.waitUntil(doBackgroundSync());
   }
+});
+
+async function doBackgroundSync() {
+  // Handle any pending offline actions
+  console.log('Background sync triggered');
 }
 
-async function getOfflineAnalytics() {
-  // Get stored offline analytics data
-  return JSON.parse(localStorage.getItem('offlineAnalytics') || '[]');
-}
-
-async function sendAnalyticsData(data) {
-  // Send analytics data to server
-  try {
-    await fetch('/api/analytics', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(data)
-    });
-  } catch (error) {
-    console.error('Failed to sync analytics:', error);
+// Push notifications
+self.addEventListener('push', event => {
+  if (event.data) {
+    const data = event.data.json();
+    const options = {
+      body: data.body,
+      icon: '/icons/icon-192x192.png',
+      badge: '/icons/icon-72x72.png',
+      vibrate: [100, 50, 100],
+      data: {
+        dateOfArrival: Date.now(),
+        primaryKey: 1
+      }
+    };
+    
+    event.waitUntil(
+      self.registration.showNotification(data.title, options)
+    );
   }
-}
+});
 
-async function clearOfflineAnalytics() {
-  localStorage.removeItem('offlineAnalytics');
-}
+// Notification click
+self.addEventListener('notificationclick', event => {
+  event.notification.close();
+  event.waitUntil(
+    clients.openWindow('/')
+  );
+});
