@@ -6,9 +6,18 @@
     <title>Goo Token - The Future of Digital Currency</title>
     <link rel="stylesheet" href="styles.css" />
     <link rel="stylesheet" href="css/header.css" />
+    <link rel="stylesheet" href="css/professional-header.css" />
     <link rel="stylesheet" href="css/modern-token.css" />
     <link
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.29.0/feather.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
       rel="stylesheet"
     />
     
@@ -62,42 +71,48 @@
       <div class="container">
         <div class="logo">
           <div class="logo-icon">
-            <span>G</span>
+            <div class="logo-inner">
+              <i class="fas fa-coins"></i>
+              <div class="logo-glow"></div>
+            </div>
           </div>
-          <span class="logo-text">Goo Token</span>
+          <div class="logo-text">
+            <span class="logo-main">GOO</span>
+            <span class="logo-sub">TOKEN</span>
+          </div>
         </div>
 
         <nav class="nav">
           <a href="index.html" class="nav-link active">
-            <i class="fas fa-house"></i>
+            <i class="feather" data-feather="home"></i>
             <span>Home</span>
           </a>
           <a href="price.html" class="nav-link">
-            <i class="fas fa-chart-simple"></i>
+            <i class="feather" data-feather="trending-up"></i>
             <span>Price</span>
           </a>
           <a href="buy.html" class="nav-link">
-            <i class="fas fa-cart-shopping"></i>
+            <i class="feather" data-feather="shopping-cart"></i>
             <span>Buy GOO</span>
           </a>
           <a href="whitepaper.html" class="nav-link">
-            <i class="fas fa-file-lines"></i>
+            <i class="feather" data-feather="file-text"></i>
             <span>Whitepaper</span>
           </a>
           <a href="whitepaper-full.html" class="nav-link">
-            <i class="fas fa-book"></i>
+            <i class="feather" data-feather="book-open"></i>
             <span>Full Docs</span>
           </a>
           <a href="marketing.html" class="nav-link">
-            <i class="fas fa-megaphone"></i>
+            <i class="feather" data-feather="megaphone"></i>
             <span>Marketing</span>
           </a>
           <a href="about.html" class="nav-link">
-            <i class="fas fa-people-group"></i>
+            <i class="feather" data-feather="users"></i>
             <span>About</span>
           </a>
           <a href="contact.html" class="nav-link">
-            <i class="fas fa-envelope-open"></i>
+            <i class="feather" data-feather="mail"></i>
             <span>Contact</span>
           </a>
         </nav>
@@ -123,11 +138,11 @@
           
           <!-- Theme Toggle -->
           <button id="theme-toggle" class="theme-toggle" title="Toggle Dark/Light Mode">
-            <i class="fas fa-moon"></i>
+            <i class="feather" data-feather="moon"></i>
           </button>
           
           <a href="buy.html" class="buy-btn">
-            <i class="fas fa-coins"></i>
+            <i class="feather" data-feather="zap"></i>
             <span>Buy Now</span>
             <small>GOO Token</small>
           </a>
@@ -917,6 +932,7 @@
       </div>
     </div>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.29.0/feather.min.js"></script>
     <script src="js/header.js"></script>
     <script src="js/modern-token.js"></script>
     <script src="js/translations.js"></script>
@@ -924,5 +940,14 @@
     <script src="analytics-config.js"></script>
     <script src="script.js"></script>
     <script src="analytics.js"></script>
+    <script>
+      // Initialize Feather Icons
+      feather.replace();
+      
+      // Re-initialize on theme change
+      document.getElementById('theme-toggle')?.addEventListener('click', () => {
+        setTimeout(() => feather.replace(), 100);
+      });
+    </script>
   </body>
 </html>
