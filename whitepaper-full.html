@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GOO Token Whitepaper - Complete Technical Documentation</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="css/header.css" />
+    <link rel="stylesheet" href="css/modern-token.css" />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    
+    <!-- PWA Meta Tags -->
+    <link rel="manifest" href="manifest.json" />
+    <meta name="theme-color" content="#00d4aa" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="GOO Token" />
+    <link rel="apple-touch-icon" href="/icons/icon-192x192.png" />
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="GOO Token Whitepaper - Complete technical documentation for asset-backed stable utility token with USD and Gold backing." />
+    <meta name="keywords" content="GOO Token, whitepaper, asset-backed token, stable utility token, cryptocurrency, blockchain" />
+    <meta name="author" content="GOO Token Team" />
+
+    <style>
+      .whitepaper-container {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 2rem;
+        background: var(--bg-primary);
+        color: var(--text-primary);
+        line-height: 1.8;
+      }
+
+      .whitepaper-header {
+        text-align: center;
+        margin-bottom: 3rem;
+        padding: 2rem;
+        background: var(--glass-bg);
+        backdrop-filter: blur(20px);
+        border: 1px solid var(--glass-border);
+        border-radius: var(--radius-xl);
+      }
+
+      .whitepaper-title {
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+        background: var(--primary-gradient);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .whitepaper-subtitle {
+        font-size: 1.25rem;
+        color: var(--text-muted);
+        margin-bottom: 1rem;
+      }
+
+      .whitepaper-meta {
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        flex-wrap: wrap;
+        font-size: 0.875rem;
+        color: var(--text-secondary);
+      }
+
+      .toc {
+        background: var(--glass-bg);
+        backdrop-filter: blur(20px);
+        border: 1px solid var(--glass-border);
+        border-radius: var(--radius-xl);
+        padding: 2rem;
+        margin-bottom: 3rem;
+      }
+
+      .toc h3 {
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem;
+        color: var(--text-primary);
+      }
+
+      .toc ul {
+        list-style: none;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 1rem;
+      }
+
+      .toc li {
+        padding: 0.75rem;
+        background: var(--bg-secondary);
+        border-radius: var(--radius-md);
+        transition: all 0.3s ease;
+      }
+
+      .toc li:hover {
+        background: var(--primary-color);
+        color: white;
+        transform: translateX(5px);
+      }
+
+      .toc a {
+        color: inherit;
+        text-decoration: none;
+        font-weight: 500;
+      }
+
+      .section {
+        margin-bottom: 3rem;
+        padding: 2rem;
+        background: var(--glass-bg);
+        backdrop-filter: blur(20px);
+        border: 1px solid var(--glass-border);
+        border-radius: var(--radius-xl);
+        transition: all 0.3s ease;
+      }
+
+      .section:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow-glow);
+      }
+
+      .section h2 {
+        font-size: 2rem;
+        margin-bottom: 1.5rem;
+        color: var(--text-primary);
+        border-bottom: 2px solid var(--primary-color);
+        padding-bottom: 0.5rem;
+      }
+
+      .section h3 {
+        font-size: 1.5rem;
+        margin: 2rem 0 1rem 0;
+        color: var(--text-primary);
+      }
+
+      .section h4 {
+        font-size: 1.25rem;
+        margin: 1.5rem 0 0.75rem 0;
+        color: var(--text-primary);
+      }
+
+      .section p {
+        margin-bottom: 1rem;
+        color: var(--text-muted);
+      }
+
+      .section ul, .section ol {
+        margin: 1rem 0;
+        padding-left: 2rem;
+      }
+
+      .section li {
+        margin-bottom: 0.5rem;
+        color: var(--text-muted);
+      }
+
+      .highlight-box {
+        background: var(--success-gradient);
+        color: white;
+        padding: 1.5rem;
+        border-radius: var(--radius-md);
+        margin: 1.5rem 0;
+        font-weight: 500;
+      }
+
+      .warning-box {
+        background: var(--danger-gradient);
+        color: white;
+        padding: 1.5rem;
+        border-radius: var(--radius-md);
+        margin: 1.5rem 0;
+        font-weight: 500;
+      }
+
+      .info-box {
+        background: var(--primary-gradient);
+        color: white;
+        padding: 1.5rem;
+        border-radius: var(--radius-md);
+        margin: 1.5rem 0;
+        font-weight: 500;
+      }
+
+      .tokenomics-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
+        margin: 2rem 0;
+      }
+
+      .tokenomics-card {
+        background: var(--bg-secondary);
+        padding: 1.5rem;
+        border-radius: var(--radius-md);
+        border: 1px solid var(--border-color);
+        text-align: center;
+        transition: all 0.3s ease;
+      }
+
+      .tokenomics-card:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow-glow);
+      }
+
+      .tokenomics-card h4 {
+        color: var(--primary-color);
+        margin-bottom: 1rem;
+      }
+
+      .tokenomics-card .percentage {
+        font-size: 2rem;
+        font-weight: 700;
+        color: var(--text-primary);
+        margin-bottom: 0.5rem;
+      }
+
+      .roadmap-timeline {
+        position: relative;
+        margin: 2rem 0;
+      }
+
+      .roadmap-timeline::before {
+        content: '';
+        position: absolute;
+        left: 2rem;
+        top: 0;
+        bottom: 0;
+        width: 2px;
+        background: var(--primary-gradient);
+      }
+
+      .roadmap-item {
+        position: relative;
+        margin-bottom: 2rem;
+        padding-left: 4rem;
+      }
+
+      .roadmap-item::before {
+        content: '';
+        position: absolute;
+        left: 1.5rem;
+        top: 0.5rem;
+        width: 1rem;
+        height: 1rem;
+        background: var(--primary-color);
+        border-radius: 50%;
+        border: 3px solid var(--bg-primary);
+      }
+
+      .roadmap-phase {
+        font-weight: 600;
+        color: var(--primary-color);
+        margin-bottom: 0.5rem;
+      }
+
+      .roadmap-title {
+        font-size: 1.25rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+        color: var(--text-primary);
+      }
+
+      .roadmap-description {
+        color: var(--text-muted);
+      }
+
+      .tech-stack {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1rem;
+        margin: 2rem 0;
+      }
+
+      .tech-item {
+        background: var(--bg-secondary);
+        padding: 1rem;
+        border-radius: var(--radius-md);
+        text-align: center;
+        border: 1px solid var(--border-color);
+        transition: all 0.3s ease;
+      }
+
+      .tech-item:hover {
+        background: var(--primary-color);
+        color: white;
+        transform: scale(1.05);
+      }
+
+      .tech-item i {
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
+        color: var(--primary-color);
+      }
+
+      .tech-item:hover i {
+        color: white;
+      }
+
+      .back-to-top {
+        position: fixed;
+        bottom: 2rem;
+        right: 2rem;
+        width: 50px;
+        height: 50px;
+        background: var(--primary-gradient);
+        color: white;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        font-size: 1.25rem;
+        transition: all 0.3s ease;
+        z-index: 1000;
+      }
+
+      .back-to-top:hover {
+        transform: scale(1.1);
+        box-shadow: var(--shadow-glow);
+      }
+
+      @media (max-width: 768px) {
+        .whitepaper-container {
+          padding: 1rem;
+        }
+
+        .whitepaper-title {
+          font-size: 2rem;
+        }
+
+        .toc ul {
+          grid-template-columns: 1fr;
+        }
+
+        .tokenomics-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .tech-stack {
+          grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        }
+
+        .roadmap-timeline::before {
+          left: 1rem;
+        }
+
+        .roadmap-item {
+          padding-left: 3rem;
+        }
+
+        .roadmap-item::before {
+          left: 0.5rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="header">
+      <div class="container">
+        <div class="logo">
+          <div class="logo-icon">
+            <span>G</span>
+          </div>
+          <span class="logo-text">Goo Token</span>
+        </div>
+
+        <nav class="nav">
+          <a href="index.html" class="nav-link">
+            <i class="fas fa-house"></i>
+            <span>Home</span>
+          </a>
+          <a href="price.html" class="nav-link">
+            <i class="fas fa-chart-simple"></i>
+            <span>Price</span>
+          </a>
+          <a href="buy.html" class="nav-link">
+            <i class="fas fa-cart-shopping"></i>
+            <span>Buy GOO</span>
+          </a>
+          <a href="whitepaper.html" class="nav-link">
+            <i class="fas fa-file-lines"></i>
+            <span>Whitepaper</span>
+          </a>
+          <a href="marketing.html" class="nav-link">
+            <i class="fas fa-megaphone"></i>
+            <span>Marketing</span>
+          </a>
+          <a href="about.html" class="nav-link">
+            <i class="fas fa-people-group"></i>
+            <span>About</span>
+          </a>
+          <a href="contact.html" class="nav-link">
+            <i class="fas fa-envelope-open"></i>
+            <span>Contact</span>
+          </a>
+        </nav>
+
+        <div class="header-actions">
+          <div class="price-display">
+            <div class="price-label">
+              <span class="live-dot"></span>
+              GOO PRICE
+            </div>
+            <div class="price-value">$1.00</div>
+            <div class="price-change positive">+15.2%</div>
+          </div>
+          
+          <!-- Language Switcher -->
+          <div class="language-switcher">
+            <select id="language-select" class="language-select">
+              <option value="en">🇺🇸 EN</option>
+              <option value="fa">🇮🇷 FA</option>
+              <option value="ar">🇸🇦 AR</option>
+            </select>
+          </div>
+
+          <!-- Theme Toggle -->
+          <button id="theme-toggle" class="theme-toggle" title="Toggle Dark/Light Mode">
+            <i class="fas fa-moon"></i>
+          </button>
+          
+          <a href="buy.html" class="buy-btn">
+            <i class="fas fa-coins"></i>
+            <span>Buy Now</span>
+            <small>GOO Token</small>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Whitepaper Content -->
+    <div class="whitepaper-container">
+      <div class="whitepaper-header">
+        <h1 class="whitepaper-title">GOO Token Whitepaper</h1>
+        <p class="whitepaper-subtitle">Asset-Backed Stable Utility Token</p>
+        <div class="whitepaper-meta">
+          <span><i class="fas fa-calendar"></i> Version 1.0 - 2025</span>
+          <span><i class="fas fa-user"></i> GOO Token Team</span>
+          <span><i class="fas fa-globe"></i> CoreSol Proposal</span>
+        </div>
+      </div>
+
+      <!-- Table of Contents -->
+      <div class="toc">
+        <h3><i class="fas fa-list"></i> Table of Contents</h3>
+        <ul>
+          <li><a href="#executive-summary">1. Executive Summary</a></li>
+          <li><a href="#vision-value">2. Vision & Value Proposition</a></li>
+          <li><a href="#tokenomics">3. Tokenomics</a></li>
+          <li><a href="#backing-model">4. Backing Model</a></li>
+          <li><a href="#compliance">5. Legal & Compliance</a></li>
+          <li><a href="#architecture">6. Technical Architecture</a></li>
+          <li><a href="#operational-flow">7. Operational Flow</a></li>
+          <li><a href="#governance">8. Governance & Risk Control</a></li>
+          <li><a href="#deliverables">9. CoreSol Deliverables</a></li>
+          <li><a href="#roadmap">10. Roadmap</a></li>
+          <li><a href="#risks">11. Risk Management</a></li>
+          <li><a href="#appendix">12. Appendix</a></li>
+        </ul>
+      </div>
+
+      <!-- Executive Summary -->
+      <section id="executive-summary" class="section">
+        <h2><i class="fas fa-chart-line"></i> 1. Executive Summary</h2>
+        
+        <div class="highlight-box">
+          <strong>GOO</strong> is an asset-backed stable utility token designed to create a stable and usable unit of value within exchange networks and payment services.
+        </div>
+
+        <p>GOO is issued centrally by the publisher but implements mechanisms for reserve transparency, redemption, and transparent management behavior. The token combines USD backing with physical gold reserves to maintain long-term value stability.</p>
+
+        <h3>Key Features:</h3>
+        <ul>
+          <li><strong>Asset-Backed:</strong> 75% USD reserves + 25% physical gold</li>
+          <li><strong>Utility Token:</strong> Designed for exchange cashback and ecosystem use</li>
+          <li><strong>Transparent:</strong> Regular attestations and reserve reporting</li>
+          <li><strong>Compliant:</strong> KYC/AML integration and regulatory compliance</li>
+          <li><strong>Redeemable:</strong> Users can redeem tokens for USD equivalent</li>
+        </ul>
+
+        <h3>Short-term Goals:</h3>
+        <ul>
+          <li>Develop MVP token and presale system</li>
+          <li>Accept USDT/USDC/ETH/WBTC and fiat through PSP</li>
+          <li>Integrate with partner exchanges for cashback programs</li>
+        </ul>
+
+        <h3>Long-term Vision:</h3>
+        <ul>
+          <li>Create comprehensive payment ecosystem</li>
+          <li>Enable swaps and DEX/CEX listings</li>
+          <li>Expand utility across goods and services</li>
+        </ul>
+      </section>
+
+      <!-- Vision & Value Proposition -->
+      <section id="vision-value" class="section">
+        <h2><i class="fas fa-eye"></i> 2. Vision & Value Proposition</h2>
+
+        <h3>For Exchange Users:</h3>
+        <ul>
+          <li>Receive cashback rewards in GOO tokens instead of cash discounts</li>
+          <li>Hold and use tokens within the ecosystem or redeem near USD value</li>
+          <li>Benefit from stable value preservation with gold backing</li>
+        </ul>
+
+        <h3>For Exchanges/Partners:</h3>
+        <ul>
+          <li>Customer acquisition tool and reduced marketing costs</li>
+          <li>Allocate portion of trading fees to GOO distribution</li>
+          <li>Enhanced user engagement and retention</li>
+        </ul>
+
+        <h3>For Investors:</h3>
+        <ul>
+          <li>Token with structured backing and economic model</li>
+          <li>Focus on preserving purchasing power (USD + gold reserve)</li>
+          <li>Transparent reserve management and reporting</li>
+        </ul>
+
+        <div class="info-box">
+          <strong>Competitive Advantage:</strong> Combination of cash and physical gold reserves reduces currency and inflation risks while providing transparency through attestations and periodic reports.
+        </div>
+      </section>
+
+      <!-- Tokenomics -->
+      <section id="tokenomics" class="section">
+        <h2><i class="fas fa-coins"></i> 3. Tokenomics</h2>
+
+        <h3>Token Specifications:</h3>
+        <ul>
+          <li><strong>Name:</strong> GOO</li>
+          <li><strong>Symbol:</strong> GOO</li>
+          <li><strong>Decimals:</strong> 6 (for USD compatibility)</li>
+          <li><strong>Total Supply:</strong> 1,000,000,000 GOO (adjustable)</li>
+        </ul>
+
+        <h3>Token Allocation:</h3>
+        <div class="tokenomics-grid">
+          <div class="tokenomics-card">
+            <h4>Public Sale</h4>
+            <div class="percentage">40%</div>
+            <p>Community & Public Sale</p>
+          </div>
+          <div class="tokenomics-card">
+            <h4>Treasury</h4>
+            <div class="percentage">20%</div>
+            <p>Reserves for Redemption & Liquidity</p>
+          </div>
+          <div class="tokenomics-card">
+            <h4>Team</h4>
+            <div class="percentage">15%</div>
+            <p>6-month lock + 24-month linear vesting</p>
+          </div>
+          <div class="tokenomics-card">
+            <h4>Ecosystem</h4>
+            <div class="percentage">10%</div>
+            <p>Airdrops, Partnerships, Marketing</p>
+          </div>
+          <div class="tokenomics-card">
+            <h4>Liquidity</h4>
+            <div class="percentage">15%</div>
+            <p>Market Making & Partners</p>
+          </div>
+        </div>
+
+        <h3>Pricing & Distribution:</h3>
+        <ul>
+          <li><strong>Initial Presale Price:</strong> $0.01 USD per GOO (example)</li>
+          <li><strong>Target Peg:</strong> $1.00 USD equivalent</li>
+          <li><strong>Release Policy:</strong> Treasury tokens released only by multisig according to policy</li>
+        </ul>
+      </section>
+
+      <!-- Backing Model -->
+      <section id="backing-model" class="section">
+        <h2><i class="fas fa-shield-halved"></i> 4. Backing Model</h2>
+
+        <h3>Reserve Composition:</h3>
+        <div class="tokenomics-grid">
+          <div class="tokenomics-card">
+            <h4>Cash Reserves</h4>
+            <div class="percentage">75%</div>
+            <p>USD & High-yield stablecoins</p>
+          </div>
+          <div class="tokenomics-card">
+            <h4>Physical Gold</h4>
+            <div class="percentage">25%</div>
+            <p>ETF or physical custody</p>
+          </div>
+        </div>
+
+        <h3>Reserve Management:</h3>
+        <ul>
+          <li><strong>Banking:</strong> Custodial accounts with insured custody</li>
+          <li><strong>Transparency:</strong> Monthly attestations by independent CPA</li>
+          <li><strong>Reporting:</strong> Reserve explorer dashboard on website</li>
+          <li><strong>Auditing:</strong> Regular third-party reserve audits</li>
+        </ul>
+
+        <div class="highlight-box">
+          <strong>Rationale:</strong> Cash reserves provide immediate liquidity while physical gold provides long-term value preservation against inflation and currency risks.
+        </div>
+      </section>
+
+      <!-- Compliance -->
+      <section id="compliance" class="section">
+        <h2><i class="fas fa-gavel"></i> 5. Legal & Compliance</h2>
+
+        <h3>Legal Structure:</h3>
+        <ul>
+          <li>Appropriate legal entity registration (LLC in crypto-friendly jurisdiction)</li>
+          <li>Banking relationships in compliant jurisdictions</li>
+          <li>Cryptocurrency regulation coverage</li>
+        </ul>
+
+        <h3>Compliance Framework:</h3>
+        <ul>
+          <li><strong>KYC/AML:</strong> Comprehensive program for all users</li>
+          <li><strong>Sanctions Screening:</strong> Automated compliance checking</li>
+          <li><strong>Terms & Conditions:</strong> Clear legal documentation</li>
+          <li><strong>Privacy Policy:</strong> GDPR and data protection compliance</li>
+        </ul>
+
+        <h3>Regulatory Considerations:</h3>
+        <ul>
+          <li>Payment service licenses in target jurisdictions</li>
+          <li>Securities law compliance where applicable</li>
+          <li>Anti-money laundering regulations</li>
+          <li>Cross-border transaction compliance</li>
+        </ul>
+
+        <div class="warning-box">
+          <strong>Important:</strong> Specialized legal consultation required for each target jurisdiction, especially for fiat acceptance.
+        </div>
+      </section>
+
+      <!-- Technical Architecture -->
+      <section id="architecture" class="section">
+        <h2><i class="fas fa-cogs"></i> 6. Technical Architecture</h2>
+
+        <h3>Smart Contracts (On-chain):</h3>
+        <div class="tech-stack">
+          <div class="tech-item">
+            <i class="fas fa-coins"></i>
+            <h4>GOO Token</h4>
+            <p>ERC-20 with roles, mint/burn, pause functionality</p>
+          </div>
+          <div class="tech-item">
+            <i class="fas fa-shopping-cart"></i>
+            <h4>Presale Contract</h4>
+            <p>Multi-token payments, KYC gating, caps</p>
+          </div>
+          <div class="tech-item">
+            <i class="fas fa-lock"></i>
+            <h4>Vesting</h4>
+            <p>Team and advisor token release</p>
+          </div>
+          <div class="tech-item">
+            <i class="fas fa-gift"></i>
+            <h4>Reward Distributor</h4>
+            <p>Cashback distribution system</p>
+          </div>
+        </div>
+
+        <h3>Backend Systems:</h3>
+        <ul>
+          <li><strong>KYC/AML Integration:</strong> Onfido/Jumio providers</li>
+          <li><strong>Admin Panel:</strong> Fiat payment confirmation and minting</li>
+          <li><strong>PSP Integration:</strong> Transak, MoonPay, Wyre</li>
+          <li><strong>Operations:</strong> Standard operating procedures</li>
+        </ul>
+
+        <h3>Frontend Applications:</h3>
+        <ul>
+          <li><strong>User Dashboard:</strong> Wallet, buy, redeem, history</li>
+          <li><strong>Presale Interface:</strong> Wallet connection and payment</li>
+          <li><strong>Reserve Explorer:</strong> Transparency dashboard</li>
+          <li><strong>Documentation:</strong> Technical and user guides</li>
+        </ul>
+
+        <h3>Security Measures:</h3>
+        <ul>
+          <li>Comprehensive unit testing with high coverage</li>
+          <li>Automated CI/CD pipelines</li>
+          <li>Formal audits by at least 2 companies</li>
+          <li>Bug bounty programs</li>
+          <li>Timelock mechanisms for critical changes</li>
+        </ul>
+      </section>
+
+      <!-- Operational Flow -->
+      <section id="operational-flow" class="section">
+        <h2><i class="fas fa-exchange-alt"></i> 7. Operational Flow</h2>
+
+        <h3>Presale Process:</h3>
+        <ol>
+          <li>User completes KYC and gets whitelisted</li>
+          <li>User sends payment (USDC/USDT/ETH/fiat) to presale contract</li>
+          <li>For fiat payments: Off-chain confirmation by team</li>
+          <li>Backend requests mint to GOO contract</li>
+          <li>Tokens allocated to buyer's wallet</li>
+          <li>Upon softCap achievement: Funds moved to multisig treasury</li>
+        </ol>
+
+        <h3>Redemption Process:</h3>
+        <ol>
+          <li>User requests redemption (KYC still required)</li>
+          <li>System burns tokens and calculates USD equivalent</li>
+          <li>USD (or fiat equivalent) transferred to user's bank/payment address</li>
+          <li>Daily redemption caps and fees apply</li>
+          <li>Transparent reporting of all redemptions</li>
+        </ol>
+
+        <div class="info-box">
+          <strong>Policy:</strong> Daily redemption caps and fees will be clearly defined with transparent reporting.
+        </div>
+      </section>
+
+      <!-- Governance -->
+      <section id="governance" class="section">
+        <h2><i class="fas fa-users-cog"></i> 8. Governance & Risk Control</h2>
+
+        <h3>Multisig Treasury:</h3>
+        <ul>
+          <li>Minimum 3-of-5 or 2-of-3 for treasury transactions</li>
+          <li>Timelock for important contract changes</li>
+          <li>Public review periods for parameter changes</li>
+        </ul>
+
+        <h3>Risk Management:</h3>
+        <ul>
+          <li><strong>Financial Audits:</strong> Regular attestations and reserve audits</li>
+          <li><strong>Insurance:</strong> Coverage for gold reserves and custody contracts</li>
+          <li><strong>Incident Response:</strong> Security incident response plans</li>
+          <li><strong>Transparency:</strong> Regular public reporting and reserve explorer</li>
+        </ul>
+
+        <h3>Governance Structure:</h3>
+        <ul>
+          <li>Community voting on major decisions</li>
+          <li>Technical committee for protocol upgrades</li>
+          <li>Transparent decision-making processes</li>
+          <li>Regular community updates and feedback</li>
+        </ul>
+      </section>
+
+      <!-- CoreSol Deliverables -->
+      <section id="deliverables" class="section">
+        <h2><i class="fas fa-tasks"></i> 9. CoreSol Deliverables</h2>
+
+        <h3>Smart Contracts (Complete Code):</h3>
+        <ul>
+          <li>GOO.sol (ERC-20, mint/redeem, roles, pause, daily caps) + tests</li>
+          <li>Presale.sol (multi-token payments, whitelist/KYC gating, soft/hard cap, refund/claim) + tests</li>
+          <li>Vesting.sol for team and advisors</li>
+          <li>RewardDistributor.sol for cashback</li>
+          <li>Deploy scripts for each network (Sepolia/Polygon/BNB Testnets)</li>
+          <li>Etherscan/BscScan verification scripts</li>
+        </ul>
+
+        <h3>Backend & Operations:</h3>
+        <ul>
+          <li>KYC/AML integration API (Onfido/Jumio providers)</li>
+          <li>Admin panel for fiat payment confirmation and mint/burn execution</li>
+          <li>PSP integration (Transak, MoonPay, Wyre or direct banking)</li>
+          <li>Standard operating procedures documentation</li>
+        </ul>
+
+        <h3>Frontend Applications:</h3>
+        <ul>
+          <li>User dashboard (wallet, buy, redeem, history)</li>
+          <li>Presale/checkout page with wallet connection and fiat/crypto payment</li>
+          <li>Transparency page (reserve explorer, attestations)</li>
+        </ul>
+
+        <h3>Security & Compliance:</h3>
+        <ul>
+          <li>Test coverage, Audits (minimum 2), Bug bounty program</li>
+          <li>AML/KYC and Privacy policy documentation</li>
+          <li>Legal documentation: Terms, Token Purchase Agreement, Whitepaper</li>
+        </ul>
+
+        <h3>Timeline & Cost Estimation:</h3>
+        <ul>
+          <li><strong>MVP Phase (8-12 weeks):</strong> Basic contracts + presale + tests + testnet deploy</li>
+          <li><strong>Full Product (12-20 weeks):</strong> Audits, complete frontend, treasury integrations, KYC provider</li>
+          <li><strong>Estimated Cost:</strong> $50k - $300k+ USD (depending on contractor and scope)</li>
+        </ul>
+      </section>
+
+      <!-- Roadmap -->
+      <section id="roadmap" class="section">
+        <h2><i class="fas fa-road"></i> 10. Roadmap</h2>
+
+        <div class="roadmap-timeline">
+          <div class="roadmap-item">
+            <div class="roadmap-phase">Weeks 1-2</div>
+            <div class="roadmap-title">Foundation</div>
+            <div class="roadmap-description">Finalize tokenomics, select main network, company registration and initial legal elements</div>
+          </div>
+
+          <div class="roadmap-item">
+            <div class="roadmap-phase">Weeks 3-6</div>
+            <div class="roadmap-title">Development</div>
+            <div class="roadmap-description">Develop GOO and Presale contracts in Hardhat + unit tests</div>
+          </div>
+
+          <div class="roadmap-item">
+            <div class="roadmap-phase">Weeks 7-8</div>
+            <div class="roadmap-title">Testing</div>
+            <div class="roadmap-description">Testnet deployment and integration testing</div>
+          </div>
+
+          <div class="roadmap-item">
+            <div class="roadmap-phase">Weeks 9-10</div>
+            <div class="roadmap-title">Security</div>
+            <div class="roadmap-description">Initial security review, multisig treasury setup</div>
+          </div>
+
+          <div class="roadmap-item">
+            <div class="roadmap-phase">Weeks 11-12</div>
+            <div class="roadmap-title">Beta Launch</div>
+            <div class="roadmap-description">Beta presale (limited users) and feedback improvements</div>
+          </div>
+
+          <div class="roadmap-item">
+            <div class="roadmap-phase">Weeks 13-16</div>
+            <div class="roadmap-title">Audit & Launch</div>
+            <div class="roadmap-description">External audit, bug bounty launch, mainnet preparation</div>
+          </div>
+
+          <div class="roadmap-item">
+            <div class="roadmap-phase">Post-Launch</div>
+            <div class="roadmap-title">Expansion</div>
+            <div class="roadmap-description">Support, gold backing execution, swap/DEX liquidity development</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Risk Management -->
+      <section id="risks" class="section">
+        <h2><i class="fas fa-exclamation-triangle"></i> 11. Risk Management</h2>
+
+        <h3>Legal/Regulatory Risks:</h3>
+        <ul>
+          <li><strong>Mitigation:</strong> Legal consultation from the start; entity registration in appropriate jurisdiction</li>
+        </ul>
+
+        <h3>Liquidity Risks:</h3>
+        <ul>
+          <li><strong>Mitigation:</strong> Allocate portion of supply for market making; partner with market makers</li>
+        </ul>
+
+        <h3>Reserve Risks:</h3>
+        <ul>
+          <li><strong>Mitigation:</strong> Formal contracts with custodians + periodic attestations</li>
+        </ul>
+
+        <h3>Technical/Security Risks:</h3>
+        <ul>
+          <li><strong>Mitigation:</strong> Two-stage audits + bug bounty + timelock for changes</li>
+        </ul>
+
+        <h3>Trust Risks:</h3>
+        <ul>
+          <li><strong>Mitigation:</strong> Complete transparency, reserve explorer panel, monthly reports</li>
+        </ul>
+      </section>
+
+      <!-- Appendix -->
+      <section id="appendix" class="section">
+        <h2><i class="fas fa-paperclip"></i> 12. Appendix</h2>
+
+        <h3>Required Documents for CoreSol Submission:</h3>
+        <ul>
+          <li>One-pager project summary</li>
+          <li>Full whitepaper (initial version or summary)</li>
+          <li>Detailed tokenomics (table/spreadsheet)</li>
+          <li>Sample GOO.sol contract (initial version)</li>
+          <li>List of suggested banking/custodian addresses (if available)</li>
+          <li>Sample UX/UI dashboard (images or Figma)</li>
+          <li>Initial legal documentation (Terms template, Token Purchase Agreement template)</li>
+        </ul>
+
+        <h3>Proposed Introduction Text for CoreSol:</h3>
+        <div class="info-box">
+          <strong>Subject:</strong> Proposal — Build & Audit GOO (Asset-backed Stable Utility Token)<br><br>
+          <strong>Message:</strong> Hi CoreSol Team,<br><br>
+          We are seeking a technical partner to build GOO, an asset-backed stable utility token (USD + Gold backing) intended for exchange cashback, in-exchange consumption and later swaps. We need: smart contract development (ERC-20 + presale + vesting + reward distributor), backend integration for KYC/fiat PSP, multisig treasury setup, audits, and frontend dashboard. Attached: one-pager, tokenomics sheet, sample GOO contract. Please review and propose timeline, milestones and costs.<br><br>
+          Regards,<br>
+          [Name / Contact]
+        </div>
+      </section>
+    </div>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+      <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>GOO Token</h3>
+          <p>The future of digital currency is here. Join the revolution with GOO Token.</p>
+        </div>
+        <div class="footer-section">
+          <h3>Quick Links</h3>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="price.html">Price Chart</a></li>
+            <li><a href="buy.html">Buy GOO</a></li>
+            <li><a href="whitepaper.html">Whitepaper</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3>Resources</h3>
+          <ul class="footer-links">
+            <li><a href="marketing.html">Marketing</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="whitepaper-full.html">Full Whitepaper</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3>Community</h3>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-telegram"></i></a>
+            <a href="#"><i class="fab fa-discord"></i></a>
+            <a href="#"><i class="fab fa-github"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 GOO Token. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script src="js/header.js"></script>
+    <script src="js/modern-token.js"></script>
+    <script src="js/translations.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="analytics-config.js"></script>
+    <script src="script.js"></script>
+    <script src="analytics.js"></script>
+  </body>
+</html>
