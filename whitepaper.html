@@ -1,0 +1,565 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Goo Token Whitepaper - Technical Documentation</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    
+    <!-- PWA Meta Tags -->
+    <link rel="manifest" href="manifest.json" />
+    <meta name="theme-color" content="#00d4aa" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Goo Token" />
+    <link rel="apple-touch-icon" href="/icons/icon-192x192.png" />
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Goo Token Whitepaper - Complete technical documentation, tokenomics, roadmap, and implementation details." />
+    <meta name="keywords" content="Goo Token whitepaper, cryptocurrency documentation, blockchain technology, tokenomics" />
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Goo Token Whitepaper - Technical Documentation" />
+    <meta property="og:description" content="Goo Token Whitepaper - Complete technical documentation, tokenomics, roadmap, and implementation details." />
+    <meta property="og:image" content="/images/whitepaper-og.jpg" />
+    <meta property="og:url" content="https://goo-token.com/whitepaper" />
+    <meta property="og:type" content="website" />
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="header">
+      <div class="container">
+        <div class="logo">
+          <div class="logo-icon">
+            <span>G</span>
+          </div>
+          <span class="logo-text">Goo Token</span>
+        </div>
+
+        <nav class="nav">
+          <a href="index.html" class="nav-link">
+            <i class="fas fa-home"></i>
+            <span>Home</span>
+          </a>
+          <a href="price.html" class="nav-link">
+            <i class="fas fa-chart-line"></i>
+            <span>Price</span>
+          </a>
+          <a href="buy.html" class="nav-link">
+            <i class="fas fa-shopping-cart"></i>
+            <span>Buy GOO</span>
+          </a>
+          <a href="whitepaper.html" class="nav-link active">
+            <i class="fas fa-file-alt"></i>
+            <span>Whitepaper</span>
+          </a>
+          <a href="marketing.html" class="nav-link">
+            <i class="fas fa-bullhorn"></i>
+            <span>Marketing</span>
+          </a>
+          <a href="about.html" class="nav-link">
+            <i class="fas fa-users"></i>
+            <span>About</span>
+          </a>
+          <a href="contact.html" class="nav-link">
+            <i class="fas fa-envelope"></i>
+            <span>Contact</span>
+          </a>
+        </nav>
+
+        <div class="header-actions">
+          <div class="price-display">
+            <div class="price-label">
+              <span class="live-dot"></span>
+              GOO PRICE
+            </div>
+            <div class="price-value">$1.00</div>
+            <div class="price-change positive">+15.2%</div>
+          </div>
+          
+          <!-- Language Switcher -->
+          <div class="language-switcher">
+            <select id="language-select" class="language-select">
+              <option value="en">🇺🇸 EN</option>
+              <option value="fa">🇮🇷 FA</option>
+              <option value="ar">🇸🇦 AR</option>
+            </select>
+          </div>
+          
+          <!-- Theme Toggle -->
+          <button id="theme-toggle" class="theme-toggle" title="Toggle Dark/Light Mode">
+            <i class="fas fa-moon"></i>
+          </button>
+          
+          <button class="buy-btn">
+            <i class="fas fa-coins"></i>
+            <span>Buy Now</span>
+            <small>GOO Token</small>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Whitepaper Section -->
+    <section class="whitepaper-section">
+      <div class="container">
+        <!-- Table of Contents -->
+        <div class="whitepaper-toc">
+          <h3>Table of Contents</h3>
+          <ul class="toc-list">
+            <li><a href="#abstract">1. Abstract</a></li>
+            <li><a href="#introduction">2. Introduction</a></li>
+            <li><a href="#problem">3. Problem Statement</a></li>
+            <li><a href="#solution">4. Solution</a></li>
+            <li><a href="#technology">5. Technology</a></li>
+            <li><a href="#tokenomics">6. Tokenomics</a></li>
+            <li><a href="#roadmap">7. Roadmap</a></li>
+            <li><a href="#team">8. Team</a></li>
+            <li><a href="#conclusion">9. Conclusion</a></li>
+          </ul>
+        </div>
+
+        <!-- Whitepaper Content -->
+        <div class="whitepaper-content">
+          <div class="whitepaper-header">
+            <h1 class="whitepaper-title">Goo Token Whitepaper</h1>
+            <p class="whitepaper-subtitle">The Future of Digital Currency</p>
+            <div class="whitepaper-meta">
+              <span class="version">Version 1.0</span>
+              <span class="date">January 2025</span>
+              <span class="authors">Goo Token Team</span>
+            </div>
+          </div>
+
+          <!-- Abstract -->
+          <section id="abstract" class="whitepaper-section-content">
+            <h2>1. Abstract</h2>
+            <p>
+              Goo Token represents a revolutionary approach to digital currency, combining cutting-edge blockchain technology with user-friendly design. This whitepaper outlines the technical specifications, economic model, and implementation strategy for Goo Token, a next-generation cryptocurrency designed for mass adoption.
+            </p>
+            <p>
+              Our mission is to create a digital currency that is not only secure and efficient but also accessible to users of all technical backgrounds. Through innovative tokenomics and community-driven governance, Goo Token aims to become the standard for digital transactions in the modern economy.
+            </p>
+          </section>
+
+          <!-- Introduction -->
+          <section id="introduction" class="whitepaper-section-content">
+            <h2>2. Introduction</h2>
+            <p>
+              The digital currency landscape has evolved significantly since the introduction of Bitcoin in 2009. While cryptocurrencies have gained mainstream attention, several challenges remain that prevent widespread adoption:
+            </p>
+            <ul>
+              <li>Complex user interfaces and technical barriers</li>
+              <li>High transaction fees and slow processing times</li>
+              <li>Lack of regulatory clarity and compliance frameworks</li>
+              <li>Limited real-world utility and merchant adoption</li>
+              <li>Environmental concerns regarding energy consumption</li>
+            </ul>
+            <p>
+              Goo Token addresses these challenges through a comprehensive approach that prioritizes user experience, environmental sustainability, and regulatory compliance.
+            </p>
+          </section>
+
+          <!-- Problem Statement -->
+          <section id="problem" class="whitepaper-section-content">
+            <h2>3. Problem Statement</h2>
+            <h3>3.1 Current Market Limitations</h3>
+            <p>
+              The current cryptocurrency market faces several critical limitations that hinder mass adoption:
+            </p>
+            <div class="problem-grid">
+              <div class="problem-item">
+                <div class="problem-icon">
+                  <i class="fas fa-exclamation-triangle"></i>
+                </div>
+                <h4>High Transaction Costs</h4>
+                <p>Current blockchain networks charge excessive fees, making micro-transactions impractical.</p>
+              </div>
+              <div class="problem-item">
+                <div class="problem-icon">
+                  <i class="fas fa-clock"></i>
+                </div>
+                <h4>Slow Processing Times</h4>
+                <p>Transaction confirmation times can take hours or even days, limiting real-world usability.</p>
+              </div>
+              <div class="problem-item">
+                <div class="problem-icon">
+                  <i class="fas fa-user-times"></i>
+                </div>
+                <h4>Poor User Experience</h4>
+                <p>Complex interfaces and technical requirements create barriers for non-technical users.</p>
+              </div>
+              <div class="problem-item">
+                <div class="problem-icon">
+                  <i class="fas fa-leaf"></i>
+                </div>
+                <h4>Environmental Impact</h4>
+                <p>Proof-of-Work consensus mechanisms consume massive amounts of energy.</p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Solution -->
+          <section id="solution" class="whitepaper-section-content">
+            <h2>4. Solution</h2>
+            <h3>4.1 Goo Token Architecture</h3>
+            <p>
+              Goo Token introduces a novel approach to digital currency that addresses the fundamental limitations of existing solutions:
+            </p>
+            
+            <div class="solution-features">
+              <div class="feature-card">
+                <div class="feature-icon">
+                  <i class="fas fa-bolt"></i>
+                </div>
+                <h4>Lightning-Fast Transactions</h4>
+                <p>Sub-second transaction confirmation times through optimized consensus mechanism</p>
+              </div>
+              
+              <div class="feature-card">
+                <div class="feature-icon">
+                  <i class="fas fa-dollar-sign"></i>
+                </div>
+                <h4>Ultra-Low Fees</h4>
+                <p>Transaction fees as low as $0.001, enabling micro-transactions and daily use</p>
+              </div>
+              
+              <div class="feature-card">
+                <div class="feature-icon">
+                  <i class="fas fa-shield-alt"></i>
+                </div>
+                <h4>Enhanced Security</h4>
+                <p>Multi-layer security architecture with quantum-resistant encryption</p>
+              </div>
+              
+              <div class="feature-card">
+                <div class="feature-icon">
+                  <i class="fas fa-leaf"></i>
+                </div>
+                <h4>Eco-Friendly</h4>
+                <p>Proof-of-Stake consensus with 99.9% lower energy consumption than Bitcoin</p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Technology -->
+          <section id="technology" class="whitepaper-section-content">
+            <h2>5. Technology</h2>
+            <h3>5.1 Blockchain Architecture</h3>
+            <p>
+              Goo Token is built on a custom blockchain optimized for speed, security, and scalability:
+            </p>
+            
+            <div class="tech-specs">
+              <div class="spec-item">
+                <h4>Consensus Mechanism</h4>
+                <p>Proof-of-Stake (PoS) with Delegated Proof-of-Stake (DPoS) for enhanced efficiency</p>
+              </div>
+              
+              <div class="spec-item">
+                <h4>Transaction Speed</h4>
+                <p>10,000+ transactions per second (TPS) with sub-second finality</p>
+              </div>
+              
+              <div class="spec-item">
+                <h4>Block Time</h4>
+                <p>2.5 seconds average block generation time</p>
+              </div>
+              
+              <div class="spec-item">
+                <h4>Energy Efficiency</h4>
+                <p>99.9% reduction in energy consumption compared to Bitcoin</p>
+              </div>
+            </div>
+
+            <h3>5.2 Smart Contract Platform</h3>
+            <p>
+              Goo Token features a comprehensive smart contract platform supporting:
+            </p>
+            <ul>
+              <li>Ethereum Virtual Machine (EVM) compatibility</li>
+              <li>Solidity programming language support</li>
+              <li>Automated market makers (AMMs)</li>
+              <li>Decentralized finance (DeFi) protocols</li>
+              <li>Non-fungible token (NFT) standards</li>
+            </ul>
+          </section>
+
+          <!-- Tokenomics -->
+          <section id="tokenomics" class="whitepaper-section-content">
+            <h2>6. Tokenomics</h2>
+            <h3>6.1 Token Distribution</h3>
+            <div class="tokenomics-chart">
+              <div class="distribution-item">
+                <div class="distribution-bar">
+                  <div class="bar-fill" style="width: 50%"></div>
+                </div>
+                <div class="distribution-info">
+                  <span class="label">Community</span>
+                  <span class="percentage">50%</span>
+                  <span class="amount">500,000 GOO</span>
+                </div>
+              </div>
+              
+              <div class="distribution-item">
+                <div class="distribution-bar">
+                  <div class="bar-fill" style="width: 30%"></div>
+                </div>
+                <div class="distribution-info">
+                  <span class="label">Liquidity</span>
+                  <span class="percentage">30%</span>
+                  <span class="amount">300,000 GOO</span>
+                </div>
+              </div>
+              
+              <div class="distribution-item">
+                <div class="distribution-bar">
+                  <div class="bar-fill" style="width: 20%"></div>
+                </div>
+                <div class="distribution-info">
+                  <span class="label">Development</span>
+                  <span class="percentage">20%</span>
+                  <span class="amount">200,000 GOO</span>
+                </div>
+              </div>
+            </div>
+
+            <h3>6.2 Economic Model</h3>
+            <div class="economic-model">
+              <div class="model-item">
+                <h4>Total Supply</h4>
+                <p>1,000,000 GOO tokens (fixed supply)</p>
+              </div>
+              
+              <div class="model-item">
+                <h4>Initial Price</h4>
+                <p>$1.00 USD per GOO token</p>
+              </div>
+              
+              <div class="model-item">
+                <h4>Market Cap</h4>
+                <p>$1,000,000 at launch</p>
+              </div>
+              
+              <div class="model-item">
+                <h4>Inflation Rate</h4>
+                <p>0% (deflationary through token burns)</p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Roadmap -->
+          <section id="roadmap" class="whitepaper-section-content">
+            <h2>7. Roadmap</h2>
+            <div class="roadmap-timeline">
+              <div class="roadmap-phase completed">
+                <div class="phase-header">
+                  <h3>Phase 1: Foundation</h3>
+                  <span class="status completed">Completed</span>
+                </div>
+                <div class="phase-content">
+                  <ul>
+                    <li>✅ Token launch and initial distribution</li>
+                    <li>✅ Community building and marketing</li>
+                    <li>✅ Core infrastructure development</li>
+                    <li>✅ Security audits and testing</li>
+                  </ul>
+                </div>
+              </div>
+              
+              <div class="roadmap-phase in-progress">
+                <div class="phase-header">
+                  <h3>Phase 2: Growth</h3>
+                  <span class="status in-progress">In Progress</span>
+                </div>
+                <div class="phase-content">
+                  <ul>
+                    <li>🔄 Major exchange listings</li>
+                    <li>🔄 DeFi protocol integrations</li>
+                    <li>🔄 Mobile application launch</li>
+                    <li>🔄 Merchant adoption program</li>
+                  </ul>
+                </div>
+              </div>
+              
+              <div class="roadmap-phase upcoming">
+                <div class="phase-header">
+                  <h3>Phase 3: Expansion</h3>
+                  <span class="status upcoming">Upcoming</span>
+                </div>
+                <div class="phase-content">
+                  <ul>
+                    <li>⏳ Cross-chain integrations</li>
+                    <li>⏳ Institutional partnerships</li>
+                    <li>⏳ Global regulatory compliance</li>
+                    <li>⏳ Advanced DeFi features</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Team -->
+          <section id="team" class="whitepaper-section-content">
+            <h2>8. Team</h2>
+            <div class="team-grid">
+              <div class="team-member">
+                <div class="member-avatar">
+                  <i class="fas fa-user"></i>
+                </div>
+                <h4>John Smith</h4>
+                <p class="role">CEO & Founder</p>
+                <p class="bio">15+ years in blockchain technology and fintech</p>
+              </div>
+              
+              <div class="team-member">
+                <div class="member-avatar">
+                  <i class="fas fa-user"></i>
+                </div>
+                <h4>Sarah Johnson</h4>
+                <p class="role">CTO</p>
+                <p class="bio">Former Ethereum core developer with expertise in consensus mechanisms</p>
+              </div>
+              
+              <div class="team-member">
+                <div class="member-avatar">
+                  <i class="fas fa-user"></i>
+                </div>
+                <h4>Mike Chen</h4>
+                <p class="role">Lead Developer</p>
+                <p class="bio">Specialist in smart contract development and security</p>
+              </div>
+              
+              <div class="team-member">
+                <div class="member-avatar">
+                  <i class="fas fa-user"></i>
+                </div>
+                <h4>Lisa Rodriguez</h4>
+                <p class="role">Head of Marketing</p>
+                <p class="bio">Crypto marketing expert with 10+ years experience</p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Conclusion -->
+          <section id="conclusion" class="whitepaper-section-content">
+            <h2>9. Conclusion</h2>
+            <p>
+              Goo Token represents a significant advancement in digital currency technology, addressing the key challenges that have limited cryptocurrency adoption. Through innovative technology, user-friendly design, and community-driven governance, Goo Token is positioned to become the standard for digital transactions.
+            </p>
+            <p>
+              We invite you to join us in building the future of digital currency. Together, we can create a more accessible, efficient, and sustainable financial system for everyone.
+            </p>
+          </section>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-section">
+            <div class="footer-logo">
+              <div class="logo-icon">
+                <span>G</span>
+              </div>
+              <span class="logo-text">Goo Token</span>
+            </div>
+            <p class="footer-description">
+              The future of digital currency. Join the Goo Token revolution and be part of the next generation blockchain ecosystem with secure, fast, and decentralized transactions.
+            </p>
+            <div class="social-links">
+              <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+              <a href="#" class="social-link"><i class="fab fa-telegram"></i></a>
+              <a href="#" class="social-link"><i class="fab fa-discord"></i></a>
+              <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+              <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+              <a href="#" class="social-link"><i class="fab fa-reddit"></i></a>
+            </div>
+          </div>
+          
+          <div class="footer-section">
+            <h4 class="footer-title">Quick Links</h4>
+            <ul class="footer-links">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="price.html">Price Chart</a></li>
+              <li><a href="buy.html">Buy GOO</a></li>
+              <li><a href="whitepaper.html">Whitepaper</a></li>
+              <li><a href="marketing.html">Marketing</a></li>
+              <li><a href="about.html">About Us</a></li>
+              <li><a href="contact.html">Contact</a></li>
+            </ul>
+          </div>
+          
+          <div class="footer-section">
+            <h4 class="footer-title">Token Info</h4>
+            <ul class="footer-links">
+              <li><a href="#tokenomics">Tokenomics</a></li>
+              <li><a href="#roadmap">Roadmap</a></li>
+              <li><a href="#contract">Smart Contract</a></li>
+              <li><a href="#community">Community</a></li>
+              <li><a href="#support">Support</a></li>
+              <li><a href="#partnerships">Partnerships</a></li>
+              <li><a href="#audit">Audit Report</a></li>
+              <li><a href="#docs">Technical Docs</a></li>
+            </ul>
+          </div>
+          
+          <div class="footer-section">
+            <h4 class="footer-title">Stay Updated</h4>
+            <p class="footer-description">
+              Get the latest Goo Token news, updates, and exclusive offers delivered to your inbox.
+            </p>
+            <div class="newsletter-form">
+              <input type="email" placeholder="Enter your email" class="newsletter-input" />
+              <button class="newsletter-btn">
+                <i class="fas fa-paper-plane"></i>
+                Subscribe
+              </button>
+            </div>
+            
+            <div class="footer-stats">
+              <div class="footer-stat">
+                <div class="stat-label">PRICE</div>
+                <div class="stat-value">$1.00</div>
+              </div>
+              <div class="footer-stat">
+                <div class="stat-label">MARKET CAP</div>
+                <div class="stat-value">$1M</div>
+              </div>
+              <div class="footer-stat">
+                <div class="stat-label">HOLDERS</div>
+                <div class="stat-value">10K+</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="footer-bottom">
+          <div class="footer-copyright">
+            © 2025 Goo Token. All rights reserved.
+          </div>
+          <div class="footer-legal">
+            <a href="#privacy">Privacy Policy</a>
+            <a href="#terms">Terms of Service</a>
+            <a href="#cookies">Cookie Policy</a>
+            <a href="#disclaimer">Disclaimer</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="js/translations.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="js/performance.js"></script>
+    <script src="analytics-config.js"></script>
+    <script src="script.js"></script>
+    <script src="analytics.js"></script>
+    <script src="js/whitepaper.js"></script>
+  </body>
+</html>
