@@ -3,6 +3,7 @@
 ## 🛠️ راه‌اندازی محیط توسعه
 
 ### 1. پیش‌نیازها
+
 ```bash
 # نصب Node.js (نسخه 18 یا بالاتر)
 # دانلود از: https://nodejs.org/
@@ -15,6 +16,7 @@
 ```
 
 ### 2. راه‌اندازی پروژه
+
 ```bash
 # کلون کردن پروژه
 git clone https://github.com/yourusername/goo-token-website.git
@@ -53,6 +55,7 @@ goo-token-website/
 ## 🔄 فرآیند توسعه
 
 ### 1. کنترل نسخه (Git Workflow)
+
 ```bash
 # ایجاد branch جدید برای feature
 git checkout -b feature/new-feature
@@ -68,6 +71,7 @@ git push origin feature/new-feature
 ```
 
 ### 2. بکاپ و بازیابی
+
 ```bash
 # ایجاد بکاپ دستی
 npm run backup
@@ -80,6 +84,7 @@ cp -r backups/backup-YYYY-MM-DD/* ./
 ```
 
 ### 3. تست و کیفیت کد
+
 ```bash
 # اجرای تست‌ها
 npm test
@@ -99,24 +104,29 @@ npm run build
 ### گزینه‌های Hosting:
 
 #### 1. **GitHub Pages** (رایگان)
+
 ```bash
 # Deploy به GitHub Pages
 npm run deploy
 ```
+
 - **مزایا**: رایگان، یکپارچه با Git
 - **معایب**: محدودیت‌های عملکرد
 
 #### 2. **Netlify** (توصیه می‌شود)
+
 ```bash
 # اتصال به Netlify
 # 1. ثبت‌نام در netlify.com
 # 2. اتصال GitHub repository
 # 3. تنظیمات خودکار deployment
 ```
+
 - **مزایا**: CDN، SSL رایگان، عملکرد بالا
 - **قیمت**: رایگان تا 100GB bandwidth
 
 #### 3. **Vercel** (برای React/Next.js)
+
 ```bash
 # نصب Vercel CLI
 npm i -g vercel
@@ -126,6 +136,7 @@ vercel --prod
 ```
 
 #### 4. **AWS S3 + CloudFront**
+
 ```bash
 # نصب AWS CLI
 # تنظیم credentials
@@ -133,6 +144,7 @@ aws s3 sync . s3://your-bucket-name --delete
 ```
 
 ### 4. **VPS/Server شخصی**
+
 ```bash
 # نصب Nginx
 sudo apt update
@@ -146,42 +158,47 @@ sudo certbot --nginx -d yourdomain.com
 ## 📊 مانیتورینگ و آنالیتیکس
 
 ### 1. Google Analytics 4
+
 ```javascript
 // در analytics.js
-googleAnalyticsId: 'GA_MEASUREMENT_ID'
+googleAnalyticsId: 'GA_MEASUREMENT_ID';
 ```
 
 ### 2. Hotjar (User Behavior)
+
 ```javascript
 // در analytics.js
-hotjarId: 'HOTJAR_ID'
+hotjarId: 'HOTJAR_ID';
 ```
 
 ### 3. Sentry (Error Tracking)
+
 ```javascript
 // در analytics.js
-sentryDsn: 'SENTRY_DSN'
+sentryDsn: 'SENTRY_DSN';
 ```
 
 ### 4. Custom Analytics
+
 ```javascript
 // ارسال داده به سرور شخصی
 fetch('/api/analytics', {
-    method: 'POST',
-    body: JSON.stringify(analyticsData)
+  method: 'POST',
+  body: JSON.stringify(analyticsData),
 });
 ```
 
 ## 🔒 امنیت
 
 ### 1. HTTPS اجباری
+
 ```nginx
 # Nginx configuration
 server {
     listen 443 ssl;
     ssl_certificate /path/to/cert.pem;
     ssl_certificate_key /path/to/key.pem;
-    
+
     # Redirect HTTP to HTTPS
     if ($scheme != "https") {
         return 301 https://$server_name$request_uri;
@@ -190,28 +207,33 @@ server {
 ```
 
 ### 2. Security Headers
+
 ```javascript
 // در server configuration
 app.use((req, res, next) => {
-    res.setHeader('X-Content-Type-Options', 'nosniff');
-    res.setHeader('X-Frame-Options', 'DENY');
-    res.setHeader('X-XSS-Protection', '1; mode=block');
-    res.setHeader('Strict-Transport-Security', 'max-age=31536000');
-    next();
+  res.setHeader('X-Content-Type-Options', 'nosniff');
+  res.setHeader('X-Frame-Options', 'DENY');
+  res.setHeader('X-XSS-Protection', '1; mode=block');
+  res.setHeader('Strict-Transport-Security', 'max-age=31536000');
+  next();
 });
 ```
 
 ### 3. CSP (Content Security Policy)
+
 ```html
-<meta http-equiv="Content-Security-Policy" 
-      content="default-src 'self'; 
+<meta
+  http-equiv="Content-Security-Policy"
+  content="default-src 'self'; 
                script-src 'self' 'unsafe-inline' https://www.googletagmanager.com;
-               style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;">
+               style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;"
+/>
 ```
 
 ## 🚀 بهینه‌سازی عملکرد
 
 ### 1. Minification
+
 ```bash
 # Minify CSS
 npm run minify-css
@@ -221,6 +243,7 @@ npm run minify-js
 ```
 
 ### 2. Image Optimization
+
 ```bash
 # نصب imagemin
 npm install -g imagemin-cli
@@ -230,37 +253,42 @@ imagemin images/*.{jpg,png} --out-dir=dist/images
 ```
 
 ### 3. Caching Strategy
+
 ```javascript
 // Service Worker برای caching
 if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('/sw.js');
+  navigator.serviceWorker.register('/sw.js');
 }
 ```
 
 ## 📱 Mobile Optimization
 
 ### 1. Responsive Design
+
 ```css
 /* Media queries در styles.css */
 @media (max-width: 768px) {
-    .container {
-        padding: 0 1rem;
-    }
+  .container {
+    padding: 0 1rem;
+  }
 }
 ```
 
 ### 2. Touch Optimization
+
 ```css
 /* بهبود تجربه لمسی */
-button, .clickable {
-    min-height: 44px;
-    min-width: 44px;
+button,
+.clickable {
+  min-height: 44px;
+  min-width: 44px;
 }
 ```
 
 ## 🔧 ابزارهای توسعه
 
 ### 1. VS Code Extensions
+
 - **Live Server**: برای development server
 - **Prettier**: برای فرمت کردن کد
 - **ESLint**: برای بررسی کد
@@ -268,6 +296,7 @@ button, .clickable {
 - **Bracket Pair Colorizer**: برای خوانایی بهتر
 
 ### 2. Browser Extensions
+
 - **Lighthouse**: برای بررسی عملکرد
 - **Web Vitals**: برای Core Web Vitals
 - **React Developer Tools**: اگر از React استفاده کنید
@@ -275,15 +304,17 @@ button, .clickable {
 ## 📈 SEO و Marketing
 
 ### 1. Meta Tags
+
 ```html
-<meta name="description" content="Goo Token - The Future of Digital Currency">
-<meta name="keywords" content="cryptocurrency, token, blockchain, goo token">
-<meta property="og:title" content="Goo Token">
-<meta property="og:description" content="Revolutionary digital currency">
-<meta property="og:image" content="/images/og-image.jpg">
+<meta name="description" content="Goo Token - The Future of Digital Currency" />
+<meta name="keywords" content="cryptocurrency, token, blockchain, goo token" />
+<meta property="og:title" content="Goo Token" />
+<meta property="og:description" content="Revolutionary digital currency" />
+<meta property="og:image" content="/images/og-image.jpg" />
 ```
 
 ### 2. Sitemap
+
 ```xml
 <!-- sitemap.xml -->
 <?xml version="1.0" encoding="UTF-8"?>
@@ -301,15 +332,19 @@ button, .clickable {
 ### مشکلات رایج:
 
 #### 1. **CORS Error**
+
 ```javascript
 // اضافه کردن CORS headers
-app.use(cors({
+app.use(
+  cors({
     origin: ['https://yourdomain.com'],
-    credentials: true
-}));
+    credentials: true,
+  })
+);
 ```
 
 #### 2. **404 Error**
+
 ```nginx
 # Nginx configuration
 location / {
@@ -318,17 +353,18 @@ location / {
 ```
 
 #### 3. **Performance Issues**
+
 ```javascript
 // Lazy loading images
 const images = document.querySelectorAll('img[data-src]');
-const imageObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            const img = entry.target;
-            img.src = img.dataset.src;
-            imageObserver.unobserve(img);
-        }
-    });
+const imageObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const img = entry.target;
+      img.src = img.dataset.src;
+      imageObserver.unobserve(img);
+    }
+  });
 });
 images.forEach(img => imageObserver.observe(img));
 ```
@@ -336,6 +372,7 @@ images.forEach(img => imageObserver.observe(img));
 ## 📞 پشتیبانی
 
 برای سوالات و مشکلات:
+
 - **GitHub Issues**: ایجاد issue در repository
 - **Email**: your-email@domain.com
 - **Discord**: [لینک سرور Discord]
