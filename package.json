@@ -1,0 +1,43 @@
+{
+  "name": "goo-token-website",
+  "version": "1.0.0",
+  "description": "Professional website for Goo Token cryptocurrency",
+  "main": "index.html",
+  "scripts": {
+    "dev": "live-server --port=3000 --open=/index.html",
+    "build": "npm run minify-css && npm run minify-js",
+    "minify-css": "cleancss -o dist/styles.min.css styles.css",
+    "minify-js": "terser script.js -o dist/script.min.js",
+    "deploy": "npm run build && gh-pages -d .",
+    "test": "jest",
+    "lint": "eslint script.js",
+    "format": "prettier --write .",
+    "backup": "node scripts/backup.js"
+  },
+  "keywords": [
+    "cryptocurrency",
+    "token",
+    "blockchain",
+    "website",
+    "goo-token"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "devDependencies": {
+    "live-server": "^1.2.2",
+    "clean-css-cli": "^5.6.2",
+    "terser": "^5.19.2",
+    "gh-pages": "^4.0.0",
+    "eslint": "^8.45.0",
+    "prettier": "^3.0.0",
+    "jest": "^29.6.2"
+  },
+  "dependencies": {
+    "axios": "^1.5.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/goo-token-website.git"
+  },
+  "homepage": "https://yourusername.github.io/goo-token-website"
+}
