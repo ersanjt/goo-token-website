@@ -9,6 +9,50 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
       rel="stylesheet"
     />
+    
+    <!-- PWA Meta Tags -->
+    <link rel="manifest" href="manifest.json" />
+    <meta name="theme-color" content="#00d4aa" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Goo Token" />
+    <link rel="apple-touch-icon" href="/icons/icon-192x192.png" />
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Goo Token - The Future of Digital Currency. Professional cryptocurrency website with advanced features, secure transactions, and community governance." />
+    <meta name="keywords" content="Goo Token, cryptocurrency, blockchain, digital currency, DeFi, token, crypto, investment" />
+    <meta name="author" content="Goo Token Team" />
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Goo Token - The Future of Digital Currency" />
+    <meta property="og:description" content="Professional cryptocurrency website with advanced features, secure transactions, and community governance." />
+    <meta property="og:image" content="/images/og-image.jpg" />
+    <meta property="og:url" content="https://goo-token.com" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Goo Token" />
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Goo Token - The Future of Digital Currency" />
+    <meta name="twitter:description" content="Professional cryptocurrency website with advanced features, secure transactions, and community governance." />
+    <meta name="twitter:image" content="/images/twitter-card.jpg" />
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Goo Token",
+      "description": "The Future of Digital Currency",
+      "url": "https://goo-token.com",
+      "logo": "https://goo-token.com/images/logo.png",
+      "sameAs": [
+        "https://twitter.com/gootoken",
+        "https://t.me/gootoken",
+        "https://discord.gg/gootoken"
+      ]
+    }
+    </script>
   </head>
   <body>
     <!-- Header -->
@@ -61,6 +105,21 @@
             <div class="price-value">$1.00</div>
             <div class="price-change positive">+15.2%</div>
           </div>
+          
+          <!-- Language Switcher -->
+          <div class="language-switcher">
+            <select id="language-select" class="language-select">
+              <option value="en">🇺🇸 EN</option>
+              <option value="fa">🇮🇷 FA</option>
+              <option value="ar">🇸🇦 AR</option>
+            </select>
+          </div>
+          
+          <!-- Theme Toggle -->
+          <button id="theme-toggle" class="theme-toggle" title="Toggle Dark/Light Mode">
+            <i class="fas fa-moon"></i>
+          </button>
+          
           <button class="buy-btn">
             <i class="fas fa-coins"></i>
             <span>Buy Now</span>
@@ -706,6 +765,7 @@
       </div>
     </div>
 
+    <script src="js/translations.js"></script>
     <script src="analytics-config.js"></script>
     <script src="script.js"></script>
     <script src="analytics.js"></script>

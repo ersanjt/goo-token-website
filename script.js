@@ -395,6 +395,168 @@ document.addEventListener('DOMContentLoaded', function () {
     `;
   document.head.appendChild(style);
 
-  // Initialize everything
-  console.log('Goo Token website loaded successfully!');
+// PWA Service Worker Registration
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js')
+      .then((registration) => {
+        console.log('SW registered: ', registration);
+      })
+      .catch((registrationError) => {
+        console.log('SW registration failed: ', registrationError);
+      });
+  });
+}
+
+// PWA Install Prompt
+let deferredPrompt;
+window.addEventListener('beforeinstallprompt', (e) => {
+  // Prevent Chrome 67 and earlier from automatically showing the prompt
+  e.preventDefault();
+  // Stash the event so it can be triggered later
+  deferredPrompt = e;
+  // Show install button
+  showInstallButton();
+});
+
+function showInstallButton() {
+  const installButton = document.createElement('button');
+  installButton.className = 'install-pwa-btn';
+  installButton.innerHTML = '<i class="fas fa-download"></i> Install App';
+  installButton.style.cssText = `
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 25px;
+    font-weight: 600;
+    cursor: pointer;
+    z-index: 1000;
+    box-shadow: 0 4px 12px rgba(0, 212, 170, 0.3);
+    transition: all 0.3s ease;
+  `;
+  
+  installButton.addEventListener('click', () => {
+    if (deferredPrompt) {
+      deferredPrompt.prompt();
+      deferredPrompt.userChoice.then((choiceResult) => {
+        if (choiceResult.outcome === 'accepted') {
+          console.log('User accepted the install prompt');
+        }
+        deferredPrompt = null;
+        installButton.remove();
+      });
+    }
+  });
+  
+  document.body.appendChild(installButton);
+}
+
+// Language Switcher Functionality
+const languageSelect = document.getElementById('language-select');
+let currentLanguage = localStorage.getItem('language') || 'en';
+
+// Load saved language
+languageSelect.value = currentLanguage;
+updateLanguage(currentLanguage);
+
+languageSelect.addEventListener('change', (e) => {
+  currentLanguage = e.target.value;
+  localStorage.setItem('language', currentLanguage);
+  updateLanguage(currentLanguage);
+});
+
+function updateLanguage(lang) {
+  const t = translations[lang];
+  if (!t) return;
+  
+  // Update navigation
+  document.querySelectorAll('.nav-link span').forEach((span, index) => {
+    const navTexts = [t.home, t.price, t.buy, t.whitepaper, t.marketing, t.about, t.contact];
+    if (navTexts[index]) span.textContent = navTexts[index];
+  });
+  
+  // Update hero section
+  const heroBadge = document.querySelector('.hero-badge span');
+  if (heroBadge) heroBadge.textContent = t.heroBadge;
+  
+  const heroSubtitle = document.querySelector('.hero-subtitle');
+  if (heroSubtitle) heroSubtitle.textContent = t.heroSubtitle;
+  
+  const heroDescription = document.querySelector('.hero-description');
+  if (heroDescription) heroDescription.textContent = t.heroDescription;
+  
+  // Update buttons
+  const buyButton = document.querySelector('.btn-primary');
+  if (buyButton) buyButton.innerHTML = `<i class="fas fa-coins"></i> ${t.buyNow}`;
+  
+  const whitepaperButton = document.querySelector('.btn-secondary');
+  if (whitepaperButton) whitepaperButton.innerHTML = `<i class="fas fa-file-alt"></i> ${t.readWhitepaper}`;
+  
+  // Update stats labels
+  const statLabels = document.querySelectorAll('.stat-label');
+  const statTexts = [t.currentPrice, t.totalSupply, t.change24h];
+  statLabels.forEach((label, index) => {
+    if (statTexts[index]) label.textContent = statTexts[index];
+  });
+  
+  // Update features section
+  const featuresTitle = document.querySelector('.section-title');
+  if (featuresTitle && featuresTitle.textContent.includes('Why Choose')) {
+    featuresTitle.textContent = t.whyChoose;
+  }
+  
+  const featuresSubtitle = document.querySelector('.section-subtitle');
+  if (featuresSubtitle) featuresSubtitle.textContent = t.featuresSubtitle;
+  
+  // Update RTL for Arabic and Persian
+  if (lang === 'ar' || lang === 'fa') {
+    document.documentElement.setAttribute('dir', 'rtl');
+    document.documentElement.setAttribute('lang', lang);
+  } else {
+    document.documentElement.setAttribute('dir', 'ltr');
+    document.documentElement.setAttribute('lang', lang);
+  }
+}
+
+// Theme Toggle Functionality
+const themeToggle = document.getElementById('theme-toggle');
+const body = document.body;
+
+// Load saved theme or default to dark
+const savedTheme = localStorage.getItem('theme') || 'dark';
+body.setAttribute('data-theme', savedTheme);
+updateThemeIcon(savedTheme);
+
+themeToggle.addEventListener('click', () => {
+  const currentTheme = body.getAttribute('data-theme');
+  const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+  
+  body.setAttribute('data-theme', newTheme);
+  localStorage.setItem('theme', newTheme);
+  updateThemeIcon(newTheme);
+  
+  // Add smooth transition
+  body.style.transition = 'background-color 0.3s ease, color 0.3s ease';
+  setTimeout(() => {
+    body.style.transition = '';
+  }, 300);
+});
+
+function updateThemeIcon(theme) {
+  const icon = themeToggle.querySelector('i');
+  if (theme === 'dark') {
+    icon.className = 'fas fa-moon';
+    themeToggle.title = 'Switch to Light Mode';
+  } else {
+    icon.className = 'fas fa-sun';
+    themeToggle.title = 'Switch to Dark Mode';
+  }
+}
+
+// Initialize everything
+console.log('Goo Token website loaded successfully!');
 });
