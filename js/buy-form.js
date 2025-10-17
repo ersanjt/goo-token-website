@@ -23,7 +23,7 @@ class BuyForm {
   setupFormHandlers() {
     const form = document.getElementById('purchase-form');
     const amountInput = document.getElementById('amount');
-    const paymentMethod = document.getElementById('payment-method');
+    const paymentMethodInput = document.getElementById('payment-method');
 
     if (amountInput) {
       amountInput.addEventListener('input', () => {
@@ -31,11 +31,27 @@ class BuyForm {
       });
     }
 
-    if (paymentMethod) {
-      paymentMethod.addEventListener('change', () => {
+    if (paymentMethodInput) {
+      paymentMethodInput.addEventListener('change', () => {
         this.updatePurchaseSummary();
       });
     }
+
+    // Payment method selection
+    const paymentMethods = document.querySelectorAll('.payment-method');
+    paymentMethods.forEach(method => {
+      method.addEventListener('click', () => {
+        // Remove selected class from all methods
+        paymentMethods.forEach(m => m.classList.remove('selected'));
+        // Add selected class to clicked method
+        method.classList.add('selected');
+        // Update hidden input
+        if (paymentMethodInput) {
+          paymentMethodInput.value = method.dataset.method;
+        }
+        this.updatePurchaseSummary();
+      });
+    });
 
     if (form) {
       form.addEventListener('submit', (e) => {
@@ -84,12 +100,12 @@ class BuyForm {
 
   updatePurchaseSummary() {
     const amountInput = document.getElementById('amount');
-    const paymentMethod = document.getElementById('payment-method');
+    const paymentMethodInput = document.getElementById('payment-method');
     
     if (!amountInput) return;
 
     const amount = parseFloat(amountInput.value) || 0;
-    const paymentMethodValue = paymentMethod ? paymentMethod.value : '';
+    const paymentMethodValue = paymentMethodInput ? paymentMethodInput.value : '';
     
     // Calculate payment fee
     const paymentFeeRate = this.paymentFees[paymentMethodValue] || 0;
@@ -104,7 +120,7 @@ class BuyForm {
     // Update summary
     this.updateSummaryElement('summary-amount', `$${amount.toFixed(2)}`);
     this.updateSummaryElement('summary-tokens', `${Math.floor(tokens).toLocaleString()} GOO`);
-    this.updateSummaryElement('summary-fee', `$${(paymentFee + this.networkFee).toFixed(2)}`);
+    this.updateSummaryElement('summary-payment-fee', `$${paymentFee.toFixed(2)}`);
     this.updateSummaryElement('summary-total', `$${total.toFixed(2)}`);
   }
 
@@ -211,18 +227,29 @@ class BuyForm {
     const originalText = submitBtn.innerHTML;
     submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
     submitBtn.disabled = true;
+    submitBtn.classList.add('loading');
 
     try {
       // Simulate API call
-      await this.simulatePurchase({
+      const result = await this.simulatePurchase({
         amount: amount,
         paymentMethod: paymentMethod,
         walletAddress: walletAddress
       });
 
       this.showNotification('Purchase successful! Tokens will be sent to your wallet.', 'success');
+      
+      // Add success animation
+      submitBtn.classList.add('success-animation');
+      setTimeout(() => submitBtn.classList.remove('success-animation'), 600);
+      
       form.reset();
       this.updatePurchaseSummary();
+      
+      // Clear payment method selection
+      document.querySelectorAll('.payment-method').forEach(method => {
+        method.classList.remove('selected');
+      });
       
       // Add to recent purchases
       this.addToRecentPurchases(amount);
@@ -232,6 +259,7 @@ class BuyForm {
     } finally {
       submitBtn.innerHTML = originalText;
       submitBtn.disabled = false;
+      submitBtn.classList.remove('loading');
     }
   }
 
