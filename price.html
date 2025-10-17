@@ -5,8 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Goo Token Price Chart - Live Market Data</title>
     <link rel="stylesheet" href="styles.css" />
-    <link rel="stylesheet" href="css/header.css" />
-    <link rel="stylesheet" href="css/professional-header.css" />
+    <link rel="stylesheet" href="css/unified-header.css" />
     <link rel="stylesheet" href="css/professional-theme.css" />
     <link rel="stylesheet" href="css/price-chart.css" />
     <link
@@ -106,19 +105,9 @@
             <div class="price-change positive">+15.2%</div>
           </div>
           
-          <!-- Language Switcher -->
-          <div class="language-switcher">
-            <select id="language-select" class="language-select">
-              <option value="en">🇺🇸 EN</option>
-              <option value="fa">🇮🇷 FA</option>
-              <option value="ar">🇸🇦 AR</option>
-            </select>
-          </div>
 
           <!-- Theme Toggle -->
-          <button id="theme-toggle" class="theme-toggle" title="Toggle Dark/Light Mode">
-            <i class="feather" data-feather="moon"></i>
-          </button>
+          
           
           <a href="buy.html" class="buy-btn">
             <i class="feather" data-feather="zap"></i>
@@ -390,6 +379,11 @@
       </div>
     </footer>
 
+    <!-- Floating Theme Toggle -->
+    <button id="floating-theme-toggle" class="floating-theme-toggle" title="Toggle Dark/Light Mode">
+      <i class="feather" data-feather="moon"></i>
+    </button>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.29.0/feather.min.js"></script>
     <script src="js/header.js"></script>
     <script src="js/modern-token.js"></script>
@@ -407,6 +401,31 @@
       document.getElementById('theme-toggle')?.addEventListener('click', () => {
         setTimeout(() => feather.replace(), 100);
       });
+      
+      // Floating theme toggle functionality
+      const floatingToggle = document.getElementById('floating-theme-toggle');
+      const themeToggle = document.getElementById('theme-toggle');
+      
+      if (floatingToggle) {
+        floatingToggle.addEventListener('click', function() {
+          if (themeToggle) {
+            themeToggle.click();
+          } else {
+            // Fallback theme toggle
+            const currentTheme = localStorage.getItem('theme') || 'dark';
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            localStorage.setItem('theme', newTheme);
+            document.documentElement.setAttribute('data-theme', newTheme);
+            
+            // Update icon
+            const icon = floatingToggle.querySelector('i');
+            if (icon) {
+              icon.setAttribute('data-feather', newTheme === 'dark' ? 'moon' : 'sun');
+              setTimeout(() => feather.replace(), 100);
+            }
+          }
+        });
+      }
     </script>
   </body>
 </html>
