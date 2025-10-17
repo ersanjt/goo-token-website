@@ -6,6 +6,7 @@
     <title>Goo Token - The Future of Digital Currency</title>
     <link rel="stylesheet" href="styles.css" />
     <link rel="stylesheet" href="css/header.css" />
+    <link rel="stylesheet" href="css/modern-token.css" />
     <link
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
       rel="stylesheet"
@@ -521,6 +522,90 @@
       </div>
     </section>
 
+    <!-- Live Token Purchase Section -->
+    <section class="live-purchase">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Buy Goo Token Now</h2>
+          <p class="section-subtitle">
+            Get your Goo Tokens instantly with our secure purchase system
+          </p>
+        </div>
+
+        <div class="purchase-grid">
+          <div class="purchase-card">
+            <div class="purchase-header">
+              <h3>Quick Purchase</h3>
+              <div class="price-display">
+                <span class="current-price">$1.00</span>
+                <span class="price-change positive">+15.2%</span>
+              </div>
+            </div>
+            
+            <div class="purchase-form">
+              <div class="form-group">
+                <label>Amount (GOO)</label>
+                <input type="number" id="token-amount" placeholder="Enter amount" min="1" value="100">
+              </div>
+              
+              <div class="form-group">
+                <label>Payment Method</label>
+                <select id="payment-method">
+                  <option value="eth">Ethereum (ETH)</option>
+                  <option value="btc">Bitcoin (BTC)</option>
+                  <option value="usdt">Tether (USDT)</option>
+                  <option value="card">Credit Card</option>
+                </select>
+              </div>
+              
+              <div class="price-breakdown">
+                <div class="price-item">
+                  <span>Token Price:</span>
+                  <span>$1.00</span>
+                </div>
+                <div class="price-item">
+                  <span>Amount:</span>
+                  <span id="amount-display">100 GOO</span>
+                </div>
+                <div class="price-item total">
+                  <span>Total Cost:</span>
+                  <span id="total-cost">$100.00</span>
+                </div>
+              </div>
+              
+              <button class="purchase-btn connect-wallet-btn">
+                <i class="fas fa-wallet"></i>
+                Connect Wallet & Buy
+              </button>
+            </div>
+          </div>
+          
+          <div class="purchase-info">
+            <div class="info-card">
+              <h4>Why Buy Goo Token?</h4>
+              <ul>
+                <li><i class="fas fa-check"></i> Revolutionary blockchain technology</li>
+                <li><i class="fas fa-check"></i> Lightning-fast transactions</li>
+                <li><i class="fas fa-check"></i> Maximum security & privacy</li>
+                <li><i class="fas fa-check"></i> Growing community & adoption</li>
+                <li><i class="fas fa-check"></i> Real utility & use cases</li>
+              </ul>
+            </div>
+            
+            <div class="info-card">
+              <h4>Purchase Benefits</h4>
+              <ul>
+                <li><i class="fas fa-gift"></i> Early investor bonuses</li>
+                <li><i class="fas fa-shield"></i> Secure & audited smart contracts</li>
+                <li><i class="fas fa-rocket"></i> Future price appreciation</li>
+                <li><i class="fas fa-users"></i> Community governance rights</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- Global Adoption Section -->
     <section class="global-adoption">
       <div class="container">
@@ -767,6 +852,7 @@
     </div>
 
     <script src="js/header.js"></script>
+    <script src="js/modern-token.js"></script>
     <script src="js/translations.js"></script>
     <script src="js/animations.js"></script>
     <script src="analytics-config.js"></script>
