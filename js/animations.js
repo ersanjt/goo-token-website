@@ -175,19 +175,56 @@ class AdvancedAnimations {
     // Start progress animation
     setTimeout(updateProgress, 500);
     
-    // Hide loader when page is loaded
-    window.addEventListener('load', () => {
+    // Hide loader when page is loaded - multiple fallbacks
+    const hideLoader = () => {
+      progress = 100;
+      progressBar.style.width = '100%';
+      progressPercentage.textContent = '100%';
+      
       setTimeout(() => {
-        progress = 100;
-        progressBar.style.width = '100%';
-        progressPercentage.textContent = '100%';
-        
-        setTimeout(() => {
-          loader.style.opacity = '0';
-          loader.style.transform = 'scale(0.95)';
-          setTimeout(() => loader.remove(), 800);
-        }, 500);
-      }, 1500);
+        loader.style.opacity = '0';
+        loader.style.transform = 'scale(0.95)';
+        setTimeout(() => loader.remove(), 800);
+      }, 500);
+    };
+
+    // Multiple fallback methods to ensure loader is hidden
+    window.addEventListener('load', () => {
+      setTimeout(hideLoader, 1500);
+    });
+
+    // Fallback 1: DOMContentLoaded
+    document.addEventListener('DOMContentLoaded', () => {
+      setTimeout(hideLoader, 2000);
+    });
+
+    // Fallback 2: Maximum timeout
+    setTimeout(hideLoader, 5000);
+
+    // Fallback 3: When all resources are loaded
+    if (document.readyState === 'complete') {
+      setTimeout(hideLoader, 1000);
+    }
+
+    // Fallback 4: Force hide on user interaction (Ctrl+F5, etc.)
+    let hideLoaderCalled = false;
+    const forceHideLoader = () => {
+      if (!hideLoaderCalled) {
+        hideLoaderCalled = true;
+        hideLoader();
+      }
+    };
+
+    // Hide on any user interaction
+    ['click', 'keydown', 'scroll', 'touchstart'].forEach(event => {
+      document.addEventListener(event, forceHideLoader, { once: true });
+    });
+
+    // Hide on visibility change (tab switching, etc.)
+    document.addEventListener('visibilitychange', () => {
+      if (document.visibilityState === 'visible') {
+        forceHideLoader();
+      }
     });
   }
 

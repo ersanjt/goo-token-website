@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="css/unified-header.css" />
     <link rel="stylesheet" href="css/professional-theme.css" />
     <link rel="stylesheet" href="css/modern-token.css" />
+    <link rel="stylesheet" href="css/whitepaper-page.css" />
     <link
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
       rel="stylesheet"
@@ -81,15 +82,15 @@
             <span>Full Docs</span>
           </a>
           <a href="marketing.html" class="nav-link">
-            <i class="feather" data-feather="megaphone"></i>
+            <i class="feather" data-feather="trending-up"></i>
             <span>Marketing</span>
           </a>
           <a href="about.html" class="nav-link">
-            <i class="feather" data-feather="users"></i>
+            <i class="feather" data-feather="info"></i>
             <span>About</span>
           </a>
           <a href="contact.html" class="nav-link">
-            <i class="feather" data-feather="mail"></i>
+            <i class="feather" data-feather="phone"></i>
             <span>Contact</span>
           </a>
         </nav>
@@ -121,8 +122,13 @@
     <section class="whitepaper-section">
       <div class="container">
         <!-- Table of Contents -->
-        <div class="whitepaper-toc">
-          <h3>Table of Contents</h3>
+        <div class="whitepaper-toc" id="whitepaper-toc">
+          <div class="toc-header">
+            <h3>Table of Contents</h3>
+            <button class="toc-toggle" id="toc-toggle" aria-label="Toggle Table of Contents">
+              <i class="fas fa-times"></i>
+            </button>
+          </div>
           <ul class="toc-list">
             <li><a href="#abstract">1. Abstract</a></li>
             <li><a href="#introduction">2. Introduction</a></li>
@@ -135,6 +141,12 @@
             <li><a href="#conclusion">9. Conclusion</a></li>
           </ul>
         </div>
+
+        <!-- TOC Toggle Button (Mobile) -->
+        <button class="toc-mobile-toggle" id="toc-mobile-toggle" aria-label="Show Table of Contents">
+          <i class="fas fa-list"></i>
+          <span>Contents</span>
+        </button>
 
         <!-- Whitepaper Content -->
         <div class="whitepaper-content">
@@ -468,64 +480,118 @@
               We invite you to join us in building the future of digital currency. Together, we can create a more accessible, efficient, and sustainable financial system for everyone.
             </p>
           </section>
+
+          <!-- Download Section -->
+          <div class="download-section">
+            <h3>Download Whitepaper</h3>
+            <p>Get the complete technical documentation in your preferred format</p>
+            <div class="download-buttons">
+              <button class="download-btn" onclick="downloadPDF()">
+                <i class="fas fa-file-pdf"></i>
+                <span>Download PDF</span>
+              </button>
+              <button class="download-btn" onclick="downloadDoc()">
+                <i class="fas fa-file-word"></i>
+                <span>Download DOC</span>
+              </button>
+              <button class="download-btn" onclick="shareWhitepaper()">
+                <i class="fas fa-share-alt"></i>
+                <span>Share</span>
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
+    <!-- Print Section -->
+    <div class="print-section">
+      <button class="print-btn" onclick="printWhitepaper()" title="Print Whitepaper">
+        <i class="fas fa-print"></i>
+        <div class="print-tooltip">Print Document</div>
+      </button>
+    </div>
+
     <!-- Footer -->
     <footer class="footer">
-      <div class="footer-content">
-        <div class="footer-section">
-          <h3>GOO Token</h3>
-          <p>The future of digital currency is here. Join the revolution with GOO Token.</p>
-        </div>
-        <div class="footer-section">
-          <h3>Quick Links</h3>
-          <ul class="footer-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="price.html">Price Chart</a></li>
-            <li><a href="buy.html">Buy GOO</a></li>
-            <li><a href="whitepaper.html">Whitepaper</a></li>
-          </ul>
-        </div>
-        <div class="footer-section">
-          <h3>Resources</h3>
-          <ul class="footer-links">
-            <li><a href="marketing.html">Marketing</a></li>
-            <li><a href="about.html">About Us</a></li>
-            <li><a href="contact.html">Contact</a></li>
-            <li><a href="whitepaper-full.html">Full Documentation</a></li>
-          </ul>
-        </div>
-        <div class="footer-section">
-          <h3>Community</h3>
-          <div class="social-links">
-            <a href="#"><i class="fab fa-twitter"></i></a>
-            <a href="#"><i class="fab fa-telegram"></i></a>
-            <a href="#"><i class="fab fa-discord"></i></a>
-            <a href="#"><i class="fab fa-github"></i></a>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-section">
+            <div class="footer-logo">
+              <div class="logo-icon">
+                <span>G</span>
+              </div>
+              <span class="logo-text">Goo Token</span>
+            </div>
+            <p class="footer-description">
+              The future of digital currency. Join the Goo Token revolution and
+              be part of the next generation blockchain ecosystem with secure,
+              fast, and decentralized transactions.
+            </p>
+            <div class="social-links">
+              <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+              <a href="#" class="social-link"
+                ><i class="fab fa-telegram"></i
+              ></a>
+              <a href="#" class="social-link"><i class="fab fa-discord"></i></a>
+              <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+            </div>
+          </div>
+
+          <div class="footer-section">
+            <h3>Quick Links</h3>
+            <ul class="footer-links">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="price.html">Price Chart</a></li>
+              <li><a href="buy.html">Buy GOO</a></li>
+              <li><a href="whitepaper.html">Whitepaper</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-section">
+            <h3>Resources</h3>
+            <ul class="footer-links">
+              <li><a href="marketing.html">Marketing</a></li>
+              <li><a href="about.html">About Us</a></li>
+              <li><a href="contact.html">Contact</a></li>
+              <li><a href="whitepaper-full.html">Full Documentation</a></li>
+            </ul>
+          </div>
+
+                    <div class="footer-section">
+            <h3>Support</h3>
+            <ul class="footer-links">
+              <li><a href="mailto:support@gootoken.com">24/7 Support</a></li>
+              <li><a href="mailto:info@gootoken.com">General Info</a></li>
+              <li><a href="mailto:partnerships@gootoken.com">Partnerships</a></li>
+              <li><a href="#">Help Center</a></li>
+            </ul>
           </div>
         </div>
-      </div>
-      <div class="footer-bottom">
-        <p>&copy; 2025 GOO Token. All rights reserved.</p>
+        <div class="footer-bottom">
+          <p>&copy; 2025 GOO Token. All rights reserved.</p>
+        </div>
       </div>
     </footer>
 
 
     <!-- Floating Theme Toggle -->
-    <button id="floating-theme-toggle" class="floating-theme-toggle" title="Toggle Dark/Light Mode">
+    <button id="floating-theme-toggle" class="floating-theme-toggle" title="Toggle Theme (Dark/Light Mode)" aria-label="Toggle Theme" style="opacity: 1;">
       <i class="feather" data-feather="moon"></i>
     </button>
+    <div class="theme-tooltip">Toggle Theme</div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.29.0/feather.min.js"></script>
     <script src="js/header.js"></script>
     <script src="js/modern-token.js"></script>
     <script src="js/animations.js"></script>
+    <script src="js/loading-manager.js"></script>
+    <script src="js/header-optimizer.js"></script>
     <script src="analytics-config.js"></script>
     <script src="script.js"></script>
     <script src="analytics.js"></script>
     <script src="js/whitepaper.js"></script>
+    <script src="js/whitepaper-enhanced.js"></script>
     <script>
       // Initialize Feather Icons
       feather.replace();
@@ -535,5 +601,7 @@
         setTimeout(() => feather.replace(), 100);
       });
     </script>
-  </body>
+      <script src="js/theme-toggle-enhanced.js"></script>
+      <script src="js/restart-helper.js"></script>
+ </body>
 </html>

@@ -73,31 +73,9 @@ class WhitepaperReader {
   }
 
   setupPrintFunctionality() {
-    // Add print button
-    const printButton = document.createElement('button');
-    printButton.className = 'print-btn';
-    printButton.innerHTML = '<i class="fas fa-print"></i> Print Whitepaper';
-    printButton.style.cssText = `
-      position: fixed;
-      bottom: 20px;
-      left: 20px;
-      background: var(--primary-color);
-      color: white;
-      border: none;
-      padding: 12px 20px;
-      border-radius: 25px;
-      font-weight: 600;
-      cursor: pointer;
-      z-index: 1000;
-      box-shadow: 0 4px 12px rgba(0, 212, 170, 0.3);
-      transition: all 0.3s ease;
-    `;
-    
-    printButton.addEventListener('click', () => {
-      this.printWhitepaper();
-    });
-    
-    document.body.appendChild(printButton);
+    // Print functionality is now handled by the modern print section in HTML
+    // The modern print button is already in the HTML with proper styling
+    console.log('Print functionality ready - using modern print section');
   }
 
   printWhitepaper() {

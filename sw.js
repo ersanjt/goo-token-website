@@ -1,5 +1,5 @@
 // Professional Service Worker for GOO Token Website
-const CACHE_VERSION = '2.0.0';
+const CACHE_VERSION = '2.0.2';
 const CACHE_NAME = `goo-token-cache-v${CACHE_VERSION}`;
 const STATIC_CACHE = 'goo-token-static-v1';
 const DYNAMIC_CACHE = 'goo-token-dynamic-v1';
@@ -8,6 +8,7 @@ const DYNAMIC_CACHE = 'goo-token-dynamic-v1';
 const CRITICAL_RESOURCES = [
   '/',
   '/index.html',
+  '/offline.html',
   '/styles.css',
   '/css/professional-theme.css',
   '/css/professional-header.css',
@@ -96,6 +97,31 @@ self.addEventListener('fetch', event => {
 
   // Skip external requests
   if (url.origin !== location.origin) {
+    return;
+  }
+
+  // Special handling for navigations (HTML pages)
+  if (request.mode === 'navigate') {
+    event.respondWith(
+      (async () => {
+        try {
+          // Try network first for navigations
+          const networkResponse = await fetch(request);
+          // Cache in background
+          const cache = await caches.open(DYNAMIC_CACHE);
+          cache.put(request, networkResponse.clone());
+          return networkResponse;
+        } catch (err) {
+          // Fallback to cached page or offline page
+          const cache = await caches.open(DYNAMIC_CACHE);
+          const cached = await cache.match(request);
+          if (cached) return cached;
+          const staticCache = await caches.open(STATIC_CACHE);
+          const offline = await staticCache.match('/offline.html');
+          return offline || new Response('Offline', { status: 503 });
+        }
+      })()
+    );
     return;
   }
 

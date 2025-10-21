@@ -106,15 +106,15 @@
             <span>Full Docs</span>
           </a>
           <a href="marketing.html" class="nav-link">
-            <i class="feather" data-feather="megaphone"></i>
+            <i class="feather" data-feather="trending-up"></i>
             <span>Marketing</span>
           </a>
           <a href="about.html" class="nav-link">
-            <i class="feather" data-feather="users"></i>
+            <i class="feather" data-feather="info"></i>
             <span>About</span>
           </a>
           <a href="contact.html" class="nav-link">
-            <i class="feather" data-feather="mail"></i>
+            <i class="feather" data-feather="phone"></i>
             <span>Contact</span>
           </a>
         </nav>
@@ -251,7 +251,7 @@
             <div class="feature-card">
               <div class="feature-badge">+15.2%</div>
               <div class="feature-icon">
-                <i class="fas fa-chart-line-up"></i>
+                <i class="fas fa-chart-line"></i>
               </div>
               <h3 class="feature-title">Growing Value</h3>
             <p class="feature-description">
@@ -730,7 +730,7 @@
                 <div class="stat-icon">
                   <i class="fas fa-users"></i>
                 </div>
-                <div class="stat-value">10,247+</div>
+                <div class="stat-value">10,247</div>
                 <div class="stat-label">ACTIVE INVESTORS</div>
                 <div class="stat-change positive">
                   <i class="fas fa-arrow-up"></i>
@@ -742,7 +742,7 @@
                 <div class="stat-icon">
                   <i class="fas fa-lock"></i>
                 </div>
-                <div class="stat-value">$2.1M</div>
+                <div class="stat-value">$0.95</div>
                 <div class="stat-label">TOTAL VALUE LOCKED</div>
                 <div class="stat-change positive">
                   <i class="fas fa-arrow-up"></i>
@@ -811,13 +811,13 @@
           </div>
 
           <div class="footer-section">
-            <h3>Community</h3>
-            <div class="social-links">
-              <a href="#"><i class="fab fa-twitter"></i></a>
-              <a href="#"><i class="fab fa-telegram"></i></a>
-              <a href="#"><i class="fab fa-discord"></i></a>
-              <a href="#"><i class="fab fa-github"></i></a>
-            </div>
+            <h3>Support</h3>
+            <ul class="footer-links">
+              <li><a href="mailto:support@gootoken.com">24/7 Support</a></li>
+              <li><a href="mailto:info@gootoken.com">General Info</a></li>
+              <li><a href="mailto:partnerships@gootoken.com">Partnerships</a></li>
+              <li><a href="#">Help Center</a></li>
+            </ul>
           </div>
         </div>
         <div class="footer-bottom">
@@ -827,9 +827,10 @@
     </footer>
 
     <!-- Floating Theme Toggle -->
-    <button id="floating-theme-toggle" class="floating-theme-toggle" title="Toggle Dark/Light Mode">
+    <button id="floating-theme-toggle" class="floating-theme-toggle" title="Toggle Theme (Dark/Light Mode)" aria-label="Toggle Theme" style="opacity: 1;">
       <i class="feather" data-feather="moon"></i>
     </button>
+    <div class="theme-tooltip">Toggle Theme</div>
 
     <!-- Wallet Connect Modal -->
     <div id="walletModal" class="modal">
@@ -890,6 +891,8 @@
     <script src="js/header.js"></script>
     <script src="js/modern-token.js"></script>
     <script src="js/animations.js"></script>
+    <script src="js/loading-manager.js"></script>
+    <script src="js/header-optimizer.js"></script>
     <script src="analytics-config.js"></script>
     <script src="script.js"></script>
     <script src="analytics.js"></script>
@@ -927,5 +930,7 @@
         });
       }
     </script>
-  </body>
+      <script src="js/theme-toggle-enhanced.js"></script>
+      <script src="js/restart-helper.js"></script>
+ </body>
 </html>

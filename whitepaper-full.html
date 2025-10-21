@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -409,15 +410,15 @@
             <span>Full Docs</span>
           </a>
           <a href="marketing.html" class="nav-link">
-            <i class="feather" data-feather="megaphone"></i>
+            <i class="feather" data-feather="trending-up"></i>
             <span>Marketing</span>
           </a>
           <a href="about.html" class="nav-link">
-            <i class="feather" data-feather="users"></i>
+            <i class="feather" data-feather="info"></i>
             <span>About</span>
           </a>
           <a href="contact.html" class="nav-link">
-            <i class="feather" data-feather="mail"></i>
+            <i class="feather" data-feather="phone"></i>
             <span>Contact</span>
           </a>
         </nav>
@@ -918,54 +919,79 @@
 
     <!-- Footer -->
     <footer class="footer">
-      <div class="footer-content">
-        <div class="footer-section">
-          <h3>GOO Token</h3>
-          <p>The future of digital currency is here. Join the revolution with GOO Token.</p>
-        </div>
-        <div class="footer-section">
-          <h3>Quick Links</h3>
-          <ul class="footer-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="price.html">Price Chart</a></li>
-            <li><a href="buy.html">Buy GOO</a></li>
-            <li><a href="whitepaper.html">Whitepaper</a></li>
-          </ul>
-        </div>
-        <div class="footer-section">
-          <h3>Resources</h3>
-          <ul class="footer-links">
-            <li><a href="marketing.html">Marketing</a></li>
-            <li><a href="about.html">About Us</a></li>
-            <li><a href="contact.html">Contact</a></li>
-            <li><a href="whitepaper-full.html">Full Whitepaper</a></li>
-          </ul>
-        </div>
-        <div class="footer-section">
-          <h3>Community</h3>
-          <div class="social-links">
-            <a href="#"><i class="fab fa-twitter"></i></a>
-            <a href="#"><i class="fab fa-telegram"></i></a>
-            <a href="#"><i class="fab fa-discord"></i></a>
-            <a href="#"><i class="fab fa-github"></i></a>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-section">
+            <div class="footer-logo">
+              <div class="logo-icon">
+                <span>G</span>
+              </div>
+              <span class="logo-text">Goo Token</span>
+            </div>
+            <p class="footer-description">
+              The future of digital currency. Join the Goo Token revolution and
+              be part of the next generation blockchain ecosystem with secure,
+              fast, and decentralized transactions.
+            </p>
+            <div class="social-links">
+              <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+              <a href="#" class="social-link"
+                ><i class="fab fa-telegram"></i
+              ></a>
+              <a href="#" class="social-link"><i class="fab fa-discord"></i></a>
+              <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+            </div>
+          </div>
+
+          <div class="footer-section">
+            <h3>Quick Links</h3>
+            <ul class="footer-links">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="price.html">Price Chart</a></li>
+              <li><a href="buy.html">Buy GOO</a></li>
+              <li><a href="whitepaper.html">Whitepaper</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-section">
+            <h3>Resources</h3>
+            <ul class="footer-links">
+              <li><a href="marketing.html">Marketing</a></li>
+              <li><a href="about.html">About Us</a></li>
+              <li><a href="contact.html">Contact</a></li>
+              <li><a href="whitepaper-full.html">Full Documentation</a></li>
+            </ul>
+          </div>
+
+                    <div class="footer-section">
+            <h3>Support</h3>
+            <ul class="footer-links">
+              <li><a href="mailto:support@gootoken.com">24/7 Support</a></li>
+              <li><a href="mailto:info@gootoken.com">General Info</a></li>
+              <li><a href="mailto:partnerships@gootoken.com">Partnerships</a></li>
+              <li><a href="#">Help Center</a></li>
+            </ul>
           </div>
         </div>
-      </div>
-      <div class="footer-bottom">
-        <p>&copy; 2025 GOO Token. All rights reserved.</p>
+        <div class="footer-bottom">
+          <p>&copy; 2025 GOO Token. All rights reserved.</p>
+        </div>
       </div>
     </footer>
 
 
     <!-- Floating Theme Toggle -->
-    <button id="floating-theme-toggle" class="floating-theme-toggle" title="Toggle Dark/Light Mode">
+    <button id="floating-theme-toggle" class="floating-theme-toggle" title="Toggle Theme (Dark/Light Mode)" aria-label="Toggle Theme" style="opacity: 1;">
       <i class="feather" data-feather="moon"></i>
     </button>
+    <div class="theme-tooltip">Toggle Theme</div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.29.0/feather.min.js"></script>
     <script src="js/header.js"></script>
     <script src="js/modern-token.js"></script>
     <script src="js/animations.js"></script>
+    <script src="js/loading-manager.js"></script>
+    <script src="js/header-optimizer.js"></script>
     <script src="analytics-config.js"></script>
     <script src="script.js"></script>
     <script src="analytics.js"></script>
@@ -978,5 +1004,7 @@
         setTimeout(() => feather.replace(), 100);
       });
     </script>
-  </body>
+      <script src="js/theme-toggle-enhanced.js"></script>
+      <script src="js/restart-helper.js"></script>
+ </body>
 </html>

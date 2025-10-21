@@ -1,0 +1,476 @@
+/* Final Payment Methods & Security Section Styles */
+
+/* Payment Security Section Container */
+.payment-security-section {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  gap: 3rem !important;
+  margin: 4rem 0 !important;
+  padding: 0 1rem !important;
+  max-width: 1200px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  position: relative !important;
+  z-index: 1 !important;
+}
+
+/* Payment Methods Container */
+.payment-methods {
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(30, 41, 59, 0.9) 100%) !important;
+  border: 1px solid rgba(16, 185, 129, 0.2) !important;
+  border-radius: 24px !important;
+  padding: 2.5rem !important;
+  backdrop-filter: blur(20px) !important;
+  box-shadow: 
+    0 25px 50px rgba(0, 0, 0, 0.4),
+    0 0 0 1px rgba(255, 255, 255, 0.05),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
+  position: relative !important;
+  overflow: hidden !important;
+  transition: all 0.4s ease !important;
+  z-index: 2 !important;
+}
+
+.payment-methods:hover {
+  transform: translateY(-5px) !important;
+  box-shadow: 
+    0 35px 70px rgba(0, 0, 0, 0.5),
+    0 0 0 1px rgba(16, 185, 129, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15) !important;
+}
+
+.payment-methods::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  background: 
+    radial-gradient(circle at 20% 20%, rgba(16, 185, 129, 0.08) 0%, transparent 60%),
+    radial-gradient(circle at 80% 80%, rgba(59, 130, 246, 0.06) 0%, transparent 60%),
+    radial-gradient(circle at 50% 50%, rgba(245, 158, 11, 0.04) 0%, transparent 70%) !important;
+  pointer-events: none !important;
+  opacity: 0.8 !important;
+  z-index: 1 !important;
+}
+
+/* Security Trust Container */
+.security-trust {
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(30, 41, 59, 0.9) 100%) !important;
+  border: 1px solid rgba(16, 185, 129, 0.2) !important;
+  border-radius: 24px !important;
+  padding: 2.5rem !important;
+  backdrop-filter: blur(20px) !important;
+  box-shadow: 
+    0 25px 50px rgba(0, 0, 0, 0.4),
+    0 0 0 1px rgba(255, 255, 255, 0.05),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
+  position: relative !important;
+  overflow: hidden !important;
+  transition: all 0.4s ease !important;
+  z-index: 2 !important;
+}
+
+.security-trust:hover {
+  transform: translateY(-5px) !important;
+  box-shadow: 
+    0 35px 70px rgba(0, 0, 0, 0.5),
+    0 0 0 1px rgba(16, 185, 129, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15) !important;
+}
+
+.security-trust::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  background: 
+    radial-gradient(circle at 20% 20%, rgba(16, 185, 129, 0.08) 0%, transparent 60%),
+    radial-gradient(circle at 80% 80%, rgba(59, 130, 246, 0.06) 0%, transparent 60%),
+    radial-gradient(circle at 50% 50%, rgba(245, 158, 11, 0.04) 0%, transparent 70%) !important;
+  pointer-events: none !important;
+  opacity: 0.8 !important;
+  z-index: 1 !important;
+}
+
+/* Section Headers */
+.section-header {
+  margin-bottom: 2.5rem !important;
+  text-align: center !important;
+  position: relative !important;
+  z-index: 3 !important;
+}
+
+.section-header h3 {
+  font-size: 1.75rem !important;
+  font-weight: 800 !important;
+  color: #ffffff !important;
+  margin-bottom: 0.75rem !important;
+  background: linear-gradient(135deg, #10b981 0%, #34d399 50%, #3b82f6 100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+  text-shadow: 0 2px 10px rgba(16, 185, 129, 0.3) !important;
+  letter-spacing: -0.02em !important;
+}
+
+.section-header p {
+  color: #cbd5e1 !important;
+  font-size: 1rem !important;
+  font-weight: 500 !important;
+  opacity: 0.9 !important;
+  line-height: 1.5 !important;
+}
+
+/* Payment Cards Grid */
+.payment-cards {
+  display: grid !important;
+  grid-template-columns: repeat(2, 1fr) !important;
+  gap: 1.25rem !important;
+  position: relative !important;
+  z-index: 3 !important;
+}
+
+.payment-card {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  border-radius: 20px !important;
+  padding: 2rem !important;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  position: relative !important;
+  overflow: hidden !important;
+  backdrop-filter: blur(10px) !important;
+  box-shadow: 
+    0 8px 25px rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
+  z-index: 4 !important;
+}
+
+.payment-card::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  height: 4px !important;
+  background: linear-gradient(90deg, #10b981 0%, #34d399 50%, #3b82f6 100%) !important;
+  opacity: 0 !important;
+  transition: all 0.4s ease !important;
+  border-radius: 20px 20px 0 0 !important;
+}
+
+.payment-card:hover {
+  transform: translateY(-8px) scale(1.02) !important;
+  border-color: rgba(16, 185, 129, 0.3) !important;
+  box-shadow: 
+    0 20px 40px rgba(16, 185, 129, 0.15),
+    0 0 0 1px rgba(16, 185, 129, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0.02) 100%) !important;
+}
+
+.payment-card:hover::before {
+  opacity: 1 !important;
+  transform: scaleX(1) !important;
+}
+
+/* Payment Card Elements */
+.payment-card .payment-icon {
+  width: 60px !important;
+  height: 60px !important;
+  background: linear-gradient(135deg, #10b981 0%, #34d399 50%, #3b82f6 100%) !important;
+  border-radius: 16px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin-bottom: 1.5rem !important;
+  font-size: 1.75rem !important;
+  color: white !important;
+  box-shadow: 
+    0 8px 25px rgba(16, 185, 129, 0.3),
+    0 0 0 1px rgba(255, 255, 255, 0.1) !important;
+  transition: all 0.3s ease !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+.payment-card:hover .payment-icon {
+  transform: scale(1.1) rotate(5deg) !important;
+  box-shadow: 
+    0 12px 35px rgba(16, 185, 129, 0.4),
+    0 0 0 1px rgba(255, 255, 255, 0.2) !important;
+}
+
+.payment-card .payment-info h4 {
+  font-size: 1.25rem !important;
+  font-weight: 800 !important;
+  color: #ffffff !important;
+  margin-bottom: 0.75rem !important;
+  letter-spacing: -0.01em !important;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3) !important;
+}
+
+.payment-card .payment-info p {
+  color: #cbd5e1 !important;
+  font-size: 0.95rem !important;
+  margin-bottom: 1.25rem !important;
+  line-height: 1.5 !important;
+  opacity: 0.9 !important;
+}
+
+.payment-details {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  margin-bottom: 1.25rem !important;
+  padding: 0.75rem 0 !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.05) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
+}
+
+.payment-fee {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.15) 0%, rgba(52, 211, 153, 0.1) 100%) !important;
+  color: #10b981 !important;
+  padding: 0.5rem 1rem !important;
+  border-radius: 25px !important;
+  font-size: 0.85rem !important;
+  font-weight: 700 !important;
+  border: 1px solid rgba(16, 185, 129, 0.2) !important;
+  box-shadow: 0 4px 15px rgba(16, 185, 129, 0.1) !important;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3) !important;
+}
+
+.payment-time {
+  color: #94a3b8 !important;
+  font-size: 0.85rem !important;
+  font-weight: 600 !important;
+  opacity: 0.9 !important;
+}
+
+.payment-features {
+  display: flex !important;
+  gap: 0.75rem !important;
+  flex-wrap: wrap !important;
+}
+
+.feature-tag {
+  background: linear-gradient(135deg, #10b981 0%, #34d399 50%, #3b82f6 100%) !important;
+  color: white !important;
+  padding: 0.5rem 1rem !important;
+  border-radius: 25px !important;
+  font-size: 0.8rem !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.8px !important;
+  box-shadow: 
+    0 4px 15px rgba(16, 185, 129, 0.3),
+    0 0 0 1px rgba(255, 255, 255, 0.1) !important;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3) !important;
+  transition: all 0.3s ease !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+.feature-tag::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: -100% !important;
+  width: 100% !important;
+  height: 100% !important;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent) !important;
+  transition: left 0.5s ease !important;
+}
+
+.feature-tag:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 
+    0 6px 20px rgba(16, 185, 129, 0.4),
+    0 0 0 1px rgba(255, 255, 255, 0.2) !important;
+}
+
+.feature-tag:hover::before {
+  left: 100% !important;
+}
+
+/* Security Features Grid */
+.security-features {
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr) !important;
+  gap: 1.25rem !important;
+  position: relative !important;
+  z-index: 3 !important;
+}
+
+.security-item {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  text-align: center !important;
+  gap: 1rem !important;
+  padding: 2rem 1.5rem !important;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  border-radius: 20px !important;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  backdrop-filter: blur(10px) !important;
+  box-shadow: 
+    0 8px 25px rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
+  position: relative !important;
+  overflow: hidden !important;
+  z-index: 4 !important;
+}
+
+.security-item::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  height: 3px !important;
+  background: linear-gradient(90deg, #10b981 0%, #34d399 50%, #3b82f6 100%) !important;
+  opacity: 0 !important;
+  transition: all 0.4s ease !important;
+  border-radius: 20px 20px 0 0 !important;
+}
+
+.security-item:hover {
+  transform: translateY(-6px) scale(1.02) !important;
+  border-color: rgba(16, 185, 129, 0.3) !important;
+  box-shadow: 
+    0 15px 35px rgba(16, 185, 129, 0.15),
+    0 0 0 1px rgba(16, 185, 129, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0.02) 100%) !important;
+}
+
+.security-item:hover::before {
+  opacity: 1 !important;
+  transform: scaleX(1) !important;
+}
+
+.security-icon {
+  width: 50px !important;
+  height: 50px !important;
+  background: linear-gradient(135deg, #10b981 0%, #34d399 50%, #3b82f6 100%) !important;
+  border-radius: 14px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  color: white !important;
+  font-size: 1.25rem !important;
+  flex-shrink: 0 !important;
+  box-shadow: 
+    0 8px 25px rgba(16, 185, 129, 0.3),
+    0 0 0 1px rgba(255, 255, 255, 0.1) !important;
+  transition: all 0.3s ease !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+.security-item:hover .security-icon {
+  transform: scale(1.1) rotate(5deg) !important;
+  box-shadow: 
+    0 12px 35px rgba(16, 185, 129, 0.4),
+    0 0 0 1px rgba(255, 255, 255, 0.2) !important;
+}
+
+.security-info h4 {
+  font-size: 1rem !important;
+  font-weight: 800 !important;
+  color: #ffffff !important;
+  margin-bottom: 0.5rem !important;
+  letter-spacing: -0.01em !important;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3) !important;
+}
+
+.security-info p {
+  color: #cbd5e1 !important;
+  font-size: 0.85rem !important;
+  line-height: 1.5 !important;
+  opacity: 0.9 !important;
+  font-weight: 500 !important;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .payment-security-section {
+    grid-template-columns: 1fr !important;
+    gap: 2.5rem !important;
+    padding: 0 0.5rem !important;
+  }
+  
+  .payment-methods, .security-trust {
+    padding: 2rem 1.5rem !important;
+  }
+  
+  .payment-cards {
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
+  }
+  
+  .payment-card {
+    padding: 1.5rem !important;
+  }
+  
+  .security-features {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 1rem !important;
+  }
+  
+  .security-item {
+    padding: 1.5rem 1rem !important;
+  }
+  
+  .section-header h3 {
+    font-size: 1.5rem !important;
+  }
+  
+  .section-header p {
+    font-size: 0.9rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .payment-security-section {
+    gap: 2rem !important;
+    margin: 3rem 0 !important;
+  }
+  
+  .payment-methods, .security-trust {
+    padding: 1.5rem 1rem !important;
+    border-radius: 20px !important;
+  }
+  
+  .security-features {
+    grid-template-columns: 1fr !important;
+    gap: 0.75rem !important;
+  }
+  
+  .security-item {
+    padding: 1.25rem 0.75rem !important;
+  }
+  
+  .payment-card {
+    padding: 1.25rem !important;
+  }
+  
+  .payment-icon, .security-icon {
+    width: 45px !important;
+    height: 45px !important;
+    font-size: 1.1rem !important;
+  }
+  
+  .section-header h3 {
+    font-size: 1.25rem !important;
+  }
+  
+  .section-header p {
+    font-size: 0.85rem !important;
+  }
+}
+

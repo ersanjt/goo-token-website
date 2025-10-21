@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="css/unified-header.css" />
     <link rel="stylesheet" href="css/professional-theme.css" />
     <link rel="stylesheet" href="css/modern-token.css" />
+    <link rel="stylesheet" href="css/marketing-page.css" />
     <link
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
       rel="stylesheet"
@@ -81,15 +82,15 @@
             <span>Full Docs</span>
           </a>
           <a href="marketing.html" class="nav-link active">
-            <i class="feather" data-feather="megaphone"></i>
+            <i class="feather" data-feather="trending-up"></i>
             <span>Marketing</span>
           </a>
           <a href="about.html" class="nav-link">
-            <i class="feather" data-feather="users"></i>
+            <i class="feather" data-feather="info"></i>
             <span>About</span>
           </a>
           <a href="contact.html" class="nav-link">
-            <i class="feather" data-feather="mail"></i>
+            <i class="feather" data-feather="phone"></i>
             <span>Contact</span>
           </a>
         </nav>
@@ -122,7 +123,7 @@
       <div class="container">
         <div class="marketing-header">
           <h1 class="marketing-title">Marketing & Partnerships</h1>
-          <p class="marketing-subtitle">Building the future of digital currency through strategic partnerships and community engagement</p>
+          <p class="marketing-subtitle">Building the future of digital currency through strategic partnerships, innovative campaigns, and community engagement</p>
         </div>
 
         <!-- Marketing Stats -->
@@ -200,7 +201,10 @@
                   </div>
                   <span class="progress-text">75% Complete</span>
                 </div>
-                <button class="campaign-btn">Join Campaign</button>
+                <div class="campaign-actions">
+                  <a href="#" class="campaign-btn primary">Join Campaign</a>
+                  <a href="#" class="campaign-btn secondary">Learn More</a>
+                </div>
               </div>
             </div>
 
@@ -221,7 +225,10 @@
                     <span class="stat-value">$12K</span>
                   </div>
                 </div>
-                <button class="campaign-btn">Get Referral Link</button>
+                <div class="campaign-actions">
+                  <a href="#" class="campaign-btn primary">Get Referral Link</a>
+                  <a href="#" class="campaign-btn secondary">View Stats</a>
+                </div>
               </div>
             </div>
 
@@ -242,7 +249,10 @@
                     <span class="stat-value">15%</span>
                   </div>
                 </div>
-                <button class="campaign-btn">Start Staking</button>
+                <div class="campaign-actions">
+                  <a href="#" class="campaign-btn primary">Start Staking</a>
+                  <a href="#" class="campaign-btn secondary">View Rewards</a>
+                </div>
               </div>
             </div>
           </div>
@@ -256,10 +266,14 @@
               <div class="partnership-logo">
                 <i class="fab fa-ethereum"></i>
               </div>
-              <div class="partnership-info">
-                <h4>Ethereum Foundation</h4>
-                <p>Technical partnership for blockchain development</p>
-                <div class="partnership-status active">Active</div>
+              <div class="partnership-content">
+                <h3>Ethereum Foundation</h3>
+                <p>Technical partnership for blockchain development and smart contract optimization</p>
+                <div class="partnership-tags">
+                  <span class="partnership-tag">Blockchain</span>
+                  <span class="partnership-tag">Technical</span>
+                  <span class="partnership-tag">Active</span>
+                </div>
               </div>
             </div>
 
@@ -267,10 +281,14 @@
               <div class="partnership-logo">
                 <i class="fas fa-university"></i>
               </div>
-              <div class="partnership-info">
-                <h4>Major Exchanges</h4>
-                <p>Listing partnerships with top cryptocurrency exchanges</p>
-                <div class="partnership-status active">Active</div>
+              <div class="partnership-content">
+                <h3>Major Exchanges</h3>
+                <p>Listing partnerships with top cryptocurrency exchanges worldwide</p>
+                <div class="partnership-tags">
+                  <span class="partnership-tag">Trading</span>
+                  <span class="partnership-tag">Liquidity</span>
+                  <span class="partnership-tag">Active</span>
+                </div>
               </div>
             </div>
 
@@ -278,10 +296,14 @@
               <div class="partnership-logo">
                 <i class="fas fa-store"></i>
               </div>
-              <div class="partnership-info">
-                <h4>Merchant Network</h4>
+              <div class="partnership-content">
+                <h3>Merchant Network</h3>
                 <p>Payment integration with 1000+ merchants worldwide</p>
-                <div class="partnership-status active">Active</div>
+                <div class="partnership-tags">
+                  <span class="partnership-tag">Payments</span>
+                  <span class="partnership-tag">Commerce</span>
+                  <span class="partnership-tag">Active</span>
+                </div>
               </div>
             </div>
 
@@ -289,10 +311,14 @@
               <div class="partnership-logo">
                 <i class="fas fa-graduation-cap"></i>
               </div>
-              <div class="partnership-info">
-                <h4>Universities</h4>
-                <p>Educational partnerships with leading universities</p>
-                <div class="partnership-status pending">Pending</div>
+              <div class="partnership-content">
+                <h3>Universities</h3>
+                <p>Educational partnerships with leading universities for blockchain research</p>
+                <div class="partnership-tags">
+                  <span class="partnership-tag">Education</span>
+                  <span class="partnership-tag">Research</span>
+                  <span class="partnership-tag">Pending</span>
+                </div>
               </div>
             </div>
           </div>
@@ -301,53 +327,80 @@
         <!-- Community Initiatives -->
         <div class="community-section">
           <h2 class="section-title">Community Initiatives</h2>
-          <div class="initiatives-grid">
-            <div class="initiative-card">
-              <div class="initiative-icon">
+          <div class="community-grid">
+            <div class="community-card">
+              <div class="community-icon">
                 <i class="fas fa-code"></i>
               </div>
-              <div class="initiative-content">
+              <div class="community-content">
                 <h3>Developer Program</h3>
-                <p>Support for developers building on Goo Token ecosystem</p>
-                <ul>
-                  <li>Technical documentation</li>
-                  <li>Development grants</li>
-                  <li>Community support</li>
-                </ul>
-                <button class="initiative-btn">Learn More</button>
+                <p>Support for developers building on Goo Token ecosystem with comprehensive resources and funding</p>
+                <div class="community-stats">
+                  <div class="community-stat">
+                    <div class="stat-value">500+</div>
+                    <div class="stat-label">Developers</div>
+                  </div>
+                  <div class="community-stat">
+                    <div class="stat-value">$100K</div>
+                    <div class="stat-label">Grants</div>
+                  </div>
+                </div>
+                <a href="#" class="community-btn">Join Program</a>
               </div>
             </div>
 
-            <div class="initiative-card">
-              <div class="initiative-icon">
+            <div class="community-card">
+              <div class="community-icon">
                 <i class="fas fa-graduation-cap"></i>
               </div>
-              <div class="initiative-content">
+              <div class="community-content">
                 <h3>Education Program</h3>
-                <p>Educational resources and courses about blockchain technology</p>
-                <ul>
-                  <li>Online courses</li>
-                  <li>Webinars</li>
-                  <li>Certification programs</li>
-                </ul>
-                <button class="initiative-btn">Learn More</button>
+                <p>Educational resources and courses about blockchain technology and cryptocurrency</p>
+                <div class="community-stats">
+                  <div class="community-stat">
+                    <div class="stat-value">10K+</div>
+                    <div class="stat-label">Students</div>
+                  </div>
+                  <div class="community-stat">
+                    <div class="stat-value">50+</div>
+                    <div class="stat-label">Courses</div>
+                  </div>
+                </div>
+                <a href="#" class="community-btn">Start Learning</a>
               </div>
             </div>
 
-            <div class="initiative-card">
-              <div class="initiative-icon">
+            <div class="community-card">
+              <div class="community-icon">
                 <i class="fas fa-heart"></i>
               </div>
-              <div class="initiative-content">
+              <div class="community-content">
                 <h3>Social Impact</h3>
-                <p>Charitable initiatives and social impact programs</p>
-                <ul>
-                  <li>Environmental projects</li>
-                  <li>Education funding</li>
-                  <li>Healthcare initiatives</li>
-                </ul>
-                <button class="initiative-btn">Learn More</button>
+                <p>Charitable initiatives and social impact programs for a better world</p>
+                <div class="community-stats">
+                  <div class="community-stat">
+                    <div class="stat-value">$500K</div>
+                    <div class="stat-label">Donated</div>
+                  </div>
+                  <div class="community-stat">
+                    <div class="stat-value">25+</div>
+                    <div class="stat-label">Projects</div>
+                  </div>
+                </div>
+                <a href="#" class="community-btn">Get Involved</a>
               </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CTA Section -->
+        <div class="cta-section">
+          <div class="cta-content">
+            <h2 class="cta-title">Ready to Join Our Marketing Revolution?</h2>
+            <p class="cta-subtitle">Be part of the future of digital currency marketing and earn rewards while building the community</p>
+            <div class="cta-buttons">
+              <a href="buy.html" class="cta-btn primary">Start Earning</a>
+              <a href="contact.html" class="cta-btn secondary">Get in Touch</a>
             </div>
           </div>
         </div>
@@ -406,58 +459,84 @@
 
     <!-- Footer -->
     <footer class="footer">
-      <div class="footer-content">
-        <div class="footer-section">
-          <h3>GOO Token</h3>
-          <p>The future of digital currency is here. Join the revolution with GOO Token.</p>
-        </div>
-        <div class="footer-section">
-          <h3>Quick Links</h3>
-          <ul class="footer-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="price.html">Price Chart</a></li>
-            <li><a href="buy.html">Buy GOO</a></li>
-            <li><a href="whitepaper.html">Whitepaper</a></li>
-          </ul>
-        </div>
-        <div class="footer-section">
-          <h3>Resources</h3>
-          <ul class="footer-links">
-            <li><a href="marketing.html">Marketing</a></li>
-            <li><a href="about.html">About Us</a></li>
-            <li><a href="contact.html">Contact</a></li>
-            <li><a href="whitepaper-full.html">Full Documentation</a></li>
-          </ul>
-        </div>
-        <div class="footer-section">
-          <h3>Community</h3>
-          <div class="social-links">
-            <a href="#"><i class="fab fa-twitter"></i></a>
-            <a href="#"><i class="fab fa-telegram"></i></a>
-            <a href="#"><i class="fab fa-discord"></i></a>
-            <a href="#"><i class="fab fa-github"></i></a>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-section">
+            <div class="footer-logo">
+              <div class="logo-icon">
+                <span>G</span>
+              </div>
+              <span class="logo-text">Goo Token</span>
+            </div>
+            <p class="footer-description">
+              The future of digital currency. Join the Goo Token revolution and
+              be part of the next generation blockchain ecosystem with secure,
+              fast, and decentralized transactions.
+            </p>
+            <div class="social-links">
+              <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+              <a href="#" class="social-link"
+                ><i class="fab fa-telegram"></i
+              ></a>
+              <a href="#" class="social-link"><i class="fab fa-discord"></i></a>
+              <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+            </div>
+          </div>
+
+          <div class="footer-section">
+            <h3>Quick Links</h3>
+            <ul class="footer-links">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="price.html">Price Chart</a></li>
+              <li><a href="buy.html">Buy GOO</a></li>
+              <li><a href="whitepaper.html">Whitepaper</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-section">
+            <h3>Resources</h3>
+            <ul class="footer-links">
+              <li><a href="marketing.html">Marketing</a></li>
+              <li><a href="about.html">About Us</a></li>
+              <li><a href="contact.html">Contact</a></li>
+              <li><a href="whitepaper-full.html">Full Documentation</a></li>
+            </ul>
+          </div>
+
+                    <div class="footer-section">
+            <h3>Support</h3>
+            <ul class="footer-links">
+              <li><a href="mailto:support@gootoken.com">24/7 Support</a></li>
+              <li><a href="mailto:info@gootoken.com">General Info</a></li>
+              <li><a href="mailto:partnerships@gootoken.com">Partnerships</a></li>
+              <li><a href="#">Help Center</a></li>
+            </ul>
           </div>
         </div>
-      </div>
-      <div class="footer-bottom">
-        <p>&copy; 2025 GOO Token. All rights reserved.</p>
+        <div class="footer-bottom">
+          <p>&copy; 2025 GOO Token. All rights reserved.</p>
+        </div>
       </div>
     </footer>
 
 
     <!-- Floating Theme Toggle -->
-    <button id="floating-theme-toggle" class="floating-theme-toggle" title="Toggle Dark/Light Mode">
+    <button id="floating-theme-toggle" class="floating-theme-toggle" title="Toggle Theme (Dark/Light Mode)" aria-label="Toggle Theme" style="opacity: 1;">
       <i class="feather" data-feather="moon"></i>
     </button>
+    <div class="theme-tooltip">Toggle Theme</div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.29.0/feather.min.js"></script>
     <script src="js/header.js"></script>
     <script src="js/modern-token.js"></script>
     <script src="js/animations.js"></script>
+    <script src="js/loading-manager.js"></script>
+    <script src="js/header-optimizer.js"></script>
     <script src="analytics-config.js"></script>
     <script src="script.js"></script>
     <script src="analytics.js"></script>
     <script src="js/marketing.js"></script>
+    <script src="js/marketing-enhanced.js"></script>
     <script>
       // Initialize Feather Icons
       feather.replace();
@@ -467,5 +546,7 @@
         setTimeout(() => feather.replace(), 100);
       });
     </script>
-  </body>
+      <script src="js/theme-toggle-enhanced.js"></script>
+      <script src="js/restart-helper.js"></script>
+ </body>
 </html>
