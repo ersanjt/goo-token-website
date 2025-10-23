@@ -8,7 +8,7 @@ const htmlFiles = [
   'whitepaper-full.html',
   'marketing.html',
   'about.html',
-  'contact.html'
+  'contact.html',
 ];
 
 function fixDuplicateCSS(filePath) {
@@ -17,17 +17,25 @@ function fixDuplicateCSS(filePath) {
     let modified = false;
 
     // Remove duplicate css/unified-header.css links
-    const unifiedHeaderRegex = /<link[^>]*href="css\/unified-header\.css"[^>]*>\s*<link[^>]*href="css\/unified-header\.css"[^>]*>/g;
+    const unifiedHeaderRegex =
+      /<link[^>]*href="css\/unified-header\.css"[^>]*>\s*<link[^>]*href="css\/unified-header\.css"[^>]*>/g;
     if (unifiedHeaderRegex.test(content)) {
-      content = content.replace(unifiedHeaderRegex, '<link rel="stylesheet" href="css/unified-header.css" />');
+      content = content.replace(
+        unifiedHeaderRegex,
+        '<link rel="stylesheet" href="css/unified-header.css" />'
+      );
       modified = true;
       console.log(`✓ Fixed duplicate css/unified-header.css in ${filePath}`);
     }
 
     // Also check for any other duplicate CSS links
-    const duplicateCSSRegex = /<link[^>]*href="([^"]+)"[^>]*>\s*<link[^>]*href="\1"[^>]*>/g;
+    const duplicateCSSRegex =
+      /<link[^>]*href="([^"]+)"[^>]*>\s*<link[^>]*href="\1"[^>]*>/g;
     if (duplicateCSSRegex.test(content)) {
-      content = content.replace(duplicateCSSRegex, '<link rel="stylesheet" href="$1" />');
+      content = content.replace(
+        duplicateCSSRegex,
+        '<link rel="stylesheet" href="$1" />'
+      );
       modified = true;
       console.log(`✓ Fixed duplicate CSS links in ${filePath}`);
     }
@@ -38,7 +46,6 @@ function fixDuplicateCSS(filePath) {
     } else {
       console.log(`⏭️  No changes needed for ${filePath}`);
     }
-
   } catch (error) {
     console.error(`❌ Error fixing ${filePath}:`, error.message);
   }

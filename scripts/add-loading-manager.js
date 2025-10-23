@@ -4,13 +4,13 @@ const path = require('path');
 // List of HTML files to update
 const htmlFiles = [
   'index.html',
-  'price.html', 
+  'price.html',
   'buy.html',
   'whitepaper.html',
   'whitepaper-full.html',
   'marketing.html',
   'about.html',
-  'contact.html'
+  'contact.html',
 ];
 
 function addLoadingManager(filePath) {
@@ -21,7 +21,8 @@ function addLoadingManager(filePath) {
     // Check if loading-manager.js is already included
     if (!content.includes('js/loading-manager.js')) {
       // Find the animations.js script tag and add loading-manager.js after it
-      const animationsRegex = /<script[^>]*src="js\/animations\.js"[^>]*><\/script>/;
+      const animationsRegex =
+        /<script[^>]*src="js\/animations\.js"[^>]*><\/script>/;
       if (animationsRegex.test(content)) {
         content = content.replace(
           animationsRegex,
@@ -39,7 +40,6 @@ function addLoadingManager(filePath) {
       fs.writeFileSync(filePath, content, 'utf8');
       console.log(`✅ Updated ${filePath}`);
     }
-
   } catch (error) {
     console.error(`❌ Error updating ${filePath}:`, error.message);
   }

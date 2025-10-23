@@ -4,25 +4,25 @@ const path = require('path');
 // List of HTML files to optimize
 const htmlFiles = [
   'index.html',
-  'price.html', 
+  'price.html',
   'buy.html',
   'whitepaper.html',
   'whitepaper-full.html',
   'marketing.html',
   'about.html',
-  'contact.html'
+  'contact.html',
 ];
 
 // CSS files to replace
 const cssReplacements = [
   {
     from: 'css/header.css',
-    to: 'css/unified-header.css'
+    to: 'css/unified-header.css',
   },
   {
-    from: 'css/professional-header.css', 
-    to: 'css/unified-header.css'
-  }
+    from: 'css/professional-header.css',
+    to: 'css/unified-header.css',
+  },
 ];
 
 // Floating theme toggle HTML
@@ -66,11 +66,19 @@ function optimizeHTMLFile(filePath) {
 
     // Replace CSS files
     cssReplacements.forEach(replacement => {
-      const regex = new RegExp(`<link[^>]*href="${replacement.from.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}"[^>]*>`, 'g');
+      const regex = new RegExp(
+        `<link[^>]*href="${replacement.from.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}"[^>]*>`,
+        'g'
+      );
       if (content.includes(replacement.from)) {
-        content = content.replace(regex, `<link rel="stylesheet" href="${replacement.to}" />`);
+        content = content.replace(
+          regex,
+          `<link rel="stylesheet" href="${replacement.to}" />`
+        );
         modified = true;
-        console.log(`✓ Replaced ${replacement.from} with ${replacement.to} in ${filePath}`);
+        console.log(
+          `✓ Replaced ${replacement.from} with ${replacement.to} in ${filePath}`
+        );
       }
     });
 
@@ -79,24 +87,34 @@ function optimizeHTMLFile(filePath) {
       // Find footer closing tag
       const footerRegex = /<\/footer>\s*<script/;
       if (footerRegex.test(content)) {
-        content = content.replace(footerRegex, `</footer>\n\n${floatingThemeToggle}\n\n    <script`);
+        content = content.replace(
+          footerRegex,
+          `</footer>\n\n${floatingThemeToggle}\n\n    <script`
+        );
         modified = true;
         console.log(`✓ Added floating theme toggle to ${filePath}`);
       }
     }
 
     // Add floating theme toggle JavaScript if not exists
-    if (!content.includes('floating-theme-toggle') && content.includes('feather.replace()')) {
+    if (
+      !content.includes('floating-theme-toggle') &&
+      content.includes('feather.replace()')
+    ) {
       const featherRegex = /feather\.replace\(\);\s*<\/script>/;
       if (featherRegex.test(content)) {
-        content = content.replace(featherRegex, `feather.replace();\n      \n      ${floatingThemeJS}\n    </script>`);
+        content = content.replace(
+          featherRegex,
+          `feather.replace();\n      \n      ${floatingThemeJS}\n    </script>`
+        );
         modified = true;
         console.log(`✓ Added floating theme toggle JavaScript to ${filePath}`);
       }
     }
 
     // Remove old theme toggle from header if exists
-    const oldThemeToggleRegex = /<button[^>]*id="theme-toggle"[^>]*>[\s\S]*?<\/button>/g;
+    const oldThemeToggleRegex =
+      /<button[^>]*id="theme-toggle"[^>]*>[\s\S]*?<\/button>/g;
     if (oldThemeToggleRegex.test(content)) {
       content = content.replace(oldThemeToggleRegex, '');
       modified = true;
@@ -104,7 +122,8 @@ function optimizeHTMLFile(filePath) {
     }
 
     // Remove language switcher if exists
-    const languageSwitcherRegex = /<div[^>]*class="language-switcher"[\s\S]*?<\/div>/g;
+    const languageSwitcherRegex =
+      /<div[^>]*class="language-switcher"[\s\S]*?<\/div>/g;
     if (languageSwitcherRegex.test(content)) {
       content = content.replace(languageSwitcherRegex, '');
       modified = true;
@@ -117,7 +136,6 @@ function optimizeHTMLFile(filePath) {
     } else {
       console.log(`⏭️  No changes needed for ${filePath}`);
     }
-
   } catch (error) {
     console.error(`❌ Error optimizing ${filePath}:`, error.message);
   }
@@ -141,4 +159,6 @@ console.log('• Added floating theme toggle to all pages');
 console.log('• Added floating theme toggle JavaScript');
 console.log('• Removed old theme toggle from headers');
 console.log('• Removed language switcher components');
-console.log('\n🎉 All pages are now optimized with modern loading and theme toggle!');
+console.log(
+  '\n🎉 All pages are now optimized with modern loading and theme toggle!'
+);

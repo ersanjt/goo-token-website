@@ -10,17 +10,18 @@ const htmlFiles = [
   'marketing.html',
   'about.html',
   'whitepaper.html',
-  'whitepaper-full.html'
+  'whitepaper-full.html',
 ];
 
 // Function to fix footer duplicates
 function fixFooterDuplicates(filePath) {
   try {
     let content = fs.readFileSync(filePath, 'utf8');
-    
+
     // Replace Community section with Support section
-    const communitySectionRegex = /<div class="footer-section">\s*<h3>Community<\/h3>\s*<div class="social-links">[\s\S]*?<\/div>\s*<\/div>/g;
-    
+    const communitySectionRegex =
+      /<div class="footer-section">\s*<h3>Community<\/h3>\s*<div class="social-links">[\s\S]*?<\/div>\s*<\/div>/g;
+
     const supportSection = `          <div class="footer-section">
             <h3>Support</h3>
             <ul class="footer-links">
@@ -30,12 +31,11 @@ function fixFooterDuplicates(filePath) {
               <li><a href="#">Help Center</a></li>
             </ul>
           </div>`;
-    
+
     content = content.replace(communitySectionRegex, supportSection);
-    
+
     fs.writeFileSync(filePath, content, 'utf8');
     console.log(`✅ Fixed footer duplicates in ${filePath}`);
-    
   } catch (error) {
     console.error(`❌ Error fixing ${filePath}:`, error.message);
   }
@@ -54,4 +54,3 @@ htmlFiles.forEach(file => {
 });
 
 console.log('\n🎉 Footer duplicates fixed successfully!');
-

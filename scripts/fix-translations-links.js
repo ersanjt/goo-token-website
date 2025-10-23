@@ -4,13 +4,13 @@ const path = require('path');
 // List of HTML files to fix
 const htmlFiles = [
   'index.html',
-  'price.html', 
+  'price.html',
   'buy.html',
   'whitepaper.html',
   'whitepaper-full.html',
   'marketing.html',
   'about.html',
-  'contact.html'
+  'contact.html',
 ];
 
 function fixTranslationsLinks(filePath) {
@@ -19,7 +19,8 @@ function fixTranslationsLinks(filePath) {
     let modified = false;
 
     // Remove js/translations.js script tag
-    const translationsRegex = /<script[^>]*src="js\/translations\.js"[^>]*><\/script>\s*/g;
+    const translationsRegex =
+      /<script[^>]*src="js\/translations\.js"[^>]*><\/script>\s*/g;
     if (translationsRegex.test(content)) {
       content = content.replace(translationsRegex, '');
       modified = true;
@@ -40,7 +41,6 @@ function fixTranslationsLinks(filePath) {
     } else {
       console.log(`⏭️  No changes needed for ${filePath}`);
     }
-
   } catch (error) {
     console.error(`❌ Error fixing ${filePath}:`, error.message);
   }
