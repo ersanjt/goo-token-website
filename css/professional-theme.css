@@ -590,6 +590,32 @@
   --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
   --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.1);
 
+  /* Enhanced text visibility in light mode */
+  .nav-link,
+  .footer-links a,
+  .btn,
+  .form-input,
+  .form-textarea,
+  .form-select {
+    color: var(--text-primary) !important;
+  }
+
+  /* Light mode text for specific elements */
+  .price-value,
+  .price-change,
+  .stat-value,
+  .stat-label {
+    color: var(--text-primary) !important;
+  }
+
+  /* Ensure contrast for light backgrounds */
+  .feature-card h3,
+  .pricing-card h3,
+  .contact-card h3,
+  .faq-item h4 {
+    color: var(--text-primary) !important;
+  }
+
   /* White check icons in light mode */
   .fas.fa-check,
   .fas.fa-check-circle {
@@ -604,6 +630,42 @@
   .validation-item .fas.fa-check-circle {
     color: #ffffff !important;
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  }
+
+  /* Light mode icons */
+  .feather,
+  .fas,
+  .fab {
+    color: var(--text-primary) !important;
+  }
+
+  /* Specific icon styling for light mode */
+  .nav-link i,
+  .footer-links i,
+  .btn i {
+    color: var(--text-primary) !important;
+  }
+
+  /* Light mode form improvements */
+  .form-input,
+  .form-textarea,
+  .form-select {
+    background: rgba(255, 255, 255, 0.9) !important;
+    border: 1px solid rgba(0, 0, 0, 0.2) !important;
+    color: var(--text-primary) !important;
+  }
+
+  .form-input:focus,
+  .form-textarea:focus,
+  .form-select:focus {
+    border-color: var(--digital-blue) !important;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1) !important;
+  }
+
+  /* Light mode placeholder text */
+  .form-input::placeholder,
+  .form-textarea::placeholder {
+    color: var(--text-muted) !important;
   }
 
   /* Specific styling for different check icon contexts */
@@ -635,5 +697,37 @@
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
+  }
+
+  /* Light mode card improvements */
+  .card,
+  .feature-card,
+  .pricing-card,
+  .contact-card,
+  .faq-item {
+    background: rgba(255, 255, 255, 0.95) !important;
+    border: 1px solid rgba(0, 0, 0, 0.1) !important;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important;
+  }
+
+  .card:hover,
+  .feature-card:hover,
+  .pricing-card:hover,
+  .contact-card:hover,
+  .faq-item:hover {
+    background: rgba(255, 255, 255, 1) !important;
+    border-color: var(--digital-blue) !important;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15) !important;
+  }
+
+  /* Light mode button improvements */
+  .btn {
+    color: var(--text-primary) !important;
+    border: 1px solid rgba(0, 0, 0, 0.2) !important;
+  }
+
+  .btn:hover {
+    background: var(--digital-blue) !important;
+    color: white !important;
   }
 }
