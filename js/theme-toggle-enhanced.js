@@ -19,8 +19,8 @@ class ThemeToggleEnhanced {
   }
 
   setupToggleButton() {
-    // Try to find theme toggle button (header or floating)
-    this.toggleButton = document.getElementById('theme-toggle') || document.getElementById('floating-theme-toggle');
+    // Only use floating theme toggle button
+    this.toggleButton = document.getElementById('floating-theme-toggle');
     if (!this.toggleButton) return;
 
     // Set visual state by theme immediately
