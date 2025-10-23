@@ -9,7 +9,6 @@ class WhitepaperReader {
     this.setupTableOfContents();
     this.setupScrollSpy();
     this.setupPrintFunctionality();
-    this.setupSearchFunctionality();
     this.setupProgressTracking();
   }
 
@@ -126,116 +125,6 @@ class WhitepaperReader {
     `;
   }
 
-  setupSearchFunctionality() {
-    // Add search input
-    const searchContainer = document.createElement('div');
-    searchContainer.className = 'whitepaper-search';
-    searchContainer.innerHTML = `
-      <div class="search-input-container">
-        <input type="text" id="whitepaper-search" placeholder="Search whitepaper..." />
-        <i class="fas fa-search"></i>
-      </div>
-      <div class="search-results" id="search-results"></div>
-    `;
-
-    searchContainer.style.cssText = `
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      z-index: 1000;
-      background: var(--bg-card);
-      border: 1px solid var(--border-color);
-      border-radius: 8px;
-      padding: 15px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-      min-width: 300px;
-    `;
-
-    document.body.appendChild(searchContainer);
-
-    const searchInput = document.getElementById('whitepaper-search');
-    const searchResults = document.getElementById('search-results');
-
-    let searchTimeout;
-    searchInput.addEventListener('input', e => {
-      clearTimeout(searchTimeout);
-      searchTimeout = setTimeout(() => {
-        this.performSearch(e.target.value, searchResults);
-      }, 300);
-    });
-  }
-
-  performSearch(query, resultsContainer) {
-    if (query.length < 2) {
-      resultsContainer.innerHTML = '';
-      return;
-    }
-
-    const sections = document.querySelectorAll('.whitepaper-section-content');
-    const results = [];
-
-    sections.forEach(section => {
-      const text = section.textContent.toLowerCase();
-      const title = section.querySelector('h2').textContent;
-
-      if (text.includes(query.toLowerCase())) {
-        const matches = this.findMatches(section, query);
-        results.push({
-          title: title,
-          id: section.id,
-          matches: matches,
-        });
-      }
-    });
-
-    this.displaySearchResults(results, resultsContainer, query);
-  }
-
-  findMatches(section, query) {
-    const matches = [];
-    const paragraphs = section.querySelectorAll('p, li');
-
-    paragraphs.forEach(p => {
-      const text = p.textContent;
-      const regex = new RegExp(`(${query})`, 'gi');
-      if (regex.test(text)) {
-        const highlighted = text.replace(regex, '<mark>$1</mark>');
-        matches.push(highlighted.substring(0, 200) + '...');
-      }
-    });
-
-    return matches.slice(0, 3); // Limit to 3 matches per section
-  }
-
-  displaySearchResults(results, container, query) {
-    if (results.length === 0) {
-      container.innerHTML = '<p>No results found</p>';
-      return;
-    }
-
-    let html = `<h4>Search Results for "${query}"</h4>`;
-
-    results.forEach(result => {
-      html += `
-        <div class="search-result-item">
-          <h5><a href="#${result.id}">${result.title}</a></h5>
-          <div class="search-matches">
-            ${result.matches.map(match => `<p>${match}</p>`).join('')}
-          </div>
-        </div>
-      `;
-    });
-
-    container.innerHTML = html;
-
-    // Add click handlers for result links
-    container.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', e => {
-        e.preventDefault();
-        this.scrollToSection(link.getAttribute('href').substring(1));
-      });
-    });
-  }
 
   setupProgressTracking() {
     // Add reading progress bar
