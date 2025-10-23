@@ -1,7 +1,7 @@
 {
   "name": "goo-token-website",
   "version": "1.0.0",
-  "description": "Professional website for Goo Token cryptocurrency",
+  "description": "Professional website for Goo Token cryptocurrency - Developed by ErsanJ.Tabrizi from Bizdavar Team",
   "main": "index.html",
   "scripts": {
     "dev": "live-server --port=3000 --open=/index.html",
@@ -29,7 +29,7 @@
     "website",
     "goo-token"
   ],
-  "author": "Your Name",
+  "author": "ErsanJ.Tabrizi - Bizdavar Team",
   "license": "MIT",
   "devDependencies": {
     "@types/jest": "^30.0.0",

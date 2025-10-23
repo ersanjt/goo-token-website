@@ -1,0 +1,57 @@
+# Git attributes for Goo Token Website
+# Developed by: ErsanJ.Tabrizi from Bizdavar Team
+
+# Auto detect text files and perform LF normalization
+* text=auto
+
+# Force LF line endings for these file types
+*.js text eol=lf
+*.ts text eol=lf
+*.css text eol=lf
+*.html text eol=lf
+*.md text eol=lf
+*.json text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+
+# Force CRLF line endings for these file types
+*.bat text eol=crlf
+*.cmd text eol=crlf
+
+# Binary files
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.svg binary
+*.woff binary
+*.woff2 binary
+*.ttf binary
+*.eot binary
+
+# Archive files
+*.zip binary
+*.tar binary
+*.gz binary
+
+# Executable files
+*.exe binary
+*.dll binary
+*.so binary
+*.dylib binary
+
+# Ignore these files in diffs
+*.min.js -diff
+*.min.css -diff
+*.map -diff
+
+# Language detection
+*.js linguist-language=JavaScript
+*.ts linguist-language=TypeScript
+*.css linguist-language=CSS
+*.html linguist-language=HTML
+*.md linguist-language=Markdown
+*.json linguist-language=JSON
+*.yml linguist-language=YAML
+*.yaml linguist-language=YAML

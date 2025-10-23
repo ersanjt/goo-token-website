@@ -795,6 +795,35 @@ body {
   position: relative;
 }
 
+/* Theme Toggle Button in Header */
+.header-actions .btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--border-primary);
+  background: var(--bg-glass);
+  color: var(--text-primary);
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.header-actions .btn:hover {
+  background: var(--bg-glass-hover);
+  border-color: var(--primary-color);
+  color: var(--primary-color);
+  transform: translateY(-1px);
+}
+
+.header-actions .btn i {
+  width: 16px;
+  height: 16px;
+}
+
 /* Ultra-Modern Price Display */
 .price-display {
   display: flex;

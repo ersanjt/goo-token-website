@@ -124,6 +124,10 @@
           </div>
 
           <!-- Theme Toggle -->
+          <button class="btn btn-secondary" id="theme-toggle">
+            <i data-feather="moon"></i>
+            <span>Theme</span>
+          </button>
 
           <a href="buy.html" class="buy-btn">
             <i class="feather" data-feather="zap"></i>
@@ -517,5 +521,52 @@
     </script>
     <script src="js/theme-toggle-enhanced.js"></script>
     <script src="js/restart-helper.js"></script>
+    
+    <!-- Initialize Theme Toggle -->
+    <script>
+      // Initialize theme toggle when DOM is ready
+      document.addEventListener('DOMContentLoaded', function() {
+        // Initialize enhanced theme toggle
+        if (typeof ThemeToggleEnhanced !== 'undefined') {
+          new ThemeToggleEnhanced();
+        }
+        
+        // Fallback theme toggle functionality
+        const themeToggle = document.getElementById('theme-toggle');
+        const floatingToggle = document.getElementById('floating-theme-toggle');
+        
+        function toggleTheme() {
+          const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
+          const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+          
+          document.documentElement.setAttribute('data-theme', newTheme);
+          localStorage.setItem('theme', newTheme);
+          
+          // Update button icons
+          const buttons = [themeToggle, floatingToggle].filter(Boolean);
+          buttons.forEach(button => {
+            const icon = button.querySelector('i');
+            if (icon) {
+              icon.setAttribute('data-feather', newTheme === 'dark' ? 'moon' : 'sun');
+              if (typeof feather !== 'undefined') {
+                feather.replace();
+              }
+            }
+          });
+        }
+        
+        // Add event listeners
+        if (themeToggle) {
+          themeToggle.addEventListener('click', toggleTheme);
+        }
+        if (floatingToggle) {
+          floatingToggle.addEventListener('click', toggleTheme);
+        }
+        
+        // Apply saved theme
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        document.documentElement.setAttribute('data-theme', savedTheme);
+      });
+    </script>
   </body>
 </html>

@@ -1,5 +1,8 @@
 /**
  * Enhanced Theme Toggle - Improved functionality and UX
+ * Developed by: ErsanJ.Tabrizi from Bizdavar Team
+ * Version: 1.0.0
+ * Description: Advanced theme toggle with smooth transitions and user preferences
  */
 
 class ThemeToggleEnhanced {
@@ -16,7 +19,8 @@ class ThemeToggleEnhanced {
   }
 
   setupToggleButton() {
-    this.toggleButton = document.getElementById('floating-theme-toggle');
+    // Try to find theme toggle button (header or floating)
+    this.toggleButton = document.getElementById('theme-toggle') || document.getElementById('floating-theme-toggle');
     if (!this.toggleButton) return;
 
     // Set visual state by theme immediately

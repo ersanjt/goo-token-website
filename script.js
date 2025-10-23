@@ -1,4 +1,9 @@
-// Goo Token Website JavaScript
+/**
+ * Goo Token Website JavaScript
+ * Developed by: ErsanJ.Tabrizi from Bizdavar Team
+ * Version: 1.0.0
+ * Description: Main JavaScript functionality for Goo Token website
+ */
 document.addEventListener('DOMContentLoaded', function () {
   // Smooth scrolling for navigation links
   const navLinks = document.querySelectorAll('a[href^="#"]');
