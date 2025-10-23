@@ -136,21 +136,29 @@ class ThemeToggleEnhanced {
     document.body.className =
       this.currentTheme === 'dark' ? 'dark-theme' : 'light-theme';
 
-    // Use CSS custom properties for instant theme switching
-    const root = document.documentElement;
-    if (this.currentTheme === 'light') {
-      root.style.setProperty('--bg-primary', '#ffffff');
-      root.style.setProperty('--text-primary', '#1a1a1a');
-      root.style.setProperty('--text-secondary', '#666666');
-      root.style.setProperty('--bg-secondary', '#f8fafc');
-      root.style.setProperty('--bg-tertiary', '#f1f5f9');
-    } else {
-      root.style.setProperty('--bg-primary', '#0a0a0a');
-      root.style.setProperty('--text-primary', '#ffffff');
-      root.style.setProperty('--text-secondary', '#cccccc');
-      root.style.setProperty('--bg-secondary', '#1e293b');
-      root.style.setProperty('--bg-tertiary', '#334155');
+    // Force CSS reflow to ensure theme is applied
+    document.documentElement.offsetHeight;
+    
+    // Update all elements that might need theme refresh
+    this.refreshThemeElements();
+  }
+  
+  refreshThemeElements() {
+    // Refresh feather icons
+    if (typeof feather !== 'undefined') {
+      feather.replace();
     }
+    
+    // Refresh any dynamic content
+    const themeElements = document.querySelectorAll('[data-theme]');
+    themeElements.forEach(el => {
+      el.setAttribute('data-theme', this.currentTheme);
+    });
+    
+    // Force repaint
+    document.body.style.display = 'none';
+    document.body.offsetHeight;
+    document.body.style.display = '';
   }
 
   updateButtonIcon() {
